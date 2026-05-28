@@ -726,36 +726,103 @@ h3 {
   background: #0c0e0f;
   color: var(--muted-on-dark);
   border-top: 1px solid var(--cf-border-dark);
+  padding-bottom: 136px;
 }
 
 .footer-shell {
-  min-height: 76px;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  padding: 24px 0;
   font-size: 14px;
 }
 
-.footer-shell p {
+.footer-brand {
+  display: grid;
+  gap: 14px;
+}
+
+.footer-brand p {
   display: grid;
   gap: 2px;
 }
 
-.footer-shell strong {
+.footer-brand strong {
   color: var(--cf-cream);
 }
 
-.footer-shell span {
+.footer-brand span {
   color: var(--cf-gold);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.footer-shell a {
+.footer-brand a,
+.footer-review a {
   color: var(--cf-sand);
   font-weight: 700;
+}
+
+.footer-brand a:hover,
+.footer-review a:hover {
+  color: var(--cf-gold);
+}
+
+.footer-review {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  max-width: 620px;
+  padding: 20px;
+  border: 1px solid var(--cf-border-dark);
+  border-radius: 18px;
+  background: rgba(255, 247, 232, 0.06);
+}
+
+.footer-review__copy {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-review h2 {
+  color: var(--cf-cream);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.footer-review p {
+  color: var(--muted-on-dark);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.footer-review__trust {
+  color: var(--cf-gold);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-review__qr {
+  width: 156px;
+  height: 156px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--cf-cream);
+  padding: 12px;
+}
+
+.footer-review__qr img {
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
 }
 
 /* Floating Actions */
@@ -935,6 +1002,10 @@ h3 {
 }
 
 @media (max-width: 560px) {
+  .site-footer {
+    padding-bottom: 84px;
+  }
+
   .container {
     width: calc(100% - 28px);
     max-width: 1160px;
@@ -1024,7 +1095,26 @@ h3 {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding: 18px 0;
+    padding: 22px 0;
+  }
+
+  .footer-review {
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 16px;
+    padding: 18px;
+    text-align: center;
+  }
+
+  .footer-review__qr {
+    width: 144px;
+    height: 144px;
+  }
+
+  .footer-review__qr img {
+    width: 120px;
+    height: 120px;
   }
 
   .floating-actions {
