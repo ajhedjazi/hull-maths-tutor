@@ -512,7 +512,7 @@ h3 {
   font-size: 15px;
 }
 
-/* All or Something Section */
+/* Philosophy Section */
 .comparison-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
