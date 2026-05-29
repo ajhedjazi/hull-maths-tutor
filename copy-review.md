@@ -94,6 +94,8 @@
 - 05
 - App Setup & Coaching Begins
 - Track sessions, log progress, review adherence, and adjust the plan intelligently.
+- Screen, test, then build
+- Less guessing at the start means smarter adjustments once training begins.
 - Bloodwork helps inform lifestyle, training, and nutrition decisions. Where medical interpretation or treatment is required, clients should consult an appropriate healthcare professional.
 
 ## Who it is for
@@ -109,6 +111,7 @@
 - People tired of starting again every Monday
 - Not for you if
 - You are looking for a six-week punishment plan, a crash diet, or a generic copy-and-paste workout.
+- A stronger body. A clearer system. A standard you can return to.
 
 ## What is included
 
