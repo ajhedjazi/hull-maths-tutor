@@ -263,38 +263,87 @@
 
     <footer class="site-footer">
       <div class="container footer-shell">
-        <div>
-          <strong>Citadel Fitness</strong>
-          <p>Personal training built around real life.</p>
+        <div class="footer-main">
+          <div class="footer-brand-panel">
+            <a
+              class="footer-logo"
+              href="#top"
+              aria-label="Citadel Fitness home"
+            >
+              <img src="assets/logo.png" alt="" width="48" height="48" />
+              <span>Citadel Fitness</span>
+            </a>
+            <p>Structure, strength, and accountability for real life.</p>
+          </div>
+
+          <address
+            class="footer-contact"
+            aria-label="Citadel Fitness contact details"
+          >
+            <p class="footer-heading">Contact</p>
+            <ul class="footer-list">
+              <li>
+                <span>Email</span>
+                <!-- TODO: Replace placeholder email with the client's real email address. -->
+                <a href="mailto:hello@citadelfitness.example"
+                  >hello@citadelfitness.example</a
+                >
+              </li>
+              <li>
+                <span>Instagram</span>
+                <!-- TODO: Replace placeholder Instagram URL and handle with the client's real Instagram link. -->
+                <a
+                  href="https://www.instagram.com/citadelfitness"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @citadelfitness
+                </a>
+              </li>
+              <li>
+                <span>Service area</span>
+                <!-- TODO: Replace placeholder service area with the client's real location/service area. -->
+                <p>Location / service area placeholder</p>
+              </li>
+            </ul>
+          </address>
+
+          <aside
+            class="footer-review-card"
+            aria-labelledby="footer-review-title"
+          >
+            <div class="footer-review-copy">
+              <p class="footer-heading">Reviews</p>
+              <h2 id="footer-review-title">Leave a Google Review</h2>
+              <p>Scan the code to leave a review.</p>
+              <!-- TODO: Replace this placeholder Google Review link with the client's real Google Review link. -->
+              <a
+                class="footer-review-link"
+                href="https://google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open review page
+              </a>
+            </div>
+            <div class="footer-qr-wrap">
+              <!-- TODO: Replace this placeholder QR code URL with the client's real Google Review link. -->
+              <img
+                src="assets/google-review-qr.png"
+                alt="Placeholder QR code for the Citadel Fitness Google Review page"
+                width="140"
+                height="140"
+              />
+            </div>
+          </aside>
         </div>
 
-        <ul class="footer-list">
-          <li>
-            <!-- TODO: Replace placeholder email with the client's real email address. -->
-            <a href="mailto:hello@citadelfitness.example"
-              >hello@citadelfitness.example</a
-            >
-          </li>
-          <li>
-            <!-- TODO: Replace placeholder Instagram URL and handle. -->
-            <a
-              href="https://www.instagram.com/citadelfitness"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @citadelfitness
-            </a>
-          </li>
-          <li>
-            <!-- TODO: Replace placeholder location/service area. -->
-            Location / service area placeholder
-          </li>
-        </ul>
-
-        <p class="copyright">
-          &copy; <span id="copyright-year">2026</span> Citadel Fitness. All
-          rights reserved.
-        </p>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="copyright-year">2026</span> Citadel Fitness. All
+            rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
 
