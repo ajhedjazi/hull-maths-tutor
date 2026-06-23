@@ -733,6 +733,71 @@ h3 {
   font-weight: 700;
 }
 
+.availability-fieldset {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.availability-fieldset legend {
+  margin-bottom: 7px;
+  padding: 0;
+  color: var(--cf-cream);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.availability-options {
+  display: grid;
+  gap: 8px;
+}
+
+.form-row .availability-option {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  border: 1px solid rgba(var(--brand-gold-rgb), 0.52);
+  border-radius: 8px;
+  background: rgba(var(--brand-white-rgb), 0.1);
+  padding: 11px 13px;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.form-row .availability-option:hover {
+  border-color: var(--brand-gold);
+  background: rgba(var(--brand-white-rgb), 0.15);
+}
+
+.form-row .availability-option:focus-within {
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 4px rgba(var(--brand-gold-rgb), 0.2);
+}
+
+.form-row .availability-option input {
+  width: 18px;
+  min-height: 18px;
+  margin: 1px 0 0;
+  padding: 0;
+  accent-color: var(--brand-gold);
+}
+
+.form-row .availability-option input:focus {
+  box-shadow: none;
+}
+
+.form-help {
+  margin: 2px 0 0;
+  color: rgba(var(--brand-white-rgb), 0.72);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 .form-row input,
 .form-row textarea,
 .form-row select {
