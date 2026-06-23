@@ -6,8 +6,8 @@ const internalLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
 const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
 const year = document.querySelector("#copyright-year");
 const mobileCta = document.querySelector("[data-mobile-cta]");
+const floatingActions = document.querySelector("[data-floating-actions]");
 const backToTopButton = document.querySelector("[data-back-to-top]");
-const placeholderLinks = document.querySelectorAll("[data-placeholder-link]");
 const enquirySection = document.querySelector("#enquire");
 
 internalLinks.forEach((link) => {
@@ -44,10 +44,6 @@ if (year) {
   year.textContent = String(new Date().getFullYear());
 }
 
-placeholderLinks.forEach((link) => {
-  link.addEventListener("click", (event) => event.preventDefault());
-});
-
 const toggleFloatingControls = () => {
   if (mobileCta) {
     const enquiryBounds = enquirySection?.getBoundingClientRect();
@@ -59,8 +55,14 @@ const toggleFloatingControls = () => {
     mobileCta.inert = !showMobileCta;
   }
 
-  if (backToTopButton) {
-    backToTopButton.hidden = window.scrollY < 400;
+  if (floatingActions) {
+    const showFloatingActions = window.scrollY >= 450;
+    floatingActions.classList.toggle("is-visible", showFloatingActions);
+    floatingActions.setAttribute(
+      "aria-hidden",
+      String(!showFloatingActions),
+    );
+    floatingActions.inert = !showFloatingActions;
   }
 };
 
