@@ -497,18 +497,21 @@
             </div>
 
             <div class="form-row">
-              <label for="lesson-preference"
-                >Online or in-person preference</label
-              >
+              <label for="lesson-format">Lesson format</label>
               <select
-                id="lesson-preference"
-                name="online-or-in-person-preference"
+                id="lesson-format"
+                name="lesson-format"
                 required
               >
-                <option value="">Select a preference</option>
-                <option value="Online">Online</option>
-                <option value="In-person in Hull">In-person in Hull</option>
-                <option value="Open to either">Open to either</option>
+                <option value="">Select a lesson format</option>
+                <option value="Online tutoring">Online tutoring</option>
+                <option value="In-person at student's home in Hull">
+                  In-person at student&rsquo;s home in Hull
+                </option>
+                <option value="In-person at an agreed local location">
+                  In-person at an agreed local location
+                </option>
+                <option value="Not sure yet">Not sure yet</option>
               </select>
             </div>
 
@@ -525,16 +528,79 @@
               ></textarea>
             </div>
 
-            <div class="form-row">
-              <label for="preferred-times">Preferred days/times</label>
-              <input
-                id="preferred-times"
-                name="preferred-days-and-times"
-                type="text"
-                placeholder="For example: Tuesdays after 5pm"
-                required
-              />
-            </div>
+            <fieldset class="form-row availability-fieldset">
+              <legend>Preferred lesson slot</legend>
+              <div class="availability-options">
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Monday 6:00pm online"
+                  />
+                  <span>Monday 6:00pm online</span>
+                </label>
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Monday 7:15pm online"
+                  />
+                  <span>Monday 7:15pm online</span>
+                </label>
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Wednesday 6:00pm online"
+                  />
+                  <span>Wednesday 6:00pm online</span>
+                </label>
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Wednesday 7:15pm online"
+                  />
+                  <span>Wednesday 7:15pm online</span>
+                </label>
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Sunday 5:00pm online"
+                  />
+                  <span>Sunday 5:00pm online</span>
+                </label>
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Saturday morning in-person by arrangement"
+                  />
+                  <span>Saturday morning in-person by arrangement</span>
+                </label>
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Sunday afternoon in-person by arrangement"
+                  />
+                  <span>Sunday afternoon in-person by arrangement</span>
+                </label>
+                <label class="availability-option">
+                  <input
+                    type="checkbox"
+                    name="preferred-lesson-slots[]"
+                    value="Other / not sure yet"
+                  />
+                  <span>Other / not sure yet</span>
+                </label>
+              </div>
+              <p class="form-help">
+                Select any times that could work. I&rsquo;ll confirm availability
+                before anything is booked.
+              </p>
+            </fieldset>
 
             <button class="button button-primary form-button" type="submit">
               Ask About Availability
