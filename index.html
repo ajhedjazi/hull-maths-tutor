@@ -1,38 +1,88 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Citadel Fitness | Personal Training Built Around Real Life</title>
+    <title>GCSE Maths Tutor in Hull | Hull Maths Tutor</title>
     <meta
       name="description"
-      content="Straightforward personal training, online coaching, and training structure for adults who want consistency, confidence, and support."
+      content="GCSE maths tutoring in Hull from a former teacher with 16 years&rsquo; experience. Online and in-person lessons focused on confidence, understanding, and exam progress."
     />
-    <meta name="theme-color" content="#1A3EB9" />
-    <!-- TODO: Replace placeholder domain with the real Citadel Fitness domain before launch. -->
-    <link rel="canonical" href="https://www.citadelfitness.example/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#123b66" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Hull Maths Tutor" />
+    <meta
+      property="og:title"
+      content="GCSE Maths Tutor in Hull | Hull Maths Tutor"
+    />
+    <meta
+      property="og:description"
+      content="Warm, confidence-building GCSE maths tuition in Hull and online, led by a former teacher with 16 years&rsquo; classroom experience."
+    />
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="assets/diagnostic-coaching-hero.png" />
+    <link rel="preload" as="image" href="assets/hull-maths-tutor-hero.jpg" />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Hull Maths Tutor",
+        "description": "GCSE maths tutoring in Hull and online from a former teacher with 16 years of classroom experience.",
+        "areaServed": {
+          "@type": "City",
+          "name": "Hull"
+        },
+        "priceRange": "£20-£45",
+        "knowsAbout": [
+          "GCSE maths tutoring",
+          "Online GCSE maths tutoring",
+          "Maths confidence",
+          "GCSE exam preparation"
+        ],
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "name": "Online 1:1 GCSE Maths",
+            "price": "35",
+            "priceCurrency": "GBP"
+          },
+          {
+            "@type": "Offer",
+            "name": "In-person Hull GCSE Maths",
+            "price": "45",
+            "priceCurrency": "GBP"
+          },
+          {
+            "@type": "Offer",
+            "name": "Launch trial lesson",
+            "price": "20",
+            "priceCurrency": "GBP"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" aria-label="Site header">
       <div class="container nav-shell">
-        <a class="brand" href="#top" aria-label="Citadel Fitness home">
-          <img src="assets/logo.png" alt="Citadel Fitness logo" />
+        <a class="brand" href="#top" aria-label="Hull Maths Tutor home">
+          <img src="assets/logo.svg" alt="Hull Maths Tutor logo" />
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#reviews">Reviews</a>
-          <a class="nav-cta" href="#enquire">Enquire</a>
+          <a href="#lessons">Lessons</a>
+          <a href="#pricing">Pricing</a>
+          <a class="nav-cta" href="#enquire">Book a trial</a>
         </nav>
       </div>
     </header>
@@ -40,16 +90,35 @@
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="container hero-content">
-          <p class="eyebrow">Citadel Fitness</p>
-          <h1 id="hero-title">Personal training built around real life.</h1>
+          <p class="eyebrow">Hull Maths Tutor</p>
+          <h1 id="hero-title">GCSE maths tutoring in Hull that builds confidence.</h1>
           <p class="hero-subtitle">
-            Straightforward coaching for adults who want structure, consistency,
-            and a stronger body without being shouted at.
+            For students who feel stuck, anxious, or behind &mdash; taught by a
+            former teacher with 16 years&rsquo; classroom experience, with a focus on
+            understanding as well as grades.
           </p>
           <div class="button-row" role="group" aria-label="Hero actions">
-            <a class="button button-primary" href="#enquire">Make an enquiry</a>
-            <a class="button button-secondary" href="#reviews">Read reviews</a>
+            <a class="button button-primary" href="#enquire"
+              >Book a &pound;20 Trial Lesson</a
+            >
+            <a class="button button-secondary" href="#enquire"
+              >Ask About Availability</a
+            >
           </div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-labelledby="trust-title">
+        <div class="container">
+          <h2 class="visually-hidden" id="trust-title">
+            Why parents choose Hull Maths Tutor
+          </h2>
+          <ul class="trust-list">
+            <li><strong>16 years</strong><span>classroom experience</span></li>
+            <li><strong>GCSE focused</strong><span>clear, patient support</span></li>
+            <li><strong>Flexible lessons</strong><span>online or in Hull</span></li>
+            <li><strong>Parent updates</strong><span>available when helpful</span></li>
+          </ul>
         </div>
       </section>
 
@@ -61,47 +130,46 @@
         <div class="container about-layout">
           <div class="section-copy about-copy">
             <p class="eyebrow">About</p>
-            <h2 id="about-title">About Phil</h2>
+            <h2 id="about-title">Experienced teaching, with time to slow things down.</h2>
             <p>
-              Most fitness plans are designed for perfect days - my coaching is
-              built for real life.
+              Maths can feel impossible when a student has missed a few building
+              blocks or stopped believing they can do it.
             </p>
             <p>
-              I help people get in shape by changing how they think, train, and
-              stay consistent.
+              My job is to find the sticking point, explain it clearly, and help
+              them move forward without judgement.
             </p>
           </div>
 
           <div class="about-cards-row">
             <article
               class="about-card about-detail"
-              aria-label="Phil coaching approach"
+              aria-label="Teaching approach"
             >
               <p>
-                A training plan is easy to write but sticking to it is the hard
-                part &mdash; especially when work gets busy, motivation drops,
-                routines slip, or life gets in the way.
+                I spent 16 years in the classroom, so I know that students rarely
+                struggle because they are simply &ldquo;bad at maths&rdquo;. Often they need
+                an explanation that makes sense to them and enough calm practice
+                for it to stick.
               </p>
               <p>
-                That&rsquo;s why my coaching combines structured training, simple
-                nutrition guidance, mindset support, and regular accountability.
-                You&rsquo;ll get a clear plan built around your life, but more
-                importantly, you&rsquo;ll get the support to keep going when things
-                aren&rsquo;t perfect.
+                Lessons are shaped around the individual student, whether they
+                need to rebuild core skills, keep up with school, prepare for a
+                GCSE resit, or work towards a stronger exam grade.
               </p>
               <p>
-                There are no crash diets or quick fixes - just a smarter, more
-                realistic way to become fitter, stronger, and more confident
-                &mdash; one week at a time.
+                I keep the atmosphere friendly and focused. Parents can also have
+                straightforward updates on what we are covering and where the
+                next priorities are.
               </p>
             </article>
 
             <figure class="image-panel about-image">
               <img
-                src="assets/phil.jpg"
-                alt="Phil, fitness and mindset coach"
-                width="840"
-                height="840"
+                src="assets/gcse-maths-lesson.jpg"
+                alt="A tutor calmly helping a student work through a maths problem"
+                width="1536"
+                height="1024"
                 loading="lazy"
               />
             </figure>
@@ -111,41 +179,151 @@
 
       <section
         class="section section-stone"
-        id="services"
-        aria-labelledby="services-title"
+        id="lessons"
+        aria-labelledby="lessons-title"
       >
         <div class="container section-heading">
-          <p class="eyebrow">Services</p>
-          <h2 id="services-title">Simple coaching options</h2>
+          <p class="eyebrow">How lessons work</p>
+          <h2 id="lessons-title">Clear support, one step at a time.</h2>
+          <p>
+            Every lesson starts from what the student can do now, not where a
+            textbook says they should be.
+          </p>
         </div>
 
         <div class="container card-grid services-grid">
           <article class="service-card">
-            <h3>1:1 Personal Training</h3>
+            <h3>1. Find the gaps</h3>
             <ul>
-              <li>Focused gym sessions built around your ability and goals.</li>
-              <li>Help with technique, progression, and confidence.</li>
-              <li>Clear next steps between sessions.</li>
+              <li>We begin with the topics that feel hardest right now.</li>
+              <li>I check the foundations underneath, without making it a test.</li>
+              <li>We agree on a sensible focus for the next few lessons.</li>
             </ul>
           </article>
 
           <article class="service-card">
-            <h3>Online Coaching</h3>
+            <h3>2. Make it make sense</h3>
             <ul>
-              <li>Weekly training structure you can follow anywhere.</li>
-              <li>Check-ins, support, and accountability.</li>
-              <li>Adjustments when work, travel, or family life gets busy.</li>
+              <li>Ideas are broken into clear, manageable steps.</li>
+              <li>Students can ask questions without feeling rushed.</li>
+              <li>We use examples that build understanding, not guesswork.</li>
             </ul>
           </article>
 
           <article class="service-card">
-            <h3>Training &amp; Nutrition Structure</h3>
+            <h3>3. Build confidence</h3>
             <ul>
-              <li>A straightforward plan for training and daily habits.</li>
-              <li>Practical nutrition guidance without crash dieting.</li>
-              <li>Clear targets that make consistency easier to track.</li>
+              <li>Practice is chosen at the right level and gradually stretched.</li>
+              <li>Progress is noticed so students can see what has changed.</li>
+              <li>Exam technique is added when the underlying maths is secure.</li>
             </ul>
           </article>
+        </div>
+      </section>
+
+      <section
+        class="section section-light"
+        id="pricing"
+        aria-labelledby="pricing-title"
+      >
+        <div class="container section-heading">
+          <p class="eyebrow">Pricing</p>
+          <h2 id="pricing-title">Straightforward GCSE maths tuition.</h2>
+          <p>
+            Start with a reduced-price trial lesson, then choose the format that
+            suits your child and your week.
+          </p>
+        </div>
+
+        <div class="container card-grid pricing-grid">
+          <article class="service-card pricing-card">
+            <h3>Online 1:1 GCSE Maths</h3>
+            <p class="price">&pound;35 <span>/ hour</span></p>
+            <ul>
+              <li>Live one-to-one teaching from home.</li>
+              <li>Focused support using an online whiteboard.</li>
+            </ul>
+          </article>
+
+          <article class="service-card pricing-card">
+            <h3>In-person Hull GCSE Maths</h3>
+            <p class="price">&pound;45 <span>/ hour</span></p>
+            <ul>
+              <li>Face-to-face tuition in Hull by arrangement.</li>
+              <li>Availability depends on location and timetable.</li>
+            </ul>
+          </article>
+
+          <article class="service-card pricing-card pricing-card-featured">
+            <p class="pricing-label">Launch offer</p>
+            <h3>Trial Lesson</h3>
+            <p class="price">&pound;20</p>
+            <ul>
+              <li>A calm first lesson with no long-term commitment.</li>
+              <li>We identify needs and discuss the right next step.</li>
+            </ul>
+          </article>
+
+          <article class="service-card pricing-card">
+            <h3>Group Diagnostic Sessions</h3>
+            <p class="price price-coming-soon">Coming soon</p>
+            <ul>
+              <li>Small-group GCSE maths diagnostic support.</li>
+              <li>Register interest through the enquiry form.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="container button-row">
+          <a class="button button-primary" href="#enquire"
+            >Book a &pound;20 Trial Lesson</a
+          >
+        </div>
+      </section>
+
+      <section
+        class="section section-stone"
+        id="diagnostics"
+        aria-labelledby="diagnostics-title"
+      >
+        <div class="container section-heading">
+          <p class="eyebrow">Coming soon</p>
+          <h2 id="diagnostics-title">Small-group diagnostic sessions.</h2>
+          <p>
+            These sessions are being planned for students who would benefit from
+            a clearer picture of their GCSE maths gaps before deciding what help
+            they need.
+          </p>
+        </div>
+
+        <div class="container card-grid services-grid">
+          <article class="service-card">
+            <h3>Spot the sticking points</h3>
+            <ul>
+              <li>Short, carefully chosen tasks across important GCSE skills.</li>
+              <li>A useful starting point rather than a pass-or-fail test.</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <h3>Keep the group small</h3>
+            <ul>
+              <li>A calmer setting where students are not lost in a large class.</li>
+              <li>Clear explanations and space to ask questions.</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <h3>Leave with next steps</h3>
+            <ul>
+              <li>A clearer sense of the topics that need attention.</li>
+              <li>Practical guidance for students and parents.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="container button-row">
+          <a class="button button-primary" href="#enquire"
+            >Ask About Availability</a
+          >
         </div>
       </section>
 
@@ -156,32 +334,90 @@
       >
         <div class="container reviews-layout">
           <div class="section-copy">
-            <p class="eyebrow">Reviews</p>
-            <h2 id="reviews-title">What clients say</h2>
+            <p class="eyebrow">Testimonials</p>
+            <h2 id="reviews-title">Parent feedback will be added here.</h2>
             <p>
-              A few placeholder testimonials for now. Real client reviews can
-              replace these once they are ready.
+              This space is reserved for genuine comments from families. No
+              made-up testimonials or anonymous marketing claims.
             </p>
-            <!-- TODO: Replace this with the real Google Review link when it is ready. -->
-            <a
-              class="button button-primary"
-              href="mailto:hello@citadelfitness.example?subject=Citadel%20Fitness%20Review"
-            >
-              Send a review
+            <a class="button button-primary" href="#enquire">
+              Book a &pound;20 Trial Lesson
             </a>
           </div>
 
           <div class="card-grid review-grid">
             <article class="review-card">
-              <p>"The structure made training feel achievable again."</p>
+              <p>Parent feedback coming soon.</p>
             </article>
             <article class="review-card">
-              <p>"I finally had a plan I could stick to."</p>
+              <p>Student confidence stories coming soon.</p>
             </article>
             <article class="review-card">
-              <p>"Supportive, honest, and easy to follow."</p>
+              <p>Exam progress feedback coming soon.</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section
+        class="section section-light"
+        id="faq"
+        aria-labelledby="faq-title"
+      >
+        <div class="container section-heading">
+          <p class="eyebrow">Frequently asked questions</p>
+          <h2 id="faq-title">A few things parents usually want to know.</h2>
+        </div>
+
+        <div class="container card-grid faq-grid">
+          <article class="service-card faq-card">
+            <h3>Who are lessons for?</h3>
+            <p>
+              GCSE students at any starting point, including those who feel
+              anxious, have fallen behind, need a confidence boost, or want to
+              aim for a higher grade.
+            </p>
+          </article>
+          <article class="service-card faq-card">
+            <h3>How do online lessons work?</h3>
+            <p>
+              Lessons take place live online with a shared whiteboard, so the
+              student can see each step, ask questions, and work through examples
+              together with me.
+            </p>
+          </article>
+          <article class="service-card faq-card">
+            <h3>Where are in-person lessons held?</h3>
+            <p>
+              In-person GCSE maths tuition is available in Hull by arrangement.
+              Send your area and preferred times so I can confirm what is
+              practical.
+            </p>
+          </article>
+          <article class="service-card faq-card">
+            <h3>What happens in the trial lesson?</h3>
+            <p>
+              We look at what your child is finding difficult, work through some
+              maths together, and decide whether the teaching style and lesson
+              format feel like a good fit.
+            </p>
+          </article>
+          <article class="service-card faq-card">
+            <h3>Can you help with exam preparation?</h3>
+            <p>
+              Yes. Lessons can cover topic gaps, problem solving, calculator and
+              non-calculator skills, exam questions, timing, and the habits that
+              help students show what they know.
+            </p>
+          </article>
+          <article class="service-card faq-card">
+            <h3>Will parents receive updates?</h3>
+            <p>
+              Yes. Parent updates are available and can include the topics
+              covered, progress noticed, and the areas that would be useful to
+              work on next.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -192,18 +428,18 @@
       >
         <div class="container enquiry-layout">
           <div class="section-copy enquiry-copy">
-            <p class="eyebrow">Enquire</p>
-            <h2 id="enquire-title">Start with a simple message</h2>
+            <p class="eyebrow">Get in touch</p>
+            <h2 id="enquire-title">Book a &pound;20 trial lesson.</h2>
             <p>
-              Tell me what you are looking for and I will come back to you with
-              the best next step for PT, online coaching, or a bit of guidance
-              on where to start.
+              Tell me a little about your child, what they are finding difficult,
+              and when lessons could work. I&rsquo;ll reply personally to discuss
+              availability and the best place to start.
             </p>
           </div>
 
           <form
             class="enquiry-form"
-            name="citadel-fitness-enquiry"
+            name="hull-maths-tutor-enquiry"
             method="POST"
             data-netlify="true"
             netlify-honeypot="bot-field"
@@ -211,7 +447,7 @@
             <input
               type="hidden"
               name="form-name"
-              value="citadel-fitness-enquiry"
+              value="hull-maths-tutor-enquiry"
             />
             <p class="honeypot">
               <label>
@@ -221,14 +457,27 @@
             </p>
 
             <div class="form-row">
-              <label for="name">Name</label>
+              <label for="parent-name">Parent name</label>
               <input
-                id="name"
-                name="name"
+                id="parent-name"
+                name="parent-name"
                 type="text"
                 autocomplete="name"
                 required
               />
+            </div>
+
+            <div class="form-row">
+              <label for="year-group">Student year group</label>
+              <select id="year-group" name="student-year-group" required>
+                <option value="">Select a year group</option>
+                <option value="Year 7">Year 7</option>
+                <option value="Year 8">Year 8</option>
+                <option value="Year 9">Year 9</option>
+                <option value="Year 10">Year 10</option>
+                <option value="Year 11">Year 11</option>
+                <option value="Post-16 / resit">Post-16 / resit</option>
+              </select>
             </div>
 
             <div class="form-row">
@@ -243,36 +492,52 @@
             </div>
 
             <div class="form-row">
-              <label for="phone">Phone number</label>
+              <label for="phone">Phone</label>
               <input id="phone" name="phone" type="tel" autocomplete="tel" />
             </div>
 
             <div class="form-row">
-              <label for="training-option">Preferred training option</label>
+              <label for="lesson-preference"
+                >Online or in-person preference</label
+              >
               <select
-                id="training-option"
-                name="preferred-training-option"
+                id="lesson-preference"
+                name="online-or-in-person-preference"
                 required
               >
-                <option value="">Select an option</option>
-                <option value="1:1 PT">1:1 PT</option>
-                <option value="Online coaching">Online coaching</option>
-                <option value="Not sure yet">Not sure yet</option>
+                <option value="">Select a preference</option>
+                <option value="Online">Online</option>
+                <option value="In-person in Hull">In-person in Hull</option>
+                <option value="Open to either">Open to either</option>
               </select>
             </div>
 
             <div class="form-row">
-              <label for="message">Goal / message</label>
+              <label for="help-needed"
+                >What does your child need help with?</label
+              >
               <textarea
-                id="message"
-                name="message"
+                id="help-needed"
+                name="what-does-your-child-need-help-with"
                 rows="5"
+                placeholder="For example: confidence, algebra, catching up, exam technique or a GCSE resit"
                 required
               ></textarea>
             </div>
 
+            <div class="form-row">
+              <label for="preferred-times">Preferred days/times</label>
+              <input
+                id="preferred-times"
+                name="preferred-days-and-times"
+                type="text"
+                placeholder="For example: Tuesdays after 5pm"
+                required
+              />
+            </div>
+
             <button class="button button-primary form-button" type="submit">
-              Send enquiry
+              Ask About Availability
             </button>
           </form>
         </div>
@@ -286,79 +551,54 @@
             <a
               class="footer-logo"
               href="#top"
-              aria-label="Citadel Fitness home"
+              aria-label="Hull Maths Tutor home"
             >
-              <img src="assets/logo.png" alt="" width="48" height="48" />
-              <span>Citadel Fitness</span>
+              <img src="assets/logo.svg" alt="" width="48" height="48" />
+              <span>Hull Maths Tutor</span>
             </a>
-            <p>Structure, strength, and accountability for real life.</p>
+            <p>Calm, clear GCSE maths support for students in Hull.</p>
           </div>
 
-          <address
-            class="footer-contact"
-            aria-label="Citadel Fitness contact details"
-          >
-            <p class="footer-heading">Contact</p>
+          <address class="footer-contact">
+            <p class="footer-heading">Lesson details</p>
             <ul class="footer-list">
               <li>
-                <span>Email</span>
-                <!-- TODO: Replace placeholder email with the client's real email address. -->
-                <a href="mailto:hello@citadelfitness.example"
-                  >hello@citadelfitness.example</a
-                >
-              </li>
-              <li>
-                <span>Instagram</span>
-                <!-- TODO: Replace placeholder Instagram URL and handle with the client's real Instagram link. -->
-                <a
-                  href="https://www.instagram.com/citadelfitness"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  @citadelfitness
-                </a>
-              </li>
-              <li>
                 <span>Service area</span>
-                <!-- TODO: Replace placeholder service area with the client's real location/service area. -->
-                <p>Location / service area placeholder</p>
+                <p>Hull and online</p>
+              </li>
+              <li>
+                <span>Lesson formats</span>
+                <p>Online or in person by arrangement</p>
+              </li>
+              <li>
+                <span>Experience</span>
+                <p>Former teacher, 16 years in the classroom</p>
               </li>
             </ul>
           </address>
 
           <aside
             class="footer-review-card"
-            aria-labelledby="footer-review-title"
+            aria-labelledby="footer-trial-title"
           >
             <div class="footer-review-copy">
-              <p class="footer-heading">Reviews</p>
-              <h2 id="footer-review-title">Leave a Google Review</h2>
-              <p>Scan the code to leave a review.</p>
-              <!-- TODO: Replace this placeholder Google Review link with the client's real Google Review link. -->
-              <a
-                class="footer-review-link"
-                href="https://google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open review page
+              <p class="footer-heading">Trial lesson</p>
+              <h2 id="footer-trial-title">Start with a calm first session.</h2>
+              <p>Ask a question or book the launch-price trial.</p>
+              <a class="footer-review-link" href="#enquire">
+                Book a &pound;20 Trial Lesson
               </a>
             </div>
-            <div class="footer-qr-wrap">
-              <!-- TODO: Replace this placeholder QR code URL with the client's real Google Review link. -->
-              <img
-                src="assets/google-review-qr.png"
-                alt="Placeholder QR code for the Citadel Fitness Google Review page"
-                width="140"
-                height="140"
-              />
+            <div class="footer-qr-wrap footer-price-badge" aria-hidden="true">
+              <span>&pound;20</span>
+              <small>trial</small>
             </div>
           </aside>
         </div>
 
         <div class="footer-bottom">
           <p>
-            &copy; <span id="copyright-year">2026</span> Citadel Fitness. All
+            &copy; <span id="copyright-year">2026</span> Hull Maths Tutor. All
             rights reserved.
           </p>
         </div>

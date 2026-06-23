@@ -1,16 +1,16 @@
 :root {
-  --brand-blue: #1A3EB9;
-  --brand-blue-rgb: 26, 62, 185;
-  --brand-navy: #07123A;
-  --brand-navy-rgb: 7, 18, 58;
-  --brand-white: #FFFFFF;
+  --brand-blue: #1f5f91;
+  --brand-blue-rgb: 31, 95, 145;
+  --brand-navy: #102f4a;
+  --brand-navy-rgb: 16, 47, 74;
+  --brand-white: #ffffff;
   --brand-white-rgb: 255, 255, 255;
-  --brand-soft: #F7F8FC;
-  --brand-silver: #C7CCD8;
-  --brand-silver-rgb: 199, 204, 216;
-  --brand-silver-dark: #8F98AA;
-  --brand-silver-dark-rgb: 143, 152, 170;
-  --chrome-gradient: linear-gradient(135deg, #F2F4F8, #AEB6C7, #FFFFFF, #8F98AA);
+  --brand-soft: #f5f8fb;
+  --brand-silver: #d5e3ef;
+  --brand-silver-rgb: 213, 227, 239;
+  --brand-silver-dark: #6f879a;
+  --brand-silver-dark-rgb: 111, 135, 154;
+  --chrome-gradient: linear-gradient(135deg, #eef5fa, #afc8db, #ffffff, #7999b0);
   --cf-charcoal: var(--brand-navy);
   --cf-panel: rgba(var(--brand-navy-rgb), 0.94);
   --cf-basalt: var(--brand-blue);
@@ -104,6 +104,16 @@ select {
 
 .skip-link:focus {
   top: 16px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .container {
@@ -245,7 +255,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 22px;
-  color: var(--muted-on-dark);
+  color: rgba(var(--brand-white-rgb), 0.92);
   font-size: 14px;
   font-weight: 650;
 }
@@ -309,7 +319,7 @@ h3 {
       rgba(var(--brand-blue-rgb), 0.84) 48%,
       rgba(var(--brand-navy-rgb), 0.24) 100%
     ),
-    url("assets/diagnostic-coaching-hero.png") center right / cover no-repeat;
+    url("assets/hull-maths-tutor-hero.jpg") center right / cover no-repeat;
 }
 
 .hero::before {
@@ -417,6 +427,46 @@ h3 {
   background: rgba(var(--brand-white-rgb), 0.12);
 }
 
+.trust-strip {
+  border-bottom: 1px solid var(--cf-border-light);
+  background: var(--brand-white);
+  padding: 28px 0;
+}
+
+.trust-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+}
+
+.trust-list li {
+  display: grid;
+  gap: 2px;
+  border-left: 1px solid var(--cf-border-light);
+  padding: 0 24px;
+}
+
+.trust-list li:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.trust-list li:last-child {
+  padding-right: 0;
+}
+
+.trust-list strong {
+  color: var(--brand-navy);
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.trust-list span {
+  color: var(--muted-on-light);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .about-cards-row {
   display: grid;
   gap: 48px;
@@ -510,6 +560,11 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.pricing-grid,
+.faq-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .service-card {
   min-height: 300px;
   display: flex;
@@ -544,6 +599,59 @@ h3 {
   height: 7px;
   border-radius: 50%;
   background: var(--brand-silver-dark);
+}
+
+.pricing-card {
+  min-height: 265px;
+}
+
+.pricing-card-featured {
+  border-color: rgba(var(--brand-blue-rgb), 0.5);
+  box-shadow: 0 20px 46px rgba(var(--brand-blue-rgb), 0.16);
+}
+
+.pricing-label {
+  width: fit-content;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: var(--brand-blue);
+  color: var(--brand-white);
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.price {
+  margin-top: 18px;
+  color: var(--brand-blue);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.price span {
+  color: var(--muted-on-light);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.price-coming-soon {
+  font-size: 30px;
+}
+
+.faq-card {
+  min-height: 0;
+}
+
+.faq-card p {
+  margin-top: 18px;
+  color: var(--muted-on-light);
+  font-size: 15px;
 }
 
 .reviews-layout {
@@ -627,6 +735,11 @@ h3 {
     border-color 180ms ease,
     background 180ms ease,
     box-shadow 180ms ease;
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color: rgba(var(--brand-white-rgb), 0.68);
 }
 
 .form-row input:focus,
@@ -844,6 +957,30 @@ h3 {
   max-width: none;
 }
 
+.footer-price-badge {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--brand-blue);
+}
+
+.footer-price-badge span {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.footer-price-badge small {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -869,6 +1006,8 @@ h3 {
   }
 
   .services-grid,
+  .pricing-grid,
+  .faq-grid,
   .review-grid {
     grid-template-columns: 1fr;
   }
@@ -876,6 +1015,16 @@ h3 {
   .service-card,
   .review-card {
     min-height: 0;
+  }
+
+  .trust-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 24px;
+  }
+
+  .trust-list li:nth-child(3) {
+    border-left: 0;
+    padding-left: 0;
   }
 
   .footer-brand-panel p {
@@ -953,7 +1102,7 @@ h3 {
         rgba(var(--brand-blue-rgb), 0.48) 0%,
         rgba(var(--brand-blue-rgb), 0.95) 62%
       ),
-      url("assets/diagnostic-coaching-hero.png") center top / cover no-repeat;
+      url("assets/hull-maths-tutor-hero.jpg") 64% top / cover no-repeat;
   }
 
   .hero-content {
@@ -1008,6 +1157,33 @@ h3 {
 
   .image-panel {
     min-height: 240px;
+  }
+
+  .trust-strip {
+    padding: 24px 0;
+  }
+
+  .trust-list {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
+
+  .trust-list li,
+  .trust-list li:first-child,
+  .trust-list li:nth-child(3),
+  .trust-list li:last-child {
+    border-top: 1px solid var(--cf-border-light);
+    border-left: 0;
+    padding: 14px 0;
+  }
+
+  .trust-list li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .trust-list li:last-child {
+    padding-bottom: 0;
   }
 }
 
