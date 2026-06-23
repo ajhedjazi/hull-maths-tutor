@@ -2,9 +2,13 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
 const header = document.querySelector(".site-header");
-const internalLinks = document.querySelectorAll('a[href^="#"]');
+const internalLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
 const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
 const year = document.querySelector("#copyright-year");
+const mobileCta = document.querySelector("[data-mobile-cta]");
+const backToTopButton = document.querySelector("[data-back-to-top]");
+const placeholderLinks = document.querySelectorAll("[data-placeholder-link]");
+const enquirySection = document.querySelector("#enquire");
 
 internalLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
@@ -38,6 +42,38 @@ if (header) {
 
 if (year) {
   year.textContent = String(new Date().getFullYear());
+}
+
+placeholderLinks.forEach((link) => {
+  link.addEventListener("click", (event) => event.preventDefault());
+});
+
+const toggleFloatingControls = () => {
+  if (mobileCta) {
+    const enquiryBounds = enquirySection?.getBoundingClientRect();
+    const enquiryIsVisible = enquiryBounds
+      ? enquiryBounds.top < window.innerHeight && enquiryBounds.bottom > 0
+      : false;
+    const showMobileCta = window.scrollY > 140 && !enquiryIsVisible;
+    mobileCta.hidden = !showMobileCta;
+    mobileCta.inert = !showMobileCta;
+  }
+
+  if (backToTopButton) {
+    backToTopButton.hidden = window.scrollY < 400;
+  }
+};
+
+window.addEventListener("scroll", toggleFloatingControls, { passive: true });
+toggleFloatingControls();
+
+if (backToTopButton) {
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  });
 }
 
 const navTargets = Array.from(navLinks)
