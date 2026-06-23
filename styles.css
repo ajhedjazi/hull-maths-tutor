@@ -1,31 +1,32 @@
 :root {
-  --brand-blue: #1f5f91;
-  --brand-blue-rgb: 31, 95, 145;
-  --brand-navy: #102f4a;
-  --brand-navy-rgb: 16, 47, 74;
+  --brand-navy: #123047;
+  --brand-navy-rgb: 18, 48, 71;
+  --brand-gold: #c99a45;
+  --brand-gold-rgb: 201, 154, 69;
+  --brand-gold-dark: #7b5620;
+  --brand-gold-light: #dfbd78;
+  --brand-charcoal: #1f2933;
+  --brand-charcoal-rgb: 31, 41, 51;
+  --brand-cream: #f8f5ef;
+  --brand-sand: #efe6d8;
   --brand-white: #ffffff;
   --brand-white-rgb: 255, 255, 255;
-  --brand-soft: #f5f8fb;
-  --brand-silver: #d5e3ef;
-  --brand-silver-rgb: 213, 227, 239;
-  --brand-silver-dark: #6f879a;
-  --brand-silver-dark-rgb: 111, 135, 154;
-  --chrome-gradient: linear-gradient(135deg, #eef5fa, #afc8db, #ffffff, #7999b0);
-  --cf-charcoal: var(--brand-navy);
+  --gold-detail: linear-gradient(90deg, #8f6828, #dfbd78, #8f6828);
+  --cf-charcoal: var(--brand-charcoal);
   --cf-panel: rgba(var(--brand-navy-rgb), 0.94);
-  --cf-basalt: var(--brand-blue);
-  --cf-parchment: var(--brand-soft);
-  --cf-stone: var(--brand-white);
+  --cf-basalt: var(--brand-navy);
+  --cf-parchment: var(--brand-cream);
+  --cf-stone: var(--brand-sand);
   --cf-cream: var(--brand-white);
-  --cf-gold: var(--brand-blue);
-  --cf-sand: var(--brand-silver);
-  --cf-muted-gold: var(--brand-blue);
-  --cf-border-dark: rgba(var(--brand-white-rgb), 0.22);
-  --cf-border-light: rgba(var(--brand-silver-dark-rgb), 0.26);
-  --ink: var(--brand-navy);
-  --muted-on-dark: rgba(var(--brand-white-rgb), 0.78);
-  --muted-on-light: rgba(var(--brand-navy-rgb), 0.68);
-  --shadow-soft: 0 18px 42px rgba(var(--brand-navy-rgb), 0.1);
+  --cf-gold: var(--brand-gold);
+  --cf-sand: var(--brand-sand);
+  --cf-muted-gold: var(--brand-gold-dark);
+  --cf-border-dark: rgba(var(--brand-gold-rgb), 0.32);
+  --cf-border-light: rgba(var(--brand-charcoal-rgb), 0.14);
+  --ink: var(--brand-charcoal);
+  --muted-on-dark: rgba(var(--brand-white-rgb), 0.8);
+  --muted-on-light: rgba(var(--brand-charcoal-rgb), 0.72);
+  --shadow-soft: 0 18px 42px rgba(var(--brand-navy-rgb), 0.09);
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2rem;
@@ -86,7 +87,7 @@ select {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(var(--brand-blue-rgb), 0.48);
+  outline: 3px solid rgba(var(--brand-gold-rgb), 0.72);
   outline-offset: 3px;
 }
 
@@ -95,7 +96,7 @@ select {
   top: -80px;
   left: 16px;
   z-index: 100;
-  border: 1px solid var(--brand-silver);
+  border: 1px solid var(--brand-gold);
   border-radius: 8px;
   background: var(--cf-cream);
   color: var(--ink);
@@ -137,9 +138,7 @@ select {
 
 .section-dark {
   position: relative;
-  background:
-    linear-gradient(180deg, rgba(var(--brand-navy-rgb), 0.08), transparent 52%),
-    var(--brand-blue);
+  background: var(--brand-navy);
   color: var(--cf-cream);
 }
 
@@ -148,14 +147,14 @@ select {
   position: absolute;
   inset: 0 0 auto;
   height: 1px;
-  background: var(--chrome-gradient);
-  opacity: 0.62;
+  background: var(--gold-detail);
+  opacity: 0.72;
   pointer-events: none;
 }
 
 .eyebrow {
   margin-bottom: 12px;
-  color: var(--brand-blue);
+  color: var(--brand-gold-dark);
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0;
@@ -165,7 +164,7 @@ select {
 
 .section-dark .eyebrow,
 .hero .eyebrow {
-  color: var(--brand-silver);
+  color: var(--brand-gold);
 }
 
 h1,
@@ -183,12 +182,13 @@ h1 {
 
 h2 {
   max-width: 760px;
+  color: var(--brand-navy);
   font-size: 46px;
   line-height: 1.08;
 }
 
 h3 {
-  color: inherit;
+  color: var(--brand-navy);
   font-size: 20px;
   font-weight: 700;
   line-height: 1.25;
@@ -212,12 +212,16 @@ h3 {
   color: var(--muted-on-dark);
 }
 
+.section-dark h2 {
+  color: var(--brand-white);
+}
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 30;
   border-bottom: 1px solid var(--cf-border-dark);
-  background: rgba(var(--brand-blue-rgb), 0.94);
+  background: rgba(var(--brand-navy-rgb), 0.97);
   color: var(--cf-cream);
   backdrop-filter: blur(14px);
   transition:
@@ -226,8 +230,8 @@ h3 {
 }
 
 .site-header.is-scrolled {
-  background: rgba(var(--brand-blue-rgb), 0.98);
-  box-shadow: 0 14px 32px rgba(var(--brand-navy-rgb), 0.22);
+  background: rgba(var(--brand-navy-rgb), 0.99);
+  box-shadow: 0 14px 32px rgba(var(--brand-charcoal-rgb), 0.22);
 }
 
 .nav-shell {
@@ -281,7 +285,7 @@ h3 {
   left: 0;
   height: 2px;
   border-radius: 999px;
-  background: var(--brand-silver);
+  background: var(--brand-gold);
   opacity: 0;
   transform: scaleX(0.6);
   transition:
@@ -294,14 +298,22 @@ h3 {
   transform: scaleX(1);
 }
 
-.nav-cta {
-  border: 1px solid rgba(var(--brand-silver-rgb), 0.62);
+.nav-links .nav-cta {
+  border: 1px solid var(--brand-gold);
   border-radius: 999px;
+  background: var(--brand-gold);
+  color: var(--brand-navy);
   padding: 8px 14px;
 }
 
-.nav-cta.is-active {
-  background: rgba(var(--brand-white-rgb), 0.12);
+.nav-links .nav-cta:hover,
+.nav-links .nav-cta.is-active {
+  background: var(--brand-gold-light);
+  color: var(--brand-navy);
+}
+
+.nav-cta::after {
+  display: none;
 }
 
 .hero {
@@ -315,9 +327,9 @@ h3 {
   background:
     linear-gradient(
       90deg,
-      rgba(var(--brand-blue-rgb), 0.96) 0%,
-      rgba(var(--brand-blue-rgb), 0.84) 48%,
-      rgba(var(--brand-navy-rgb), 0.24) 100%
+      rgba(var(--brand-navy-rgb), 0.97) 0%,
+      rgba(var(--brand-navy-rgb), 0.87) 48%,
+      rgba(var(--brand-charcoal-rgb), 0.24) 100%
     ),
     url("assets/hull-maths-tutor-hero.jpg") center right / cover no-repeat;
 }
@@ -328,8 +340,8 @@ h3 {
   inset: 0 0 auto;
   z-index: 1;
   height: 3px;
-  background: var(--chrome-gradient);
-  opacity: 0.68;
+  background: var(--gold-detail);
+  opacity: 0.76;
   pointer-events: none;
 }
 
@@ -387,49 +399,50 @@ h3 {
 }
 
 .button-primary {
-  border-color: var(--brand-blue);
-  background: var(--brand-blue);
-  color: var(--brand-white);
-  box-shadow: 0 14px 28px rgba(var(--brand-blue-rgb), 0.18);
+  border-color: var(--brand-gold);
+  background: var(--brand-gold);
+  color: var(--brand-navy);
+  box-shadow: 0 14px 28px rgba(var(--brand-navy-rgb), 0.14);
 }
 
 .button-primary:hover {
-  border-color: var(--brand-navy);
-  background: var(--brand-navy);
-  box-shadow: 0 16px 32px rgba(var(--brand-navy-rgb), 0.18);
+  border-color: var(--brand-gold-dark);
+  background: var(--brand-gold-light);
+  color: var(--brand-navy);
+  box-shadow: 0 16px 32px rgba(var(--brand-navy-rgb), 0.2);
 }
 
 .hero .button-primary,
 .section-dark .button-primary,
 .enquiry-form .button-primary {
-  border-color: rgba(var(--brand-white-rgb), 0.82);
-  background: var(--brand-white);
-  color: var(--brand-blue);
+  border-color: var(--brand-gold);
+  background: var(--brand-gold);
+  color: var(--brand-navy);
   box-shadow: 0 16px 34px rgba(var(--brand-navy-rgb), 0.18);
 }
 
 .hero .button-primary:hover,
 .section-dark .button-primary:hover,
 .enquiry-form .button-primary:hover {
-  border-color: var(--brand-white);
-  background: var(--brand-soft);
+  border-color: var(--brand-gold-light);
+  background: var(--brand-gold-light);
   color: var(--brand-navy);
 }
 
 .button-secondary {
-  border-color: rgba(var(--brand-silver-rgb), 0.72);
+  border-color: rgba(var(--brand-gold-rgb), 0.82);
   background: rgba(var(--brand-white-rgb), 0.05);
   color: var(--cf-cream);
 }
 
 .button-secondary:hover {
-  border-color: var(--brand-white);
-  background: rgba(var(--brand-white-rgb), 0.12);
+  border-color: var(--brand-gold);
+  background: rgba(var(--brand-gold-rgb), 0.16);
 }
 
 .trust-strip {
   border-bottom: 1px solid var(--cf-border-light);
-  background: var(--brand-white);
+  background: var(--brand-sand);
   padding: 28px 0;
 }
 
@@ -520,7 +533,7 @@ h3 {
   border: 1px solid var(--cf-border-light);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(var(--brand-silver-rgb), 0.16), transparent),
+    linear-gradient(135deg, rgba(var(--brand-gold-rgb), 0.12), transparent),
     var(--brand-navy);
   box-shadow: var(--shadow-soft);
 }
@@ -532,7 +545,7 @@ h3 {
   background: linear-gradient(
     135deg,
     rgba(var(--brand-navy-rgb), 0.08),
-    rgba(var(--brand-blue-rgb), 0.24)
+    rgba(var(--brand-gold-rgb), 0.13)
   );
   pointer-events: none;
 }
@@ -598,7 +611,7 @@ h3 {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--brand-silver-dark);
+  background: var(--brand-gold);
 }
 
 .pricing-card {
@@ -606,16 +619,16 @@ h3 {
 }
 
 .pricing-card-featured {
-  border-color: rgba(var(--brand-blue-rgb), 0.5);
-  box-shadow: 0 20px 46px rgba(var(--brand-blue-rgb), 0.16);
+  border-color: rgba(var(--brand-gold-rgb), 0.72);
+  box-shadow: 0 20px 46px rgba(var(--brand-navy-rgb), 0.13);
 }
 
 .pricing-label {
   width: fit-content;
   margin-bottom: 14px;
   border-radius: 999px;
-  background: var(--brand-blue);
-  color: var(--brand-white);
+  background: var(--brand-gold);
+  color: var(--brand-navy);
   padding: 5px 10px;
   font-size: 11px;
   font-weight: 800;
@@ -626,7 +639,7 @@ h3 {
 
 .price {
   margin-top: 18px;
-  color: var(--brand-blue);
+  color: var(--brand-gold-dark);
   font-family: "Playfair Display", Georgia, serif;
   font-size: 36px;
   font-weight: 700;
@@ -675,8 +688,8 @@ h3 {
   min-height: 210px;
   display: flex;
   align-items: center;
-  border-color: rgba(var(--brand-white-rgb), 0.24);
-  background: rgba(var(--brand-white-rgb), 0.08);
+  border-color: rgba(var(--brand-gold-rgb), 0.38);
+  background: rgba(var(--brand-white-rgb), 0.065);
   padding: var(--space-md);
 }
 
@@ -699,9 +712,7 @@ h3 {
 .enquiry-form {
   display: grid;
   gap: 16px;
-  background:
-    linear-gradient(180deg, rgba(var(--brand-navy-rgb), 0.08), transparent),
-    var(--brand-blue);
+  background: var(--brand-navy);
   color: var(--cf-cream);
   padding: 28px;
 }
@@ -726,7 +737,7 @@ h3 {
 .form-row textarea,
 .form-row select {
   min-height: 48px;
-  border: 1px solid rgba(var(--brand-silver-rgb), 0.5);
+  border: 1px solid rgba(var(--brand-gold-rgb), 0.52);
   border-radius: 8px;
   background: rgba(var(--brand-white-rgb), 0.1);
   color: var(--cf-cream);
@@ -746,9 +757,9 @@ h3 {
 .form-row textarea:focus,
 .form-row select:focus {
   outline: 0;
-  border-color: rgba(var(--brand-white-rgb), 0.86);
+  border-color: var(--brand-gold);
   background: rgba(var(--brand-white-rgb), 0.15);
-  box-shadow: 0 0 0 4px rgba(var(--brand-silver-rgb), 0.18);
+  box-shadow: 0 0 0 4px rgba(var(--brand-gold-rgb), 0.2);
 }
 
 .form-row textarea {
@@ -767,9 +778,7 @@ h3 {
 
 .site-footer {
   border-top: 1px solid var(--cf-border-dark);
-  background:
-    linear-gradient(180deg, rgba(var(--brand-navy-rgb), 0.96), var(--brand-navy) 58%),
-    var(--brand-navy);
+  background: var(--brand-navy);
   color: var(--muted-on-dark);
 }
 
@@ -839,7 +848,7 @@ h3 {
 }
 
 .footer-heading {
-  color: var(--brand-silver);
+  color: var(--brand-gold);
   font-size: 12px;
   font-weight: 800;
   line-height: 1.2;
@@ -858,7 +867,7 @@ h3 {
 }
 
 .footer-list span {
-  color: rgba(var(--brand-white-rgb), 0.58);
+  color: rgba(var(--brand-white-rgb), 0.68);
   font-size: 12px;
   font-weight: 700;
 }
@@ -868,7 +877,7 @@ h3 {
 }
 
 .footer-list a {
-  color: var(--brand-silver);
+  color: var(--brand-gold);
   font-weight: 700;
   overflow-wrap: anywhere;
 }
@@ -890,8 +899,8 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--chrome-gradient);
-  opacity: 0.1;
+  background: var(--gold-detail);
+  opacity: 0.07;
   pointer-events: none;
 }
 
@@ -923,9 +932,10 @@ h3 {
   align-items: center;
   justify-content: center;
   margin-top: 0.25rem;
-  border: 1px solid rgba(var(--brand-silver-rgb), 0.62);
+  border: 1px solid var(--brand-gold);
   border-radius: 999px;
-  color: var(--cf-cream);
+  background: var(--brand-gold);
+  color: var(--brand-navy);
   padding: 10px 18px;
   font-weight: 800;
   line-height: 1.2;
@@ -936,15 +946,15 @@ h3 {
 }
 
 .footer-review-link:hover {
-  border-color: var(--brand-white);
-  background: rgba(var(--brand-white-rgb), 0.12);
-  color: var(--cf-cream);
+  border-color: var(--brand-gold-light);
+  background: var(--brand-gold-light);
+  color: var(--brand-navy);
 }
 
 .footer-qr-wrap {
   display: grid;
   place-items: center;
-  border: 1px solid rgba(var(--brand-silver-rgb), 0.58);
+  border: 1px solid rgba(var(--brand-gold-rgb), 0.72);
   border-radius: 8px;
   background: var(--cf-cream);
   padding: 12px;
@@ -963,7 +973,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  color: var(--brand-blue);
+  color: var(--brand-gold-dark);
 }
 
 .footer-price-badge span {
@@ -1099,8 +1109,8 @@ h3 {
     background:
       linear-gradient(
         180deg,
-        rgba(var(--brand-blue-rgb), 0.48) 0%,
-        rgba(var(--brand-blue-rgb), 0.95) 62%
+        rgba(var(--brand-navy-rgb), 0.42) 0%,
+        rgba(var(--brand-navy-rgb), 0.97) 62%
       ),
       url("assets/hull-maths-tutor-hero.jpg") 64% top / cover no-repeat;
   }
