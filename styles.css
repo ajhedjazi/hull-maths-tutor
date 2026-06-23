@@ -420,6 +420,7 @@ h3 {
 .about-cards-row {
   display: grid;
   gap: 48px;
+  align-items: stretch;
   margin-top: 48px;
 }
 
@@ -442,7 +443,6 @@ h3 {
 }
 
 .about-card {
-  align-self: start;
   background: var(--brand-white);
   padding: 28px;
 }
@@ -455,6 +455,7 @@ h3 {
 .about-detail {
   display: grid;
   gap: 14px;
+  align-content: center;
 }
 
 .about-detail p {
@@ -492,12 +493,8 @@ h3 {
   object-fit: cover;
 }
 
-.about-image {
-  align-self: start;
-}
-
 .about-image img {
-  object-position: center top;
+  object-position: center;
 }
 
 .section-heading {
@@ -889,7 +886,22 @@ h3 {
 @media (min-width: 981px) {
   .about-cards-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
+  }
+
+  .about-card,
+  .about-image {
+    height: 480px;
+  }
+
+  .about-image {
+    min-height: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about-card,
+  .about-image {
+    height: 430px;
   }
 }
 
