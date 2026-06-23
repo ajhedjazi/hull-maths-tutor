@@ -733,68 +733,157 @@ h3 {
   font-weight: 700;
 }
 
-.availability-fieldset {
+.availability-picker {
+  display: grid;
+  gap: 14px;
   min-width: 0;
   margin: 0;
-  border: 0;
-  padding: 0;
+  border: 1px solid rgba(var(--brand-gold-rgb), 0.42);
+  border-radius: 12px;
+  background: rgba(var(--brand-white-rgb), 0.055);
+  padding: 18px;
 }
 
-.availability-fieldset legend {
-  margin-bottom: 7px;
-  padding: 0;
+.availability-picker legend {
+  padding: 0 7px;
   color: var(--cf-cream);
-  font-size: 14px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 1.2;
 }
 
-.availability-options {
-  display: grid;
+.availability-helper {
+  margin: 0;
+  color: rgba(var(--brand-white-rgb), 0.75);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.day-selector {
+  display: flex;
   gap: 8px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 2px 2px 8px;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
+  scrollbar-color: rgba(var(--brand-gold-rgb), 0.56) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 
-.form-row .availability-option {
-  display: grid;
-  grid-template-columns: 18px minmax(0, 1fr);
-  gap: 10px;
-  align-items: start;
-  border: 1px solid rgba(var(--brand-gold-rgb), 0.52);
-  border-radius: 8px;
-  background: rgba(var(--brand-white-rgb), 0.1);
-  padding: 11px 13px;
+.day-button {
+  flex: 0 0 auto;
+  min-height: 42px;
+  scroll-snap-align: start;
+  border: 1px solid rgba(var(--brand-gold-rgb), 0.42);
+  border-radius: 999px;
+  background: rgba(var(--brand-white-rgb), 0.09);
+  color: var(--cf-cream);
+  padding: 8px 14px;
   cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
   transition:
     border-color 180ms ease,
     background 180ms ease,
+    color 180ms ease,
     box-shadow 180ms ease;
 }
 
-.form-row .availability-option:hover {
-  border-color: var(--brand-gold);
+.day-button:hover {
+  border-color: var(--brand-gold-light);
   background: rgba(var(--brand-white-rgb), 0.15);
 }
 
-.form-row .availability-option:focus-within {
+.day-button.is-active,
+.day-button[aria-pressed="true"] {
+  border-color: var(--brand-gold);
+  background: var(--brand-gold);
+  color: var(--brand-navy);
+  box-shadow: 0 7px 18px rgba(var(--brand-charcoal-rgb), 0.18);
+}
+
+.time-picker-panel {
+  display: grid;
+  gap: 9px;
+}
+
+.time-picker-label {
+  margin: 0;
+  color: rgba(var(--brand-white-rgb), 0.78);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.time-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.time-option {
+  min-height: 44px;
+  border: 1px solid rgba(var(--brand-gold-rgb), 0.34);
+  border-radius: 8px;
+  background: var(--brand-cream);
+  color: var(--brand-navy);
+  padding: 8px 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.time-option:hover {
+  border-color: var(--brand-gold-light);
+  box-shadow: 0 6px 16px rgba(var(--brand-charcoal-rgb), 0.14);
+  transform: translateY(-1px);
+}
+
+.time-option.is-selected,
+.time-option[aria-pressed="true"] {
+  border-color: var(--brand-gold);
+  background: var(--brand-gold);
+  color: var(--brand-navy);
+  box-shadow: inset 0 0 0 1px rgba(var(--brand-navy-rgb), 0.12);
+}
+
+.day-button:focus-visible,
+.time-option:focus-visible {
+  outline: 0;
   border-color: var(--brand-gold);
   box-shadow: 0 0 0 4px rgba(var(--brand-gold-rgb), 0.2);
 }
 
-.form-row .availability-option input {
-  width: 18px;
-  min-height: 18px;
-  margin: 1px 0 0;
-  padding: 0;
-  accent-color: var(--brand-gold);
-}
-
-.form-row .availability-option input:focus {
-  box-shadow: none;
-}
-
-.form-help {
-  margin: 2px 0 0;
-  color: rgba(var(--brand-white-rgb), 0.72);
+.selected-times-summary {
+  margin: 0;
+  border: 1px solid rgba(var(--brand-gold-rgb), 0.28);
+  border-radius: 8px;
+  background: rgba(var(--brand-white-rgb), 0.09);
+  color: rgba(var(--brand-white-rgb), 0.82);
+  padding: 11px 12px;
   font-size: 13px;
+  line-height: 1.5;
+}
+
+.selected-times-summary strong {
+  color: var(--cf-cream);
+}
+
+.form-note {
+  margin: -2px 0 0;
+  text-align: center;
+  color: rgba(var(--brand-white-rgb), 0.72);
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -1204,6 +1293,32 @@ h3 {
   .review-card,
   .enquiry-form {
     padding: 22px;
+  }
+
+  .availability-picker {
+    padding: 16px;
+  }
+
+  .day-selector {
+    margin-right: -16px;
+    padding-right: 16px;
+    scrollbar-width: none;
+  }
+
+  .day-selector::-webkit-scrollbar {
+    display: none;
+  }
+
+  .day-button {
+    min-height: 44px;
+  }
+
+  .time-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .time-option {
+    min-height: 46px;
   }
 
   .footer-shell {

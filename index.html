@@ -497,7 +497,7 @@
             </div>
 
             <div class="form-row">
-              <label for="lesson-format">Lesson format</label>
+              <label for="lesson-format">Lesson format preference</label>
               <select
                 id="lesson-format"
                 name="lesson-format"
@@ -528,83 +528,202 @@
               ></textarea>
             </div>
 
-            <fieldset class="form-row availability-fieldset">
-              <legend>Preferred lesson slot</legend>
-              <div class="availability-options">
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Monday 6:00pm online"
-                  />
-                  <span>Monday 6:00pm online</span>
-                </label>
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Monday 7:15pm online"
-                  />
-                  <span>Monday 7:15pm online</span>
-                </label>
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Wednesday 6:00pm online"
-                  />
-                  <span>Wednesday 6:00pm online</span>
-                </label>
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Wednesday 7:15pm online"
-                  />
-                  <span>Wednesday 7:15pm online</span>
-                </label>
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Sunday 5:00pm online"
-                  />
-                  <span>Sunday 5:00pm online</span>
-                </label>
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Saturday morning in-person by arrangement"
-                  />
-                  <span>Saturday morning in-person by arrangement</span>
-                </label>
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Sunday afternoon in-person by arrangement"
-                  />
-                  <span>Sunday afternoon in-person by arrangement</span>
-                </label>
-                <label class="availability-option">
-                  <input
-                    type="checkbox"
-                    name="preferred-lesson-slots[]"
-                    value="Other / not sure yet"
-                  />
-                  <span>Other / not sure yet</span>
-                </label>
+            <fieldset class="form-row availability-picker" data-availability-picker>
+              <legend>Select possible lesson times</legend>
+              <p class="availability-helper">
+                Choose any times that could work. I&rsquo;ll confirm availability
+                personally before anything is booked.
+              </p>
+
+              <div class="day-selector" aria-label="Choose a lesson day">
+                <button
+                  class="day-button is-active"
+                  type="button"
+                  data-day="Monday"
+                  aria-pressed="true"
+                >
+                  Monday
+                </button>
+                <button
+                  class="day-button"
+                  type="button"
+                  data-day="Tuesday"
+                  aria-pressed="false"
+                >
+                  Tuesday
+                </button>
+                <button
+                  class="day-button"
+                  type="button"
+                  data-day="Wednesday"
+                  aria-pressed="false"
+                >
+                  Wednesday
+                </button>
+                <button
+                  class="day-button"
+                  type="button"
+                  data-day="Thursday"
+                  aria-pressed="false"
+                >
+                  Thursday
+                </button>
+                <button
+                  class="day-button"
+                  type="button"
+                  data-day="Friday"
+                  aria-pressed="false"
+                >
+                  Friday
+                </button>
+                <button
+                  class="day-button"
+                  type="button"
+                  data-day="Saturday"
+                  aria-pressed="false"
+                >
+                  Saturday
+                </button>
+                <button
+                  class="day-button"
+                  type="button"
+                  data-day="Sunday"
+                  aria-pressed="false"
+                >
+                  Sunday
+                </button>
               </div>
-              <p class="form-help">
-                Select any times that could work. I&rsquo;ll confirm availability
-                before anything is booked.
+
+              <div class="time-picker-panel">
+                <p class="time-picker-label" id="time-picker-label">
+                  Times for Monday
+                </p>
+                <div
+                  class="time-options"
+                  id="lesson-time-options"
+                  role="group"
+                  aria-labelledby="time-picker-label"
+                >
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="10:00am"
+                    aria-pressed="false"
+                  >
+                    10:00am
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="11:00am"
+                    aria-pressed="false"
+                  >
+                    11:00am
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="12:00pm"
+                    aria-pressed="false"
+                  >
+                    12:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="1:00pm"
+                    aria-pressed="false"
+                  >
+                    1:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="2:00pm"
+                    aria-pressed="false"
+                  >
+                    2:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="3:00pm"
+                    aria-pressed="false"
+                  >
+                    3:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="4:00pm"
+                    aria-pressed="false"
+                  >
+                    4:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="5:00pm"
+                    aria-pressed="false"
+                  >
+                    5:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="6:00pm"
+                    aria-pressed="false"
+                  >
+                    6:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="7:00pm"
+                    aria-pressed="false"
+                  >
+                    7:00pm
+                  </button>
+                  <button
+                    class="time-option"
+                    type="button"
+                    data-time="8:00pm"
+                    aria-pressed="false"
+                  >
+                    8:00pm
+                  </button>
+                </div>
+              </div>
+
+              <input
+                type="hidden"
+                name="selected_times"
+                id="selected_times"
+                value=""
+              />
+              <p class="selected-times-summary" aria-live="polite">
+                <strong>Selected times:</strong>
+                <span id="selected-times-summary">None selected yet.</span>
               </p>
             </fieldset>
+
+            <div class="form-row">
+              <label for="optional-message">Optional message</label>
+              <textarea
+                id="optional-message"
+                name="optional-message"
+                rows="4"
+                placeholder="Anything else you would like me to know"
+              ></textarea>
+            </div>
 
             <button class="button button-primary form-button" type="submit">
               Ask About Availability
             </button>
+            <p class="form-note">
+              This does not confirm a booking. I&rsquo;ll reply personally to
+              arrange the best time.
+            </p>
           </form>
         </div>
       </section>
