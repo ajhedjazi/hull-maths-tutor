@@ -849,7 +849,7 @@ h3 {
   font-weight: 800;
 }
 
-.process-chain .star-step {
+.process-chain .missing-step {
   border-color: rgba(var(--color-accent-spark-rgb), 0.58);
   background: rgba(var(--color-accent-spark-rgb), 0.18);
   color: var(--navy);
@@ -1250,10 +1250,35 @@ h3 {
   font-size: 1.75rem;
 }
 
-.trial-copy > p:last-child {
+.trial-copy > p:not(.offer-label) {
   margin-top: 8px;
   color: var(--muted);
   font-size: 0.87rem;
+}
+
+.trial-details {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+  list-style: none;
+  color: var(--navy);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.trial-details li {
+  position: relative;
+  padding-left: 17px;
+}
+
+.trial-details li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 7px;
+  height: 1px;
+  background: var(--color-accent-spark);
 }
 
 .main-offers {
