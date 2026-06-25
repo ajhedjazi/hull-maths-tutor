@@ -297,8 +297,8 @@ h3 {
 }
 
 .brand-mark {
-  width: 45px;
-  height: 45px;
+  width: 52px;
+  height: 52px;
   display: grid;
   place-items: center;
   border: 1px solid rgba(var(--gold-rgb), 0.64);
@@ -307,9 +307,9 @@ h3 {
 }
 
 .brand-mark img {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
   object-fit: contain;
 }
 
@@ -2030,7 +2030,15 @@ h3 {
 }
 
 .brand-footer .brand-mark {
+  width: 58px;
+  height: 58px;
   background: rgba(var(--white-rgb), 0.045);
+}
+
+.brand-footer .brand-mark img {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
 }
 
 .footer-brand > p {
@@ -2350,8 +2358,14 @@ h3 {
   }
 
   .brand-mark {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .brand-mark img {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
   }
 
   .brand-copy small {
