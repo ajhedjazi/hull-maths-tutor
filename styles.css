@@ -454,6 +454,10 @@ h3 {
   margin-top: 17px;
 }
 
+.mobile-title-break {
+  display: none;
+}
+
 .hero-lede {
   max-width: 660px;
   margin-top: 26px;
@@ -762,7 +766,7 @@ h3 {
 .usp-mini-steps span {
   color: var(--gold-deep);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.08rem;
+  font-size: 1.32rem;
   line-height: 1;
 }
 
@@ -843,6 +847,12 @@ h3 {
   color: var(--gold-deep);
   font-family: "Inter", Arial, sans-serif;
   font-weight: 800;
+}
+
+.process-chain .star-step {
+  border-color: rgba(var(--color-accent-spark-rgb), 0.58);
+  background: rgba(var(--color-accent-spark-rgb), 0.18);
+  color: var(--navy);
 }
 
 /* Method */
@@ -991,11 +1001,11 @@ h3 {
 
 .step-number {
   position: absolute;
-  top: 17px;
+  top: 15px;
   left: 23px;
   color: var(--gold-light);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 0.84rem;
+  font-size: 1.12rem;
 }
 
 .step-two {
@@ -2350,7 +2360,7 @@ h3 {
   }
 
   .container {
-    width: min(100% - 36px, 1180px);
+    width: min(calc(100vw - 36px), 1180px);
   }
 
   .section {
@@ -2393,17 +2403,35 @@ h3 {
     min-height: auto;
   }
 
+  h1 {
+    font-size: clamp(1.95rem, 6.4vw, 2.35rem);
+  }
+
+  .mobile-title-break {
+    display: block;
+  }
+
   .hero-grid {
     gap: 60px;
     padding: 64px 0 76px;
   }
 
+  .hero-copy,
+  .hero .button-row {
+    max-width: min(360px, calc(100vw - 36px));
+  }
+
+  .hero-lede,
+  .hero-body {
+    max-width: 36ch;
+  }
+
   .hero-lede {
-    font-size: 1.06rem;
+    font-size: 0.98rem;
   }
 
   .hero-body {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
   }
 
   .button-row,
@@ -2412,12 +2440,19 @@ h3 {
   }
 
   .diagnostic-card {
+    width: min(360px, 100%);
+    justify-self: start;
     padding: 23px;
     transform: none;
   }
 
   .diagnostic-map {
     height: 155px;
+  }
+
+  .diagnostic-student {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .usp-ribbon-inner {
@@ -2650,7 +2685,7 @@ h3 {
   }
 
   h1 {
-    font-size: 2.55rem;
+    font-size: 2.32rem;
   }
 
   h2 {
