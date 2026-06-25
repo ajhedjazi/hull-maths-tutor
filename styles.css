@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("assets/fonts/inter-latin-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("assets/fonts/playfair-display-latin-variable.woff2") format("woff2");
+}
+
 :root {
   --color-primary-base: #0b4344;
   --color-primary-rgb: 11, 67, 68;
@@ -101,10 +117,10 @@ h3 {
 }
 
 h1 {
-  max-width: 760px;
+  max-width: 860px;
   color: var(--white);
-  font-size: clamp(3.4rem, 6.1vw, 5.75rem);
-  line-height: 0.98;
+  font-size: clamp(3.05rem, 5vw, 5.05rem);
+  line-height: 1;
 }
 
 h2 {
@@ -165,6 +181,7 @@ h3 {
 }
 
 .section-intro h2,
+.usp-statement h2,
 .faq-heading h2,
 .enquiry-copy h2,
 .about-copy h2,
@@ -688,38 +705,88 @@ h3 {
   line-height: 1.5;
 }
 
-.trust-ribbon {
+.usp-ribbon {
   border-bottom: 1px solid var(--line);
   background: var(--cream-deep);
 }
 
-.trust-ribbon-inner {
+.usp-ribbon-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(390px, 0.7fr);
+  gap: clamp(40px, 7vw, 94px);
+  align-items: center;
+  padding: 42px 0;
+}
+
+.usp-statement {
+  max-width: 760px;
+}
+
+.usp-statement h2 {
+  max-width: 660px;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 1.08;
+}
+
+.usp-statement > p:last-child {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.usp-mini-steps {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
 }
 
-.trust-ribbon p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.usp-mini-steps li {
+  position: relative;
+  min-height: 104px;
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   border-left: 1px solid var(--line);
-  padding: 22px 20px;
+  background: rgba(var(--white-rgb), 0.44);
   color: var(--navy);
-  font-size: 0.75rem;
-  font-weight: 700;
+  padding: 16px 14px;
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 
-.trust-ribbon p:last-child {
+.usp-mini-steps li:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.usp-mini-steps li:last-child {
   border-right: 1px solid var(--line);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
-.trust-ribbon span {
+.usp-mini-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -7px;
+  z-index: 2;
+  width: 13px;
+  height: 13px;
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  background: var(--cream-deep);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.usp-mini-steps span {
   color: var(--gold-deep);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
+  line-height: 1;
 }
 
-/* Problem */
+/* Why this works */
 .problem-section {
   overflow: hidden;
   background-color: var(--cream);
@@ -764,31 +831,38 @@ h3 {
   color: var(--muted);
 }
 
-.sticking-points {
-  display: grid;
-  gap: 0;
-  margin-top: 15px;
-  border-top: 1px solid var(--line);
-  list-style: none;
+.process-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 4px;
 }
 
-.sticking-points li {
-  display: grid;
-  grid-template-columns: 105px 1fr;
-  gap: 18px;
-  border-bottom: 1px solid var(--line);
-  padding: 14px 0;
+.process-chain span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid rgba(var(--gold-rgb), 0.36);
+  border-radius: 999px;
+  background: rgba(var(--white-rgb), 0.64);
   color: var(--navy);
-  font-size: 0.86rem;
-  font-weight: 600;
+  padding: 9px 16px;
+  font-size: 0.76rem;
+  font-weight: 800;
 }
 
-.sticking-points span {
+.process-chain span:not(:last-child) {
+  margin-right: 17px;
+}
+
+.process-chain span:not(:last-child)::after {
+  content: "\2192";
+  position: absolute;
+  right: -22px;
   color: var(--gold-deep);
-  font-size: 0.65rem;
+  font-family: "Inter", Arial, sans-serif;
   font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
 }
 
 /* Method */
@@ -813,7 +887,7 @@ h3 {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.55fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.72fr);
   gap: 70px;
   align-items: end;
 }
@@ -822,8 +896,53 @@ h3 {
   color: var(--white);
 }
 
-.method-heading > p {
+.method-summary {
+  display: grid;
+  gap: 18px;
   padding-bottom: 8px;
+}
+
+.method-summary > p:first-child {
+  color: rgba(var(--white-rgb), 0.76);
+}
+
+.method-formula {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid rgba(var(--gold-rgb), 0.32);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: rgba(var(--white-rgb), 0.05);
+}
+
+.method-formula span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.method-formula span:not(:last-child) {
+  border-right: 1px solid rgba(var(--gold-rgb), 0.28);
+}
+
+.method-formula span:not(:last-child)::after {
+  content: "\2192";
+  position: absolute;
+  right: -9px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(var(--gold-rgb), 0.32);
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold-light);
+  font-size: 0.62rem;
 }
 
 .method-journey {
@@ -1299,7 +1418,7 @@ h3 {
   color: var(--gold-deep);
 }
 
-/* Parent updates */
+/* Process worksheets */
 .updates-section {
   overflow: hidden;
   background: var(--color-primary-base);
@@ -1471,11 +1590,12 @@ h3 {
   align-items: center;
 }
 
-.standard-mark {
+.school-link-card {
   position: relative;
   min-height: 270px;
   display: grid;
-  place-items: center;
+  align-content: center;
+  gap: 18px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -1484,41 +1604,58 @@ h3 {
     linear-gradient(rgba(var(--navy-rgb), 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--navy-rgb), 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
+  padding: 31px;
 }
 
-.standard-mark > span {
-  position: relative;
-  z-index: 2;
-  color: var(--navy);
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 4.1rem;
-  font-weight: 700;
-  letter-spacing: -0.06em;
-}
-
-.standard-mark svg {
+.school-link-card::before {
+  content: "";
   position: absolute;
-  inset: 50% 16px auto;
-  width: calc(100% - 32px);
-  transform: translateY(-40%);
-  opacity: 0.48;
+  top: 50%;
+  right: 34px;
+  left: 34px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent-spark),
+    transparent
+  );
+  transform: translateY(-50%);
 }
 
-.standard-mark path {
-  fill: none;
-  stroke: var(--color-accent-spark);
-  stroke-width: 1.8;
-  vector-effect: non-scaling-stroke;
+.school-link-card span {
+  position: relative;
+  z-index: 1;
+  width: min(260px, 100%);
+  border: 1px solid rgba(var(--gold-rgb), 0.34);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--white-rgb), 0.78);
+  color: var(--navy);
+  padding: 14px 16px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.school-link-card span:nth-child(2) {
+  justify-self: center;
+}
+
+.school-link-card span:nth-child(3) {
+  justify-self: end;
 }
 
 .standard-copy {
   max-width: 780px;
 }
 
-.standard-copy > p:last-child {
+.standard-copy > p:not(.eyebrow) {
   margin-top: 22px;
   color: var(--muted);
   font-size: 1.02rem;
+}
+
+.standard-copy > p + p {
+  margin-top: 14px;
 }
 
 /* Enquiry form */
@@ -2133,6 +2270,15 @@ h3 {
     justify-self: end;
   }
 
+  .usp-ribbon-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .usp-mini-steps {
+    width: min(620px, 100%);
+  }
+
   .problem-copy {
     max-width: 740px;
     padding-top: 0;
@@ -2174,7 +2320,7 @@ h3 {
   }
 
   .offers-heading > p,
-  .method-heading > p {
+  .method-summary {
     max-width: 700px;
   }
 
@@ -2187,7 +2333,7 @@ h3 {
     justify-self: end;
   }
 
-  .standard-mark {
+  .school-link-card {
     width: min(520px, 100%);
   }
 
@@ -2280,17 +2426,27 @@ h3 {
     height: 155px;
   }
 
-  .trust-ribbon-inner {
+  .usp-ribbon-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 34px 0;
+  }
+
+  .usp-mini-steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
-  .trust-ribbon p:nth-child(3) {
-    border-top: 1px solid var(--line);
+  .usp-mini-steps li,
+  .usp-mini-steps li:first-child,
+  .usp-mini-steps li:last-child {
+    min-height: 92px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
   }
 
-  .trust-ribbon p:nth-child(4) {
-    border-top: 1px solid var(--line);
-    border-right: 1px solid var(--line);
+  .usp-mini-steps li:not(:last-child)::after {
+    display: none;
   }
 
   .problem-section::after,
@@ -2298,12 +2454,24 @@ h3 {
     display: none;
   }
 
-  .sticking-points li {
-    grid-template-columns: 88px 1fr;
-  }
-
   .method-heading {
     gap: 24px;
+  }
+
+  .method-formula {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .method-formula span:nth-child(2) {
+    border-right: 0;
+  }
+
+  .method-formula span:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(var(--gold-rgb), 0.28);
+  }
+
+  .method-formula span:nth-child(2)::after {
+    display: none;
   }
 
   .method-journey {
@@ -2488,7 +2656,7 @@ h3 {
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.55rem;
   }
 
   h2 {
@@ -2512,20 +2680,26 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .trust-ribbon-inner {
+  .usp-mini-steps {
     grid-template-columns: 1fr;
   }
 
-  .trust-ribbon p,
-  .trust-ribbon p:nth-child(3),
-  .trust-ribbon p:nth-child(4),
-  .trust-ribbon p:last-child {
-    border-top: 1px solid var(--line);
-    border-right: 1px solid var(--line);
+  .usp-statement h2 {
+    font-size: 1.8rem;
   }
 
-  .trust-ribbon p:first-of-type {
-    border-top: 0;
+  .process-chain {
+    display: grid;
+  }
+
+  .process-chain span,
+  .process-chain span:not(:last-child) {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .process-chain span:not(:last-child)::after {
+    display: none;
   }
 
   .about-visual {
@@ -2571,7 +2745,7 @@ h3 {
   }
 
   h1 {
-    font-size: 2.55rem;
+    font-size: 2.25rem;
     line-height: 1;
   }
 
@@ -2660,6 +2834,20 @@ h3 {
     background-image: none;
   }
 
+  .process-chain {
+    display: grid;
+  }
+
+  .process-chain span,
+  .process-chain span:not(:last-child) {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  .process-chain span:not(:last-child)::after {
+    display: none;
+  }
+
   .method-section::before {
     display: none;
   }
@@ -2721,12 +2909,14 @@ h3 {
     margin-left: 18px;
   }
 
-  .standard-mark {
+  .school-link-card {
     min-height: 215px;
+    padding: 22px;
   }
 
-  .standard-mark > span {
-    font-size: 3.4rem;
+  .school-link-card::before {
+    right: 22px;
+    left: 22px;
   }
 
   .enquiry-form {
