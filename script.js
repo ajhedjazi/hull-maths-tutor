@@ -298,11 +298,9 @@ if (enquiryForm) {
   const submitLabel = enquiryForm.querySelector("[data-submit-label]");
   const submitSpinner = enquiryForm.querySelector("[data-submit-spinner]");
   const subjectInput = enquiryForm.querySelector("[data-subject-field]");
-  const parentNameInput = enquiryForm.querySelector("[name='parent-name']");
-  const studentYearGroupInput = enquiryForm.querySelector(
-    "[name='student-year-group']",
-  );
-  const parentEmailInput = enquiryForm.querySelector("input[name='email']");
+  const parentNameInput = enquiryForm.querySelector("#parent-name");
+  const studentYearGroupInput = enquiryForm.querySelector("#year-group");
+  const parentEmailInput = enquiryForm.querySelector("#email");
   const replyToInput = enquiryForm.querySelector("[data-reply-to]");
   const appointmentInput = enquiryForm.querySelector("[data-appointment-value]");
   const appointmentFeedback = enquiryForm.querySelector(
