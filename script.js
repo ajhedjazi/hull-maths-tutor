@@ -203,7 +203,7 @@ if (appointmentPicker) {
 
     appointmentFeedback.classList.remove("is-error");
     appointmentFeedback.textContent = appointmentValue
-      ? `Selected Maths MOT: ${appointmentValue}.`
+      ? `Selected Maths MOT & Action Plan: ${appointmentValue}.`
       : "No appointment selected yet.";
   };
 
@@ -307,7 +307,9 @@ if (enquiryForm) {
     "[data-appointment-feedback]",
   );
   const defaultSubmitText =
-    submitLabel?.textContent || submitButton?.textContent || "Book the Maths MOT";
+    submitLabel?.textContent ||
+    submitButton?.textContent ||
+    "Book the Maths MOT & Action Plan";
 
   const setFormStatus = (message, isError = false) => {
     if (!formStatus) {
@@ -329,11 +331,11 @@ if (enquiryForm) {
 
     if (submitLabel) {
       submitLabel.textContent = isSending
-        ? " Sending Maths MOT request..."
+        ? " Sending Maths MOT & Action Plan request..."
         : defaultSubmitText;
     } else {
       submitButton.textContent = isSending
-        ? "Sending Maths MOT request..."
+        ? "Sending Maths MOT & Action Plan request..."
         : defaultSubmitText;
     }
 
@@ -350,7 +352,7 @@ if (enquiryForm) {
 
       if (appointmentFeedback) {
         appointmentFeedback.textContent =
-          "Please choose a Maths MOT date and time before booking.";
+          "Please choose a Maths MOT & Action Plan date and time before booking.";
       }
 
       appointmentPicker?.scrollIntoView({
@@ -372,7 +374,7 @@ if (enquiryForm) {
     if (subjectInput && parentNameInput && studentYearGroupInput) {
       const parentName = parentNameInput.value.trim();
       const studentYearGroup = studentYearGroupInput.value.trim();
-      subjectInput.value = `New Maths MOT Booking \u2013 ${parentName} (${studentYearGroup})`;
+      subjectInput.value = `New Maths MOT & Action Plan Booking \u2013 ${parentName} (${studentYearGroup})`;
     }
 
     const formData = new FormData(enquiryForm);
@@ -399,7 +401,7 @@ if (enquiryForm) {
       enquiryForm.reset();
       resetAppointmentPicker();
       setFormStatus(
-        "Thank you. Your Maths MOT request has been received. I'll personally review your enquiry and get back to you shortly to confirm your appointment.",
+        "Thank you. Your Maths MOT & Action Plan request has been received. I'll personally review your enquiry and get back to you shortly to confirm your appointment.",
       );
     } catch (error) {
       setFormStatus(

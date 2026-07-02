@@ -1115,6 +1115,10 @@ h3 {
   padding-top: 20px;
 }
 
+.offer-path + .offer-path {
+  margin-top: 18px;
+}
+
 .offer-path > span {
   color: var(--gold-deep);
   font-size: 0.68rem;
