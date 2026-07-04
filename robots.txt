@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://hull-maths-tutor.onrender.com/sitemap.xml
