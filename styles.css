@@ -116,7 +116,7 @@ h2,
 h3 {
   color: var(--navy);
   font-family: "Playfair Display", Georgia, serif;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 
 h1 {
@@ -156,6 +156,45 @@ h3 {
 
 .skip-link:focus {
   top: 16px;
+}
+
+.breadcrumbs {
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(var(--color-accent-spark-rgb), 0.18);
+  background: var(--navy-deep);
+  color: rgba(var(--white-rgb), 0.72);
+  padding: 16px 0 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  color: rgba(var(--color-accent-spark-rgb), 0.75);
+}
+
+.breadcrumbs a {
+  color: var(--gold-light);
+  transition: color 180ms ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--white);
 }
 
 .visually-hidden {
@@ -1029,6 +1068,77 @@ h3 {
   background: var(--color-accent-spark);
 }
 
+/* Weekly tuition */
+.weekly-tuition-section {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background: var(--color-secondary-base);
+}
+
+.weekly-tuition-layout {
+  align-items: start;
+}
+
+.weekly-tuition-copy {
+  display: grid;
+  gap: 20px;
+}
+
+.weekly-tuition-copy > p:not(.lead-copy) {
+  color: var(--muted);
+}
+
+.weekly-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 10px 0 4px;
+}
+
+.weekly-flow article {
+  border: 1px solid rgba(var(--gold-rgb), 0.28);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--white-rgb), 0.64);
+  padding: 20px;
+}
+
+.weekly-flow span {
+  color: var(--gold-deep);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.weekly-flow h3 {
+  margin-top: 8px;
+  font-size: 1.26rem;
+}
+
+.weekly-flow p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.62;
+}
+
+.about-section .button-secondary,
+.offers-section .button-secondary,
+.weekly-tuition-section .button-secondary,
+.problem-section .button-secondary {
+  border-color: rgba(var(--navy-rgb), 0.18);
+  background: rgba(var(--navy-rgb), 0.04);
+  color: var(--navy);
+}
+
+.about-section .button-secondary:hover,
+.offers-section .button-secondary:hover,
+.weekly-tuition-section .button-secondary:hover,
+.problem-section .button-secondary:hover {
+  border-color: rgba(var(--navy-rgb), 0.34);
+  background: rgba(var(--navy-rgb), 0.08);
+  color: var(--navy);
+}
+
 /* Offers */
 .offers-section {
   overflow: hidden;
@@ -1880,6 +1990,10 @@ h3 {
     max-width: 760px;
   }
 
+  .weekly-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .detail-page .detail-steps,
   .detail-page .mot-steps,
   .mot-card-grid {
@@ -1997,6 +2111,11 @@ h3 {
     padding: 8px 11px;
   }
 
+  .breadcrumbs {
+    padding-top: 13px;
+    font-size: 0.68rem;
+  }
+
   .hero {
     min-height: auto;
   }
@@ -2061,6 +2180,10 @@ h3 {
   .method-steps-simple {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .weekly-flow {
+    grid-template-columns: 1fr;
   }
 
   .detail-page .detail-steps,
@@ -2197,6 +2320,17 @@ h3 {
     font-size: 2.25rem;
   }
 
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    overflow-x: visible;
+    font-size: 0.66rem;
+  }
+
+  .nav-cta {
+    padding: 7px 10px;
+  }
+
   .hero-grid {
     padding-top: 54px;
   }
@@ -2280,7 +2414,9 @@ h3 {
   }
 
   .nav-links {
+    flex-wrap: wrap;
     gap: 11px;
+    overflow-x: visible;
     font-size: 0.66rem;
   }
 

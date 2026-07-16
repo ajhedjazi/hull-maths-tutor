@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: hull-maths-tutor
+    runtime: static
+    staticPublishPath: .
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /styles.css
+        name: Cache-Control
+        value: public, max-age=86400, must-revalidate
+      - path: /script.js
+        name: Cache-Control
+        value: public, max-age=86400, must-revalidate
+      - path: /sitemap.xml
+        name: Cache-Control
+        value: public, max-age=3600, must-revalidate
+      - path: /robots.txt
+        name: Cache-Control
+        value: public, max-age=3600, must-revalidate
+      - path: /
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /maths-mot-hull/
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /gcse-grade-4-5-maths-support-hull/
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /about-amir/
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
