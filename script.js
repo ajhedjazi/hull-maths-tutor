@@ -203,8 +203,8 @@ if (appointmentPicker) {
 
     appointmentFeedback.classList.remove("is-error");
     appointmentFeedback.textContent = appointmentValue
-      ? `Selected Maths MOT & Action Plan: ${appointmentValue}.`
-      : "No appointment selected yet.";
+      ? `Selected time: ${appointmentValue}.`
+      : "No time selected.";
   };
 
   const renderDateButtons = () => {
@@ -251,7 +251,7 @@ if (appointmentPicker) {
     timeList.innerHTML = "";
 
     if (!selectedDate) {
-      dateLabel.textContent = "Select a date to see available times.";
+      dateLabel.textContent = "Choose a date to see times.";
       return;
     }
 
@@ -309,7 +309,7 @@ if (enquiryForm) {
   const defaultSubmitText =
     submitLabel?.textContent ||
     submitButton?.textContent ||
-    "Book the Maths MOT & Action Plan";
+    "Request a Maths MOT";
 
   const setFormStatus = (message, isError = false) => {
     if (!formStatus) {
@@ -331,11 +331,11 @@ if (enquiryForm) {
 
     if (submitLabel) {
       submitLabel.textContent = isSending
-        ? " Sending Maths MOT & Action Plan request..."
+        ? " Sending request..."
         : defaultSubmitText;
     } else {
       submitButton.textContent = isSending
-        ? "Sending Maths MOT & Action Plan request..."
+        ? "Sending request..."
         : defaultSubmitText;
     }
 
@@ -352,7 +352,7 @@ if (enquiryForm) {
 
       if (appointmentFeedback) {
         appointmentFeedback.textContent =
-          "Please choose a Maths MOT & Action Plan date and time before booking.";
+          "Please choose a date and time.";
       }
 
       appointmentPicker?.scrollIntoView({
@@ -401,7 +401,7 @@ if (enquiryForm) {
       enquiryForm.reset();
       resetAppointmentPicker();
       setFormStatus(
-        "Thank you. Your Maths MOT & Action Plan request has been received. I'll personally review your enquiry and get back to you shortly to confirm your appointment.",
+        "Thank you. I have received your request and will contact you to confirm the time.",
       );
     } catch (error) {
       setFormStatus(
