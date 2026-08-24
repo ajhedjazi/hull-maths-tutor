@@ -2610,3 +2610,136 @@ h3 {
     transform: none;
   }
 }
+
+
+/* ===== Site-wide consistency pass ===== */
+
+/* Remove browser-default list spacing from breadcrumbs. This fixes the stray
+   cream/white band that appeared between breadcrumbs and hero sections. */
+.breadcrumbs {
+  padding: 13px 0;
+}
+.breadcrumbs ol {
+  margin: 0;
+  padding: 0;
+}
+
+/* Keep the site header exactly the same height and treatment on every page. */
+.site-header {
+  margin: 0;
+}
+.nav-shell {
+  min-height: 82px;
+}
+.nav-links a:not(.nav-cta)::after {
+  bottom: -6px;
+}
+
+/* Secondary buttons should be readable by default on light sections. */
+.button-secondary {
+  border-color: rgba(var(--navy-rgb), 0.22);
+  background: rgba(var(--navy-rgb), 0.045);
+  color: var(--navy);
+}
+.button-secondary:hover {
+  border-color: rgba(var(--navy-rgb), 0.4);
+  background: rgba(var(--navy-rgb), 0.1);
+  color: var(--navy);
+}
+
+/* On dark surfaces, switch both buttons to deliberate high-contrast variants. */
+.hero .button-primary,
+.guide-hero .button-primary,
+.guide-mot .button-primary,
+.diagnostic-approach-section .button-primary {
+  border-color: rgba(var(--color-accent-spark-rgb), 0.65);
+  background: var(--color-accent-spark);
+  color: var(--navy-deep);
+  box-shadow:
+    inset 0 -2px 0 rgba(var(--navy-rgb), 0.22),
+    0 14px 30px rgba(0, 0, 0, 0.16);
+}
+.hero .button-primary:hover,
+.guide-hero .button-primary:hover,
+.guide-mot .button-primary:hover,
+.diagnostic-approach-section .button-primary:hover {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--navy-deep);
+}
+
+.hero .button-secondary,
+.guide-hero .button-secondary,
+.guide-mot .button-secondary,
+.diagnostic-approach-section .button-secondary,
+.site-footer .button-secondary {
+  border-color: rgba(var(--white-rgb), 0.48);
+  background: rgba(var(--white-rgb), 0.07);
+  color: var(--white);
+}
+.hero .button-secondary:hover,
+.guide-hero .button-secondary:hover,
+.guide-mot .button-secondary:hover,
+.diagnostic-approach-section .button-secondary:hover,
+.site-footer .button-secondary:hover {
+  border-color: var(--color-accent-spark);
+  background: rgba(var(--color-accent-spark-rgb), 0.13);
+  color: var(--white);
+}
+
+/* Detail pages share the same top-of-page rhythm. */
+.detail-page main > .hero,
+.detail-page main > .guide-hero {
+  margin-top: 0;
+}
+.detail-page .breadcrumbs + .hero,
+.detail-page .breadcrumbs + .guide-hero {
+  border-top: 0;
+}
+
+/* Keep major content sections visually related across service/resource pages. */
+.detail-page main > .section {
+  border-top: 1px solid rgba(var(--navy-rgb), 0.08);
+}
+.detail-page main > .section:first-of-type {
+  border-top: 0;
+}
+
+/* Resource page uses the same hero language as the rest of the site. */
+.guide-hero.hero {
+  min-height: 700px;
+  padding: 0;
+}
+.guide-hero .guide-hero-grid {
+  padding: 88px 0 96px;
+}
+
+/* Ensure guide/download CTAs remain visible wherever they sit. */
+.download-card .button-secondary {
+  border-color: rgba(var(--navy-rgb), 0.22);
+  background: rgba(var(--navy-rgb), 0.045);
+  color: var(--navy);
+}
+.download-card .button-secondary:hover {
+  border-color: rgba(var(--navy-rgb), 0.4);
+  background: rgba(var(--navy-rgb), 0.1);
+  color: var(--navy);
+}
+
+@media (max-width: 920px) {
+  .nav-shell {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .breadcrumbs {
+    padding: 11px 0;
+  }
+  .guide-hero.hero {
+    min-height: 0;
+  }
+  .guide-hero .guide-hero-grid {
+    padding: 68px 0 74px;
+  }
+}
