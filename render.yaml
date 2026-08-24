@@ -22,6 +22,12 @@ services:
       - path: /
         name: Cache-Control
         value: public, max-age=0, must-revalidate
+      - path: /year-11-parent-guide/
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /year-11-parent-guide/download/
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
       - path: /maths-mot-hull/
         name: Cache-Control
         value: public, max-age=0, must-revalidate
