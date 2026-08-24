@@ -1,3 +1,23 @@
+const GA_MEASUREMENT_ID = "G-FTB362ESXH";
+
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function gtag() {
+  window.dataLayer.push(arguments);
+};
+window.gtag("js", new Date());
+window.gtag("config", GA_MEASUREMENT_ID);
+
+const gaScript = document.createElement("script");
+gaScript.async = true;
+gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+document.head.appendChild(gaScript);
+
+const trackEvent = (eventName, params = {}) => {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, params);
+  }
+};
+
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
@@ -23,6 +43,33 @@ internalLinks.forEach((link) => {
     target.scrollIntoView({
       behavior: prefersReducedMotion ? "auto" : "smooth",
       block: "start",
+    });
+  });
+});
+
+document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("phone_click", {
+      event_category: "lead",
+      link_location: window.location.pathname,
+    });
+  });
+});
+
+document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("whatsapp_click", {
+      event_category: "lead",
+      link_location: window.location.pathname,
+    });
+  });
+});
+
+document.querySelectorAll('a[href*="maths-mot-hull"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("maths_mot_click", {
+      event_category: "engagement",
+      link_location: window.location.pathname,
     });
   });
 });
@@ -347,7 +394,7 @@ if (enquiryForm) {
   enquiryForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (!appointmentInput?.value) {
+    if (appointmentPicker && !appointmentInput?.value) {
       appointmentFeedback?.classList.add("is-error");
 
       if (appointmentFeedback) {
@@ -355,7 +402,7 @@ if (enquiryForm) {
           "Please choose a date and time.";
       }
 
-      appointmentPicker?.scrollIntoView({
+      appointmentPicker.scrollIntoView({
         behavior: prefersReducedMotion ? "auto" : "smooth",
         block: "center",
       });
@@ -374,7 +421,7 @@ if (enquiryForm) {
     if (subjectInput && parentNameInput && studentYearGroupInput) {
       const parentName = parentNameInput.value.trim();
       const studentYearGroup = studentYearGroupInput.value.trim();
-      subjectInput.value = `New Maths MOT & Action Plan Booking \u2013 ${parentName} (${studentYearGroup})`;
+      subjectInput.value = `New Maths MOT & Action Plan Booking – ${parentName} (${studentYearGroup})`;
     }
 
     const formData = new FormData(enquiryForm);
@@ -398,10 +445,18 @@ if (enquiryForm) {
         throw new Error("Form submission failed.");
       }
 
+      trackEvent("generate_lead", {
+        event_category: "lead",
+        form_name: enquiryForm.getAttribute("name") || "enquiry",
+        page_path: window.location.pathname,
+      });
+
       enquiryForm.reset();
       resetAppointmentPicker();
       setFormStatus(
-        "Thank you. I have received your request and will contact you to confirm the time.",
+        appointmentPicker
+          ? "Thank you. I have received your request and will contact you to confirm the time."
+          : "Thank you. I have received your enquiry and will get back to you as soon as I can.",
       );
     } catch (error) {
       setFormStatus(
