@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://hullmathstutor.co.uk/year-11-parent-guide/" />
   <meta property="og:title" content="Free Year 11 GCSE Maths Parent Guide" />
   <meta property="og:description" content="A practical, plain-English guide for parents of students studying Foundation or Higher Tier GCSE Maths." />
-  <meta property="og:image" content="https://hullmathstutor.co.uk/assets/guides/year-11-parent-guide-cover.webp" />
+  <meta property="og:image" content="https://hullmathstutor.co.uk/assets/hull-maths-tutor-hero.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/assets/hmt-icon-64.png" sizes="64x64" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/hmt-icon-180.png" />
@@ -26,7 +26,15 @@
     .guide-hero h1{max-width:760px;margin:.35rem 0 1rem}
     .guide-hero .hero-lede{max-width:680px}
     .guide-preview{margin:0;justify-self:center;width:min(100%,390px)}
-    .guide-preview img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.26)}
+    .guide-cover-card{aspect-ratio:210/297;background:#fbfbf8;color:#153f42;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.26);padding:clamp(1.2rem,3vw,2rem);display:flex;flex-direction:column;border:1px solid rgba(207,181,121,.45)}
+    .guide-cover-brand{font-family:Georgia,serif;line-height:.92;margin-bottom:1.8rem}
+    .guide-cover-brand strong{display:block;color:#c79f42;font-size:1.45rem;letter-spacing:.02em}
+    .guide-cover-brand span{display:block;color:#0b4344;font-size:1.15rem;font-weight:700}
+    .guide-cover-rule{width:45%;height:2px;background:#cfb579;margin:.7rem 0 1rem}
+    .guide-cover-kicker{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#b18f49;font-weight:800;margin-top:1rem}
+    .guide-cover-card h2{font-family:Georgia,serif;font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.02;margin:.5rem 0 1rem;color:#0b4344}
+    .guide-cover-card p{font-size:.92rem;line-height:1.5;color:#2f3b3b}
+    .guide-cover-audience{margin-top:auto;background:#eef4f4;border:1px solid rgba(11,67,68,.14);border-radius:8px;padding:.75rem;font-size:.75rem;font-weight:800;text-align:center;color:#0b4344}
     .guide-preview figcaption{margin-top:.8rem;color:rgba(255,255,255,.78);font-size:.9rem;text-align:center}
     .guide-form-section{background:#f6f3e9}
     .guide-form-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1fr);gap:clamp(2rem,6vw,5rem);align-items:start}
@@ -126,7 +134,13 @@
           </ul>
         </div>
         <figure class="guide-preview">
-          <img src="/assets/guides/year-11-parent-guide-cover.webp" alt="Cover of The Year 11 GCSE Maths Parent Guide by Hull Maths Tutor" width="900" height="1200" />
+          <div class="guide-cover-card" role="img" aria-label="Preview of The Year 11 GCSE Maths Parent Guide cover">
+            <div class="guide-cover-brand"><strong>HULL</strong><span>MATHS TUTOR</span><div class="guide-cover-rule"></div><small>GCSE MATHS TUITION IN HULL</small></div>
+            <div class="guide-cover-kicker">Year 11 guidance · Foundation & Higher tiers</div>
+            <h2>The Year 11 GCSE Maths Parent Guide</h2>
+            <p>A practical guide to how GCSE Maths works, what to expect, and how to support your child through Year 11.</p>
+            <div class="guide-cover-audience">For parents of students studying Foundation or Higher Tier</div>
+          </div>
           <figcaption>Free to download from Hull Maths Tutor.</figcaption>
         </figure>
       </div>
@@ -151,6 +165,9 @@
           <input type="hidden" name="from_name" value="Hull Maths Tutor - Parent Guide" />
           <input type="hidden" name="redirect" value="https://hullmathstutor.co.uk/year-11-parent-guide/download/" />
           <input type="hidden" name="Resource" value="The Year 11 GCSE Maths Parent Guide" />
+          <input type="hidden" name="UTM Source" data-utm="utm_source" value="" />
+          <input type="hidden" name="UTM Medium" data-utm="utm_medium" value="" />
+          <input type="hidden" name="UTM Campaign" data-utm="utm_campaign" value="" />
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div class="form-row">
@@ -177,7 +194,7 @@
           </div>
 
           <button class="button button-primary form-button" type="submit">Get the free guide</button>
-          <p class="guide-form-note">Your details are used to provide this resource. You will only be opted into future marketing emails if you tick the optional box above.</p>
+          <p class="guide-form-note">Your details will be sent to Hull Maths Tutor so I can record guide requests. You will only be opted into future marketing emails if you tick the optional box above.</p>
         </form>
       </div>
     </section>
@@ -239,5 +256,11 @@
     </div>
     <div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor. All rights reserved.</p><a href="#main">Back to top ↑</a></div>
   </footer>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    document.querySelectorAll("[data-utm]").forEach((field) => {
+      field.value = params.get(field.dataset.utm) || "";
+    });
+  </script>
 </body>
 </html>
