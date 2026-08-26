@@ -16,7 +16,11 @@ The database deliberately stores **no correct answer in the student-readable `qu
 
 ## Supabase setup
 
-1. Run `supabase/migrations/20260826_live_classroom_m1.sql` in the Supabase SQL editor.
+1. Run these migrations in order in the Supabase SQL editor:
+   - `supabase/migrations/20260826_001_classroom_schema.sql`
+   - `supabase/migrations/20260826_002_classroom_rls.sql`
+   - `supabase/migrations/20260826_003_classroom_functions.sql`
+   - `supabase/migrations/20260826_004_classroom_seed.sql`
 2. In Supabase Authentication settings, enable anonymous sign-ins for students.
 3. Make sure the tutor email can use email OTP / magic-link authentication.
 4. Add that email to the server-side tutor allowlist:
@@ -44,7 +48,7 @@ Use two separate browser sessions (for example, normal browser + private tab):
 
 ## Starter diagnostic data
 
-The migration seeds a tiny test bank only:
+The seed migration adds a tiny test bank only:
 
 - `3x + 7 = 22`
 - `3(x + 4) = 27`
