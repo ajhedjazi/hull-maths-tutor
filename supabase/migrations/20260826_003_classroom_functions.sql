@@ -10,6 +10,7 @@ declare
   new_room public.rooms;
   candidate text;
   chars constant text := 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  random_bytes bytea;
   i integer;
 begin
   if auth.uid() is null then
@@ -21,9 +22,14 @@ begin
   end if;
 
   loop
+    random_bytes := gen_random_bytes(6);
     candidate := '';
-    for i in 1..6 loop
-      candidate := candidate || substr(chars, 1 + floor(random() * length(chars))::int, 1);
+    for i in 0..5 loop
+      candidate := candidate || substr(
+        chars,
+        1 + (get_byte(random_bytes, i) % length(chars)),
+        1
+      );
     end loop;
 
     begin
@@ -57,6 +63,10 @@ declare
 begin
   if auth.uid() is null then
     raise exception 'You must have a session before joining a room.';
+  end if;
+
+  if not coalesce((auth.jwt() ->> 'is_anonymous')::boolean, false) then
+    raise exception 'Student room joins require an anonymous student session.';
   end if;
 
   if length(trim(coalesce(p_display_name, ''))) < 2 then
