@@ -2,6 +2,6 @@
 // The Supabase publishable/anon key is designed to be used in client-side apps.
 // NEVER put a service_role key in this file.
 window.HMT_SUPABASE_CONFIG = {
-  url: "",
-  anonKey: "",
+  url: "https://qhcddmogsowmgvjviagr.supabase.co",
+  anonKey: "sb_publishable__3iKwu1IOZ0YsvFlqC9ueQ_KPWZqWPJ",
 };
