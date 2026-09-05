@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Live Maths Classroom | Hull Maths Tutor</title>
+    <meta
+      name="description"
+      content="A private interactive maths classroom for Hull Maths Tutor students."
+    />
+    <link rel="stylesheet" href="classroom.css" />
+  </head>
+  <body>
+    <header class="classroom-header">
+      <a class="brand" href="../" aria-label="Hull Maths Tutor home">
+        <span class="brand-mark" aria-hidden="true">∑</span>
+        <span>
+          <strong>Hull Maths Tutor</strong>
+          <small>Live Classroom</small>
+        </span>
+      </a>
+      <div class="header-status" id="header-status" aria-live="polite">
+        <span class="status-dot"></span>
+        <span>Not connected</span>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="setup-warning" id="setup-warning" hidden>
+        <strong>Classroom backend not connected yet.</strong>
+        <p>
+          Add the Supabase project URL and publishable/anon key to
+          <code>classroom/config.js</code>, then run the Milestone 1 SQL migration.
+        </p>
+      </section>
+
+      <section class="entry-card" id="entry-view">
+        <div class="entry-copy">
+          <p class="eyebrow">Interactive online tuition</p>
+          <h1>Join the maths classroom</h1>
+          <p>
+            Questions, working and tutor feedback all stay together so we can see
+            exactly where a problem starts — not just whether the final answer is right.
+          </p>
+        </div>
+
+        <div class="role-picker" role="group" aria-label="Choose classroom role">
+          <button class="role-button" type="button" data-role="student">
+            <span class="role-icon" aria-hidden="true">✏️</span>
+            <strong>I’m a student</strong>
+            <small>Join with a six-character room code</small>
+          </button>
+          <button class="role-button" type="button" data-role="tutor">
+            <span class="role-icon" aria-hidden="true">📊</span>
+            <strong>Tutor dashboard</strong>
+            <small>Sign in, create a room and send questions</small>
+          </button>
+        </div>
+
+        <form class="entry-form" id="student-join-form" hidden>
+          <div class="form-heading">
+            <button class="text-button back-button" type="button">← Back</button>
+            <h2>Join your lesson</h2>
+          </div>
+          <label>
+            Your name
+            <input
+              id="student-name"
+              name="studentName"
+              type="text"
+              autocomplete="name"
+              maxlength="80"
+              placeholder="e.g. Ollie"
+              required
+            />
+          </label>
+          <label>
+            Room code
+            <input
+              id="room-code-input"
+              class="room-code-input"
+              name="roomCode"
+              type="text"
+              inputmode="text"
+              autocomplete="off"
+              maxlength="6"
+              placeholder="K7M4PX"
+              required
+            />
+          </label>
+          <button class="primary-button" type="submit">Join classroom</button>
+          <p class="form-message" id="student-join-message" aria-live="polite"></p>
+        </form>
+
+        <form class="entry-form" id="tutor-login-form" hidden>
+          <div class="form-heading">
+            <button class="text-button back-button" type="button">← Back</button>
+            <h2>Tutor sign in</h2>
+          </div>
+          <p class="form-intro">
+            Enter the tutor email linked to Supabase. You’ll receive a secure magic link.
+          </p>
+          <label>
+            Tutor email
+            <input
+              id="tutor-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+              required
+            />
+          </label>
+          <button class="primary-button" type="submit">Email me a sign-in link</button>
+          <p class="form-message" id="tutor-login-message" aria-live="polite"></p>
+        </form>
+
+        <section class="tutor-lobby" id="tutor-lobby" hidden>
+          <div class="form-heading lobby-heading">
+            <div>
+              <p class="eyebrow">Tutor dashboard</p>
+              <h2>Start or resume a classroom</h2>
+            </div>
+            <button class="text-button" id="tutor-sign-out" type="button">Sign out</button>
+          </div>
+          <button class="primary-button create-room-button" id="create-room" type="button">
+            + Create a new live room
+          </button>
+          <div class="active-rooms" id="active-rooms">
+            <p class="muted">No active rooms yet.</p>
+          </div>
+          <p class="form-message" id="tutor-lobby-message" aria-live="polite"></p>
+        </section>
+      </section>
+
+      <section class="classroom" id="classroom-view" hidden>
+        <div class="classroom-topbar">
+          <div>
+            <p class="eyebrow" id="classroom-role-label">Live lesson</p>
+            <div class="room-identity">
+              <h1 id="classroom-student-name">Waiting for student</h1>
+              <span class="room-code-badge" id="room-code-badge">------</span>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button class="secondary-button" id="close-room" type="button" hidden>
+              End room
+            </button>
+            <button class="text-button" id="leave-classroom" type="button">Leave view</button>
+          </div>
+        </div>
+
+        <div class="classroom-grid">
+          <section class="workspace-card question-card">
+            <div class="panel-heading">
+              <div>
+                <p class="panel-kicker">Current question</p>
+                <h2 id="question-number">Waiting to begin</h2>
+              </div>
+              <span class="live-pill" id="question-status">Ready</span>
+            </div>
+
+            <div class="tutor-question-controls" id="tutor-question-controls" hidden>
+              <label for="question-picker">Choose a question</label>
+              <div class="question-send-row">
+                <select id="question-picker">
+                  <option value="">Loading question bank…</option>
+                </select>
+                <button class="primary-button compact" id="send-question" type="button">
+                  Send
+                </button>
+              </div>
+            </div>
+
+            <div class="question-display" id="question-display">
+              <p class="empty-state">The question will appear here.</p>
+            </div>
+
+            <div class="student-workspace" id="student-workspace" hidden>
+              <label for="student-working">Show your working</label>
+              <textarea
+                id="student-working"
+                rows="7"
+                placeholder="Type each step here. Handwriting and whiteboard tools come in the next milestone."
+              ></textarea>
+              <label for="student-answer">Final answer</label>
+              <input id="student-answer" type="text" autocomplete="off" placeholder="Your answer" />
+              <div class="student-submit-row">
+                <button class="primary-button" id="submit-answer" type="button">
+                  Send my answer
+                </button>
+                <span class="save-state" id="student-save-state" aria-live="polite"></span>
+              </div>
+              <div class="mark-result" id="student-mark-result" hidden aria-live="polite"></div>
+            </div>
+          </section>
+
+          <aside class="lesson-sidebar">
+            <section class="workspace-card response-card" id="tutor-response-card" hidden>
+              <div class="panel-heading">
+                <div>
+                  <p class="panel-kicker">Student response</p>
+                  <h2>Live working</h2>
+                </div>
+                <span class="response-state" id="response-state">Waiting</span>
+              </div>
+              <div class="response-working" id="response-working">
+                <p class="empty-state">Waiting for the student to submit.</p>
+              </div>
+              <div class="response-answer">
+                <span>Final answer</span>
+                <strong id="response-answer">—</strong>
+              </div>
+              <div class="marking-controls" id="marking-controls" hidden>
+                <label for="misconception-picker">If it’s wrong, what went wrong?</label>
+                <select id="misconception-picker">
+                  <option value="">No misconception tag</option>
+                </select>
+                <div class="mark-buttons">
+                  <button class="correct-button" id="mark-correct" type="button">✓ Correct</button>
+                  <button class="incorrect-button" id="mark-incorrect" type="button">✕ Incorrect</button>
+                </div>
+              </div>
+              <p class="form-message" id="marking-message" aria-live="polite"></p>
+            </section>
+
+            <section class="workspace-card diagnostic-card" id="diagnostic-card" hidden>
+              <div class="panel-heading">
+                <div>
+                  <p class="panel-kicker">Diagnostic profile</p>
+                  <h2>Skill picture</h2>
+                </div>
+              </div>
+              <div class="mastery-list" id="mastery-list">
+                <p class="empty-state">Skill data will build as answers are marked.</p>
+              </div>
+            </section>
+
+            <section class="workspace-card video-card">
+              <div class="panel-heading">
+                <div>
+                  <p class="panel-kicker">Video</p>
+                  <h2>Lesson call</h2>
+                </div>
+                <span class="next-pill">Milestone 2</span>
+              </div>
+              <div class="video-placeholder" aria-label="Video integration placeholder">
+                <span aria-hidden="true">🎥</span>
+                <p>Video will live here without taking over the maths workspace.</p>
+              </div>
+            </section>
+          </aside>
+        </div>
+
+        <p class="classroom-message" id="classroom-message" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script>
+      window.HMT_SUPABASE_CONFIG = {
+        url: "https://qhcddmogsowmgvjviagr.supabase.co",
+        anonKey: "sb_publishable__3iKwu1IOZ0YsvFlqC9ueQ_KPWZqWPJ",
+      };
+    </script>
+    <script type="module" src="classroom.js?v=20260826-1"></script>
+  </body>
+</html>
