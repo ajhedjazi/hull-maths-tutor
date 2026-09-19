@@ -52,6 +52,59 @@ if (config.url && config.anonKey) {
     // claim_room is deliberately idempotent for the same anonymous student,
     // so the normal join path re-validates the room/session before entry.
     joinForm.requestSubmit();
+
+    // classroom.js restores the live question and marking result. Restore the
+    // student's submitted working/answer too so a refresh returns them to the
+    // same lesson state rather than showing blank inputs.
+    await restoreStudentAnswer(room.id, user.id);
+  }
+
+  async function restoreStudentAnswer(roomId, studentId) {
+    const classroomView = document.querySelector("#classroom-view");
+    const workingInput = document.querySelector("#student-working");
+    const answerInput = document.querySelector("#student-answer");
+    const saveState = document.querySelector("#student-save-state");
+    if (!classroomView || !workingInput || !answerInput) return;
+
+    const deadline = Date.now() + 5000;
+    while (Date.now() < deadline && classroomView.hidden) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+    if (classroomView.hidden) return;
+
+    const { data: lessonSession, error: sessionError } = await supabase
+      .from("sessions")
+      .select("id")
+      .eq("room_id", roomId)
+      .eq("student_id", studentId)
+      .eq("status", "active")
+      .single();
+    if (sessionError || !lessonSession) return;
+
+    const { data: sessionQuestions, error: questionError } = await supabase
+      .from("session_questions")
+      .select("id, position")
+      .eq("session_id", lessonSession.id)
+      .order("position", { ascending: false })
+      .limit(1);
+    if (questionError || !sessionQuestions?.length) return;
+
+    const { data: answers, error: answerError } = await supabase
+      .from("student_answers")
+      .select("answer_text, working_text, is_correct, submitted_at")
+      .eq("session_question_id", sessionQuestions[0].id)
+      .eq("student_id", studentId)
+      .limit(1);
+    if (answerError || !answers?.length) return;
+
+    const submitted = answers[0];
+    workingInput.value = submitted.working_text || "";
+    answerInput.value = submitted.answer_text || "";
+    if (saveState) {
+      saveState.textContent = submitted.is_correct === null
+        ? "Your submitted answer has been restored."
+        : "Your marked answer has been restored.";
+    }
   }
 
   async function recoverTutorSession(user) {
