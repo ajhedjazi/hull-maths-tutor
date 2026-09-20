@@ -4,7 +4,37 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // This module intercepts the tutor Send action and delegates the complete
 // previous-question -> next-question transition to send_live_question().
 const config = window.HMT_SUPABASE_CONFIG || {};
-const supabase = config.url && config.anonKey ? createClient(config.url, config.anonKey) : null;
+
+function decodeJwtPayload(token) {
+  const parts = String(token || "").split(".");
+  if (parts.length !== 3) return null;
+
+  try {
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+    const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+    return JSON.parse(atob(padded));
+  } catch {
+    return null;
+  }
+}
+
+function hasBrowserSafeConfig() {
+  if (!config.url || !config.anonKey) return false;
+
+  try {
+    if (new URL(config.url).protocol !== "https:") return false;
+  } catch {
+    return false;
+  }
+
+  const key = String(config.anonKey).trim();
+  if (!key || key.startsWith("sb_secret_")) return false;
+  return decodeJwtPayload(key)?.role !== "service_role";
+}
+
+// Do not even construct this module's Supabase client when configuration is
+// unsafe. backend-gate.js owns the user-facing remediation message.
+const supabase = hasBrowserSafeConfig() ? createClient(config.url, config.anonKey) : null;
 
 const sendButton = document.querySelector("#send-question");
 const questionPicker = document.querySelector("#question-picker");
@@ -73,6 +103,6 @@ async function sendAtomically(event) {
   }
 }
 
-if (sendButton) {
+if (sendButton && supabase) {
   sendButton.addEventListener("click", sendAtomically, { capture: true });
 }
