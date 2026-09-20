@@ -17,20 +17,77 @@ function setEntryDisabled(disabled) {
   });
 }
 
-async function verifyBackend() {
-  if (!config.url || !config.anonKey) return;
+function decodeJwtPayload(token) {
+  const parts = String(token || "").split(".");
+  if (parts.length !== 3) return null;
 
+  try {
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+    const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+    return JSON.parse(atob(padded));
+  } catch {
+    return null;
+  }
+}
+
+function validatePublicConfig() {
+  if (!config.url || !config.anonKey) {
+    throw new Error("Supabase URL and public key are required.");
+  }
+
+  let url;
+  try {
+    url = new URL(config.url);
+  } catch {
+    throw new Error("Supabase URL is invalid.");
+  }
+
+  if (url.protocol !== "https:") {
+    throw new Error("Supabase URL must use HTTPS.");
+  }
+
+  const key = String(config.anonKey).trim();
+  if (!key) throw new Error("Supabase public key is missing.");
+
+  // Modern Supabase publishable keys are explicitly safe for browser use.
+  // Legacy anon JWTs are also supported, but service-role JWTs must never be
+  // allowed into the classroom client.
+  if (key.startsWith("sb_secret_")) {
+    throw new Error("A Supabase secret key cannot be used in the browser.");
+  }
+
+  const payload = decodeJwtPayload(key);
+  if (payload?.role === "service_role") {
+    throw new Error("A Supabase service-role key cannot be used in the browser.");
+  }
+}
+
+function showBackendFailure(message) {
+  setStatus("Backend unavailable", false);
+  setEntryDisabled(true);
+
+  if (!setupWarning) return;
+  setupWarning.hidden = false;
+  const heading = setupWarning.querySelector("strong");
+  const detail = setupWarning.querySelector("p");
+  if (heading) heading.textContent = "Classroom backend is unavailable.";
+  if (detail) detail.textContent = message;
+}
+
+async function verifyBackend() {
   setStatus("Verifying backend…", false);
   setEntryDisabled(true);
 
   try {
+    validatePublicConfig();
+
     const client = createClient(config.url, config.anonKey, {
       auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
     });
 
-    // A tiny read proves the REST endpoint, publishable key and classroom schema
-    // are reachable. RLS may legitimately return zero rows; that still proves
-    // the backend path used by the classroom is alive.
+    // A tiny read proves the REST endpoint, public key and classroom schema are
+    // reachable. RLS may legitimately return zero rows; that still proves the
+    // backend path used by the classroom is alive.
     const { error } = await client.from("questions").select("id").limit(1);
     if (error) throw error;
 
@@ -39,15 +96,12 @@ async function verifyBackend() {
     setStatus("Backend connected", true);
   } catch (error) {
     console.error("Classroom backend health check failed", error);
-    setStatus("Backend unavailable", false);
-    setEntryDisabled(true);
-    if (setupWarning) {
-      setupWarning.hidden = false;
-      const heading = setupWarning.querySelector("strong");
-      const detail = setupWarning.querySelector("p");
-      if (heading) heading.textContent = "Classroom backend is temporarily unavailable.";
-      if (detail) detail.textContent = "The classroom could not verify its database connection. Please try again shortly.";
-    }
+    const unsafeKey = /secret key|service-role key/i.test(error?.message || "");
+    showBackendFailure(
+      unsafeKey
+        ? "The classroom configuration contains a privileged Supabase key. Replace it with the project's publishable/anon key before continuing."
+        : "The classroom could not verify its database connection. Please try again shortly.",
+    );
   }
 }
 
