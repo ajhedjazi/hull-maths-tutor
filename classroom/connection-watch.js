@@ -3,6 +3,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const config = window.HMT_SUPABASE_CONFIG || {};
 const headerStatus = document.querySelector("#header-status");
 const classroomMessage = document.querySelector("#classroom-message");
+const HEALTH_CHECK_TIMEOUT_MS = 8000;
 
 if (config.url && config.anonKey && headerStatus) {
   const supabase = createClient(config.url, config.anonKey);
@@ -25,10 +26,18 @@ if (config.url && config.anonKey && headerStatus) {
     if (checkInFlight || !navigator.onLine) return false;
     checkInFlight = true;
 
+    let timeoutId;
     try {
-      // A tiny authenticated read verifies that the browser can actually reach
-      // the configured Supabase project, rather than trusting navigator.onLine.
-      const { error } = await supabase.from("questions").select("id").limit(1);
+      // Bound the health check so a stalled network request cannot leave the
+      // watcher permanently stuck with checkInFlight=true.
+      const healthCheck = supabase.from("questions").select("id").limit(1);
+      const timeout = new Promise((_, reject) => {
+        timeoutId = window.setTimeout(
+          () => reject(new Error("Backend health check timed out")),
+          HEALTH_CHECK_TIMEOUT_MS,
+        );
+      });
+      const { error } = await Promise.race([healthCheck, timeout]);
       if (error) throw error;
 
       const recovered = !lastHealthy;
@@ -44,6 +53,7 @@ if (config.url && config.anonKey && headerStatus) {
       setClassroomNotice("Connection interrupted. Your lesson is still open; wait for the connection to return before sending or marking work.", true);
       return false;
     } finally {
+      if (timeoutId) window.clearTimeout(timeoutId);
       checkInFlight = false;
     }
   }
