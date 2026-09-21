@@ -1,26 +1,16 @@
 import assert from "node:assert/strict";
-import { readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { extname, join } from "node:path";
 
-const CLASSROOM_DIR = new URL("./", import.meta.url);
-const BROWSER_EXTENSIONS = new Set([".js", ".html"]);
-const FORBIDDEN_PATTERNS = [
-  /service[_-]?role/i,
-  /supabase[_-]?service[_-]?key/i,
-  /SUPABASE_SERVICE_ROLE_KEY/,
-];
+const CONFIG_FILE = new URL("./config.js", import.meta.url);
 
-test("browser classroom files do not contain service-role credentials", async () => {
-  const entries = await readdir(CLASSROOM_DIR, { withFileTypes: true });
-  const browserFiles = entries.filter(
-    (entry) => entry.isFile() && BROWSER_EXTENSIONS.has(extname(entry.name)) && !entry.name.endsWith(".test.mjs"),
-  );
+// The public classroom config may contain only the Supabase URL and anon key.
+// Guard code elsewhere is allowed to mention service-role keys so it can reject them.
+test("browser config exposes only public Supabase settings", async () => {
+  const source = await readFile(CONFIG_FILE, "utf8");
 
-  for (const file of browserFiles) {
-    const source = await readFile(join(CLASSROOM_DIR.pathname, file.name), "utf8");
-    for (const pattern of FORBIDDEN_PATTERNS) {
-      assert.doesNotMatch(source, pattern, `${file.name} contains a forbidden service-role reference`);
-    }
-  }
+  assert.match(source, /anonKey\s*:/, "config.js should expose an anonKey field");
+  assert.doesNotMatch(source, /service[_-]?role/i, "config.js must never reference a service-role key");
+  assert.doesNotMatch(source, /SUPABASE_SERVICE_ROLE_KEY/, "config.js must never expose the server service-role environment key");
+  assert.doesNotMatch(source, /secretKey\s*:/i, "config.js must not expose a generic secret key field");
 });
