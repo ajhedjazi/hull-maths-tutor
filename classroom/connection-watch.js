@@ -8,7 +8,7 @@ const HEALTH_CHECK_TIMEOUT_MS = 8000;
 if (config.url && config.anonKey && headerStatus) {
   const supabase = createClient(config.url, config.anonKey);
   let checkInFlight = false;
-  let lastHealthy = true;
+  let lastHealthy = navigator.onLine;
 
   const setStatus = (label, online) => {
     const text = headerStatus.querySelector("span:last-child");
@@ -20,6 +20,12 @@ if (config.url && config.anonKey && headerStatus) {
     if (!classroomMessage || document.querySelector("#classroom-view")?.hidden) return;
     classroomMessage.textContent = message;
     classroomMessage.classList.toggle("is-error", isError);
+  };
+
+  const showOfflineState = () => {
+    lastHealthy = false;
+    setStatus("Offline", false);
+    setClassroomNotice("You are offline. Keep this page open; live lesson updates will resume when your connection returns.", true);
   };
 
   async function checkBackend({ announceRecovery = false } = {}) {
@@ -58,11 +64,7 @@ if (config.url && config.anonKey && headerStatus) {
     }
   }
 
-  window.addEventListener("offline", () => {
-    lastHealthy = false;
-    setStatus("Offline", false);
-    setClassroomNotice("You are offline. Keep this page open; live lesson updates will resume when your connection returns.", true);
-  });
+  window.addEventListener("offline", showOfflineState);
 
   window.addEventListener("online", () => {
     setStatus("Reconnecting…", false);
@@ -72,6 +74,10 @@ if (config.url && config.anonKey && headerStatus) {
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) checkBackend({ announceRecovery: true });
   });
+
+  // The browser can already be offline when this module first runs, in which
+  // case no offline event is guaranteed to fire after the listener is attached.
+  if (!navigator.onLine) showOfflineState();
 
   // Re-check periodically while a visible lesson tab is left open. Hidden tabs
   // recover through visibilitychange, avoiding unnecessary Supabase traffic while
