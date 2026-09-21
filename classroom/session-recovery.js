@@ -72,6 +72,11 @@ if (config.url && config.anonKey) {
     }
     if (classroomView.hidden) return;
 
+    // Recovery queries can take long enough for a student to start typing.
+    // Only replace fields that are still unchanged when the saved answer arrives.
+    const workingBeforeRecovery = workingInput.value;
+    const answerBeforeRecovery = answerInput.value;
+
     const { data: lessonSession, error: sessionError } = await supabase
       .from("sessions")
       .select("id")
@@ -98,9 +103,13 @@ if (config.url && config.anonKey) {
     if (answerError || !answers?.length) return;
 
     const submitted = answers[0];
-    workingInput.value = submitted.working_text || "";
-    answerInput.value = submitted.answer_text || "";
-    if (saveState) {
+    const workingUnchanged = workingInput.value === workingBeforeRecovery;
+    const answerUnchanged = answerInput.value === answerBeforeRecovery;
+
+    if (workingUnchanged) workingInput.value = submitted.working_text || "";
+    if (answerUnchanged) answerInput.value = submitted.answer_text || "";
+
+    if (saveState && workingUnchanged && answerUnchanged) {
       saveState.textContent = submitted.is_correct === null
         ? "Your submitted answer has been restored."
         : "Your marked answer has been restored.";
