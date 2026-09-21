@@ -73,7 +73,10 @@ if (config.url && config.anonKey && headerStatus) {
     if (!document.hidden) checkBackend({ announceRecovery: true });
   });
 
-  // Re-check periodically while a lesson tab is left open. This catches cases
-  // where Wi-Fi remains connected but Supabase itself is temporarily unreachable.
-  window.setInterval(() => checkBackend({ announceRecovery: true }), 30000);
+  // Re-check periodically while a visible lesson tab is left open. Hidden tabs
+  // recover through visibilitychange, avoiding unnecessary Supabase traffic while
+  // a student or tutor has switched away for an extended period.
+  window.setInterval(() => {
+    if (!document.hidden) checkBackend({ announceRecovery: true });
+  }, 30000);
 }
