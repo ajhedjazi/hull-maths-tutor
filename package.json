@@ -1,0 +1,8 @@
+{
+  "name": "hull-maths-tutor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test classroom/question-state.test.mjs"
+  }
+}
