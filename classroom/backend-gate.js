@@ -5,6 +5,7 @@ const status = document.querySelector("#header-status");
 const setupWarning = document.querySelector("#setup-warning");
 const entryView = document.querySelector("#entry-view");
 const BACKEND_CHECK_TIMEOUT_MS = 8000;
+let verificationInFlight = false;
 
 function setStatus(label, online = false) {
   const text = status?.querySelector("span:last-child");
@@ -24,7 +25,7 @@ function decodeJwtPayload(token) {
 
   try {
     const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
-    const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+    const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, 4, "=");
     return JSON.parse(atob(padded));
   } catch {
     return null;
@@ -76,6 +77,8 @@ function showBackendFailure(message) {
 }
 
 async function verifyBackend() {
+  if (verificationInFlight) return;
+  verificationInFlight = true;
   setStatus("Verifying backend…", false);
   setEntryDisabled(true);
 
@@ -112,7 +115,12 @@ async function verifyBackend() {
     );
   } finally {
     window.clearTimeout(timeout);
+    verificationInFlight = false;
   }
 }
+
+window.addEventListener("online", () => {
+  verifyBackend();
+});
 
 verifyBackend();
