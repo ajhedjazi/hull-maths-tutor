@@ -4,6 +4,7 @@ const config = window.HMT_SUPABASE_CONFIG || {};
 const status = document.querySelector("#header-status");
 const setupWarning = document.querySelector("#setup-warning");
 const entryView = document.querySelector("#entry-view");
+const BACKEND_CHECK_TIMEOUT_MS = 8000;
 
 function setStatus(label, online = false) {
   const text = status?.querySelector("span:last-child");
@@ -78,6 +79,9 @@ async function verifyBackend() {
   setStatus("Verifying backend…", false);
   setEntryDisabled(true);
 
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), BACKEND_CHECK_TIMEOUT_MS);
+
   try {
     validatePublicConfig();
 
@@ -87,8 +91,9 @@ async function verifyBackend() {
 
     // A tiny read proves the REST endpoint, public key and classroom schema are
     // reachable. RLS may legitimately return zero rows; that still proves the
-    // backend path used by the classroom is alive.
-    const { error } = await client.from("questions").select("id").limit(1);
+    // backend path used by the classroom is alive. Abort rather than leaving the
+    // entry controls disabled forever when the network or backend stalls.
+    const { error } = await client.from("questions").select("id").limit(1).abortSignal(controller.signal);
     if (error) throw error;
 
     setupWarning.hidden = true;
@@ -97,11 +102,16 @@ async function verifyBackend() {
   } catch (error) {
     console.error("Classroom backend health check failed", error);
     const unsafeKey = /secret key|service-role key/i.test(error?.message || "");
+    const timedOut = controller.signal.aborted;
     showBackendFailure(
       unsafeKey
         ? "The classroom configuration contains a privileged Supabase key. Replace it with the project's publishable/anon key before continuing."
-        : "The classroom could not verify its database connection. Please try again shortly.",
+        : timedOut
+          ? "The classroom backend did not respond within 8 seconds. Check your connection and try again."
+          : "The classroom could not verify its database connection. Please try again shortly.",
     );
+  } finally {
+    window.clearTimeout(timeout);
   }
 }
 
