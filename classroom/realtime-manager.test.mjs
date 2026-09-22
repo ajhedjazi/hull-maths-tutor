@@ -57,6 +57,35 @@ assert.equal(manager.pendingRecoveryCount, 0, "clear cancels pending recovery wo
 assert.equal(timers[2].cancelled, true, "clear cancels the outstanding timer");
 assert.deepEqual(removed, ["answers-1", "answers-2"], "clear removes the active channel exactly once");
 
+const hookTimers = [];
+const hookErrors = [];
+let hookGeneration = 0;
+const hookStatuses = new Map();
+const hookManager = createRealtimeManager({
+  supabase,
+  recoveryDelayMs: 1,
+  setTimer(callback) { const timer = { callback, cancelled: false }; hookTimers.push(timer); return timer; },
+  clearTimer,
+  async onRecovered() { throw new Error("snapshot fetch failed"); },
+  onRecoveryError(error, key) { hookErrors.push({ message: error.message, key }); },
+});
+const hookFactory = () => {
+  hookGeneration += 1;
+  const channel = {
+    name: `hook-${hookGeneration}`,
+    subscribe(callback) { hookStatuses.set(channel.name, callback); return channel; },
+  };
+  return channel;
+};
+await hookManager.subscribe("questions", hookFactory);
+hookStatuses.get("hook-1")("CHANNEL_ERROR");
+await hookTimers[0].callback();
+assert.equal(hookGeneration, 2, "channel recovery succeeds even when reconciliation fails");
+assert.equal(hookManager.size, 1, "failed reconciliation does not discard the healthy replacement channel");
+assert.deepEqual(hookErrors, [{ message: "snapshot fetch failed", key: "questions" }], "reconciliation failures are reported with their channel key");
+await hookManager.clear();
+
 assert.throws(() => createRealtimeManager({ supabase, onRecovered: true }), /onRecovered must be a function/, "invalid recovery hooks fail fast");
+assert.throws(() => createRealtimeManager({ supabase, onRecoveryError: true }), /onRecoveryError must be a function/, "invalid recovery error hooks fail fast");
 
 console.log("realtime-manager tests passed");

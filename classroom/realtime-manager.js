@@ -1,9 +1,10 @@
 import { createRealtimeChannelRegistry } from "./realtime-channel-registry.js";
 import { createRealtimeRecovery } from "./realtime-recovery.js";
 
-export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTimer, clearTimer, onRecovered }) {
+export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTimer, clearTimer, onRecovered, onRecoveryError }) {
   if (!supabase?.removeChannel) throw new TypeError("A Supabase client with removeChannel is required");
   if (onRecovered !== undefined && typeof onRecovered !== "function") throw new TypeError("onRecovered must be a function");
+  if (onRecoveryError !== undefined && typeof onRecoveryError !== "function") throw new TypeError("onRecoveryError must be a function");
 
   const factories = new Map();
   const registry = createRealtimeChannelRegistry((channel) => supabase.removeChannel(channel));
@@ -23,7 +24,13 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
   const recovery = createRealtimeRecovery({
     replaceChannel: async (key) => {
       const channel = await replace(key);
-      if (channel && onRecovered) await onRecovered(key);
+      if (channel && onRecovered) {
+        try {
+          await onRecovered(key);
+        } catch (error) {
+          if (onRecoveryError) onRecoveryError(error, key);
+        }
+      }
       return channel;
     },
     delayMs: recoveryDelayMs,
