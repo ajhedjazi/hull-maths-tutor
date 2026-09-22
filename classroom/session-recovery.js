@@ -1,7 +1,36 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 const config = window.HMT_SUPABASE_CONFIG || {};
-if (config.url && config.anonKey) {
+
+function decodeJwtPayload(token) {
+  const parts = String(token || "").split(".");
+  if (parts.length !== 3) return null;
+
+  try {
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+    const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+    return JSON.parse(atob(padded));
+  } catch {
+    return null;
+  }
+}
+
+function hasBrowserSafeConfig() {
+  if (!config.url || !config.anonKey) return false;
+
+  try {
+    if (new URL(config.url).protocol !== "https:") return false;
+  } catch {
+    return false;
+  }
+
+  const key = String(config.anonKey).trim();
+  if (!key || key.startsWith("sb_secret_")) return false;
+  return decodeJwtPayload(key)?.role !== "service_role";
+}
+
+// Recovery is browser-only: never construct a client from a privileged key.
+if (hasBrowserSafeConfig()) {
   const supabase = createClient(config.url, config.anonKey);
 
   recoverSession().catch(() => {
