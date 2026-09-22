@@ -36,11 +36,12 @@ export async function fetchClassroomSnapshot({ supabase, roomId, sessionId }) {
   const question = questions?.[0] || null;
   let answer = null;
 
-  if (question) {
+  if (question && room?.student_id) {
     const { data: answers, error: answerError } = await supabase
       .from("student_answers")
       .select(ANSWER_FIELDS)
       .eq("session_question_id", question.id)
+      .eq("student_id", room.student_id)
       .order("submitted_at", { ascending: false })
       .limit(1);
     throwIfError(answerError, "Could not refresh current answer");
