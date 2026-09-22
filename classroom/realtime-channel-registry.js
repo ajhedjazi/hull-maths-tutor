@@ -13,7 +13,12 @@ export function createRealtimeChannelRegistry(removeChannel) {
     const previous = channels.get(key);
     if (previous) {
       channels.delete(key);
-      await removeChannel(previous);
+      try {
+        await removeChannel(previous);
+      } catch {
+        // A dead realtime socket can make cleanup fail. The registry has
+        // already forgotten the stale channel, so recovery must continue.
+      }
     }
 
     const channel = createChannel();
