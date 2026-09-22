@@ -25,6 +25,7 @@ const manager = {
   async subscribe(key, factory) {
     subscribed.push({ key, channel: factory() });
   },
+  async clear() {},
 };
 
 await subscribeClassroomRealtime({
@@ -65,4 +66,29 @@ await assert.rejects(
   /roomId and sessionId are required/,
 );
 
-console.log("classroom-realtime: 11 assertions passed");
+const failureSubscriptions = [];
+let clearCalls = 0;
+const failingManager = {
+  async subscribe(key, factory) {
+    failureSubscriptions.push({ key, channel: factory() });
+    if (key === "questions") throw new Error("realtime unavailable");
+  },
+  async clear() {
+    clearCalls += 1;
+  },
+};
+
+await assert.rejects(
+  () => subscribeClassroomRealtime({
+    manager: failingManager,
+    supabase,
+    roomId: "room-123",
+    sessionId: "session-456",
+    ...callbacks,
+  }),
+  /realtime unavailable/,
+);
+assert.deepEqual(failureSubscriptions.map(({ key }) => key), ["room", "questions"]);
+assert.equal(clearCalls, 1);
+
+console.log("classroom-realtime: 13 assertions passed");
