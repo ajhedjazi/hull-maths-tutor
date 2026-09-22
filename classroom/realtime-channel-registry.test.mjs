@@ -16,6 +16,22 @@ test("replacing a keyed channel removes the previous subscription first", async 
   assert.equal(registry.has("answers"), true);
 });
 
+test("replacement continues when stale channel cleanup fails", async () => {
+  const removed = [];
+  const registry = createRealtimeChannelRegistry(async (channel) => {
+    removed.push(channel.id);
+    throw new Error("socket already gone");
+  });
+
+  await registry.replace("questions", () => ({ id: "questions-stale" }));
+  const recovered = await registry.replace("questions", () => ({ id: "questions-recovered" }));
+
+  assert.equal(recovered.id, "questions-recovered");
+  assert.deepEqual(removed, ["questions-stale"]);
+  assert.equal(registry.size, 1);
+  assert.equal(registry.has("questions"), true);
+});
+
 test("clear forgets channels before awaiting cleanup and tolerates cleanup failure", async () => {
   const removed = [];
   const registry = createRealtimeChannelRegistry(async (channel) => {
