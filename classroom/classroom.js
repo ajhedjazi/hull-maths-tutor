@@ -3,6 +3,8 @@ import { applyQuestionState } from "./question-state.js";
 import { createMarkingFlight } from "./marking-flight.js";
 import { createRealtimeManager } from "./realtime-manager.js";
 import { subscribeClassroomRealtime } from "./classroom-realtime.js";
+import { createClassroomRecoveryHandler } from "./recovery-handler.js";
+import { applyRecoveredClassroomView } from "./recovery-view.js";
 
 const config = window.HMT_SUPABASE_CONFIG || {};
 const isConfigured = Boolean(config.url && config.anonKey);
@@ -10,31 +12,21 @@ const supabase = isConfigured ? createClient(config.url, config.anonKey) : null;
 const markingFlight = createMarkingFlight();
 const realtimeManager = supabase ? createRealtimeManager({ supabase }) : null;
 
-const state = {
-  role: null,
-  user: null,
-  room: null,
-  session: null,
-  currentQuestion: null,
-  currentAnswer: null,
-  questions: [],
-  misconceptions: [],
-};
-
+const state = { role: null, user: null, room: null, session: null, currentQuestion: null, currentAnswer: null, questions: [], misconceptions: [] };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
-
 const elements = {
-  setupWarning: $("#setup-warning"), headerStatus: $("#header-status"), entryView: $("#entry-view"), classroomView: $("#classroom-view"), studentJoinForm: $("#student-join-form"), studentJoinMessage: $("#student-join-message"), tutorLoginForm: $("#tutor-login-form"), tutorLoginMessage: $("#tutor-login-message"), tutorLobby: $("#tutor-lobby"), tutorLobbyMessage: $("#tutor-lobby-message"), activeRooms: $("#active-rooms"), createRoom: $("#create-room"), tutorSignOut: $("#tutor-sign-out"), classroomRoleLabel: $("#classroom-role-label"), classroomStudentName: $("#classroom-student-name"), roomCodeBadge: $("#room-code-badge"), leaveClassroom: $("#leave-classroom"), closeRoom: $("#close-room"), tutorQuestionControls: $("#tutor-question-controls"), questionPicker: $("#question-picker"), sendQuestion: $("#send-question"), questionNumber: $("#question-number"), questionStatus: $("#question-status"), questionDisplay: $("#question-display"), studentWorkspace: $("#student-workspace"), studentWorking: $("#student-working"), studentAnswer: $("#student-answer"), submitAnswer: $("#submit-answer"), studentSaveState: $("#student-save-state"), studentMarkResult: $("#student-mark-result"), tutorResponseCard: $("#tutor-response-card"), responseState: $("#response-state"), responseWorking: $("#response-working"), responseAnswer: $("#response-answer"), markingControls: $("#marking-controls"), misconceptionPicker: $("#misconception-picker"), markCorrect: $("#mark-correct"), markIncorrect: $("#mark-incorrect"), markingMessage: $("#marking-message"), diagnosticCard: $("#diagnostic-card"), masteryList: $("#mastery-list"), classroomMessage: $("#classroom-message"),
+  setupWarning: $("#setup-warning"), headerStatus: $("#header-status"), entryView: $("#entry-view"), classroomView: $("#classroom-view"), studentJoinForm: $("#student-join-form"), studentJoinMessage: $("#student-join-message"), tutorLoginForm: $("#tutor-login-form"), tutorLoginMessage: $("#tutor-login-message"), tutorLobby: $("#tutor-lobby"), tutorLobbyMessage: $("#tutor-lobby-message"), activeRooms: $("#active-rooms"), createRoom: $("#create-room"), tutorSignOut: $("#tutor-sign-out"), classroomRoleLabel: $("#classroom-role-label"), classroomStudentName: $("#classroom-student-name"), roomCodeBadge: $("#room-code-badge"), leaveClassroom: $("#leave-classroom"), closeRoom: $("#close-room"), tutorQuestionControls: $("#tutor-question-controls"), questionPicker: $("#question-picker"), sendQuestion: $("#send-question"), questionNumber: $("#question-number"), questionStatus: $("#question-status"), questionDisplay: $("#question-display"), studentWorkspace: $("#student-workspace"), studentWorking: $("#student-working"), studentAnswer: $("#student-answer"), submitAnswer: $("#submit-answer"), studentSaveState: $("#student-save-state"), studentMarkResult: $("#student-mark-result"), tutorResponseCard: $("#tutor-response-card"), responseState: $("#response-state"), responseWorking: $("#response-working"), responseAnswer: $("#response-answer"), markingControls: $("#marking-controls"), misconceptionPicker: $("#misconception-picker"), markCorrect: $("#mark-correct"), markIncorrect: $("#mark-incorrect"), markingMessage: $("#marking-message"), diagnosticCard: $("#diagnostic-card"), masteryList: $("#mastery-list"), classroomMessage: $("#classroom-message")
 };
 
 function setMessage(element, message = "", isError = false) { if (!element) return; element.textContent = message; element.classList.toggle("is-error", isError); }
 function setConnectionStatus(label, online = false) { const text = elements.headerStatus?.querySelector("span:last-child"); if (text) text.textContent = label; elements.headerStatus?.classList.toggle("is-online", online); }
 function setMarkingBusy(busy) { elements.markCorrect.disabled = busy; elements.markIncorrect.disabled = busy; elements.misconceptionPicker.disabled = busy; }
 function normaliseRoomCode(value) { return value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6); }
+function clearQuestionView() { state.currentQuestion = null; state.currentAnswer = null; elements.questionDisplay.innerHTML = '<p class="empty-state">The question will appear here.</p>'; elements.questionDisplay.classList.remove("has-question"); elements.questionNumber.textContent = "Waiting to begin"; elements.questionStatus.textContent = "Ready"; elements.responseWorking.innerHTML = '<p class="empty-state">Waiting for the student to submit.</p>'; elements.responseAnswer.textContent = "—"; elements.responseState.textContent = "Waiting"; elements.markingControls.hidden = true; elements.studentMarkResult.hidden = true; elements.studentWorking.value = ""; elements.studentAnswer.value = ""; }
 function showEntryHome() { state.role = null; elements.entryView.hidden = false; elements.classroomView.hidden = true; elements.studentJoinForm.hidden = true; elements.tutorLoginForm.hidden = true; elements.tutorLobby.hidden = true; $$(".role-picker").forEach((node) => (node.hidden = false)); clearClassroomState(false); }
 function showRole(role) { state.role = role; $$(".role-picker").forEach((node) => (node.hidden = true)); elements.studentJoinForm.hidden = role !== "student"; elements.tutorLoginForm.hidden = role !== "tutor"; elements.tutorLobby.hidden = true; if (role === "tutor" && state.user && !state.user.is_anonymous) showTutorLobby(); }
-function clearClassroomState(removeChannels = true) { if (removeChannels) unsubscribeAll(); state.room = null; state.session = null; state.currentQuestion = null; state.currentAnswer = null; elements.questionDisplay.innerHTML = '<p class="empty-state">The question will appear here.</p>'; elements.questionDisplay.classList.remove("has-question"); elements.questionNumber.textContent = "Waiting to begin"; elements.questionStatus.textContent = "Ready"; elements.responseWorking.innerHTML = '<p class="empty-state">Waiting for the student to submit.</p>'; elements.responseAnswer.textContent = "—"; elements.markingControls.hidden = true; elements.studentMarkResult.hidden = true; elements.studentWorking.value = ""; elements.studentAnswer.value = ""; setMarkingBusy(false); }
+function clearClassroomState(removeChannels = true) { if (removeChannels) unsubscribeAll(); state.room = null; state.session = null; clearQuestionView(); setMarkingBusy(false); }
 async function unsubscribeAll() { if (!realtimeManager) return; await realtimeManager.clear(); }
 async function initialise() { if (!isConfigured) { elements.setupWarning.hidden = false; setConnectionStatus("Setup required", false); $$("button, input, select, textarea").forEach((control) => { if (!control.classList.contains("back-button")) control.disabled = true; }); return; } setConnectionStatus("Connecting…", false); const { data: { session } } = await supabase.auth.getSession(); state.user = session?.user || null; setConnectionStatus("Backend connected", true); supabase.auth.onAuthStateChange((_event, nextSession) => { state.user = nextSession?.user || null; if (state.role === "tutor" && state.user && !state.user.is_anonymous) showTutorLobby(); }); if (state.user && !state.user.is_anonymous && window.location.hash) showRole("tutor"); }
 async function ensureAnonymousStudent() { const { data: { session } } = await supabase.auth.getSession(); if (session?.user?.is_anonymous) { state.user = session.user; return session.user; } if (session?.user && !session.user.is_anonymous) throw new Error("Tutor sign-in is active in this browser. Open the student room in another browser or private tab."); const { data, error } = await supabase.auth.signInAnonymously(); if (error) throw error; state.user = data.user; return data.user; }
@@ -59,6 +51,23 @@ async function closeCurrentRoom() { if (state.role !== "tutor" || !state.room ||
 async function leaveClassroomView() { await unsubscribeAll(); const previousRole = state.role; clearClassroomState(false); elements.classroomView.hidden = true; elements.entryView.hidden = false; if (previousRole === "tutor" && state.user && !state.user.is_anonymous) await showTutorLobby(); else showEntryHome(); }
 async function signOutTutor() { await unsubscribeAll(); await supabase.auth.signOut(); state.user = null; showEntryHome(); }
 function escapeHtml(value = "") { return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
+
+if (realtimeManager) {
+  const recoverClassroom = createClassroomRecoveryHandler({
+    supabase,
+    getCurrent: () => state,
+    applyRecovered: async (recovered) => {
+      applyRecoveredClassroomView({ recovered, state, role: state.role, renderQuestion, renderAnswer, clearQuestion: clearQuestionView, setStudentName: (name) => { elements.classroomStudentName.textContent = name; }, loadMastery });
+      setConnectionStatus("Live classroom connected", true);
+      setMessage(elements.classroomMessage, "Connection restored. Classroom synced.");
+    }
+  });
+  realtimeManager.setRecoveryHooks({
+    onRecovered: recoverClassroom,
+    onRecoveryError: (error) => { setConnectionStatus("Realtime reconnecting…", false); setMessage(elements.classroomMessage, error?.message || "Connection restored, but classroom sync failed. Live updates remain active.", true); }
+  });
+}
+
 $$("[data-role]").forEach((button) => button.addEventListener("click", () => showRole(button.dataset.role)));
 $$(".back-button").forEach((button) => button.addEventListener("click", showEntryHome));
 $("#room-code-input").addEventListener("input", (event) => { event.target.value = normaliseRoomCode(event.target.value); });
