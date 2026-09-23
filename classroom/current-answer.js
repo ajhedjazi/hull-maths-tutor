@@ -14,5 +14,14 @@ export async function fetchCurrentStudentAnswer({ supabase, sessionQuestionId, s
     .maybeSingle();
 
   if (error) throw new Error(`Could not load the current student answer: ${error.message}`);
-  return data || null;
+  if (!data) return null;
+
+  // Treat the query filters as necessary but not sufficient. Recovery runs after
+  // reconnects, so never render an answer unless the returned row still belongs
+  // to the exact active question and student we asked for.
+  if (data.session_question_id !== sessionQuestionId || data.student_id !== studentId) {
+    throw new Error("Could not load the current student answer: Supabase returned an answer outside the active question or student.");
+  }
+
+  return data;
 }
