@@ -66,8 +66,6 @@ const hookManager = createRealtimeManager({
   recoveryDelayMs: 1,
   setTimer(callback) { const timer = { callback, cancelled: false }; hookTimers.push(timer); return timer; },
   clearTimer,
-  async onRecovered() { throw new Error("snapshot fetch failed"); },
-  onRecoveryError(error, key) { hookErrors.push({ message: error.message, key }); },
 });
 const hookFactory = () => {
   hookGeneration += 1;
@@ -78,14 +76,20 @@ const hookFactory = () => {
   return channel;
 };
 await hookManager.subscribe("questions", hookFactory);
+hookManager.setRecoveryHooks({
+  async onRecovered() { throw new Error("snapshot fetch failed"); },
+  onRecoveryError(error, key) { hookErrors.push({ message: error.message, key }); },
+});
 hookStatuses.get("hook-1")("CHANNEL_ERROR");
 await hookTimers[0].callback();
-assert.equal(hookGeneration, 2, "channel recovery succeeds even when reconciliation fails");
+assert.equal(hookGeneration, 2, "channel recovery succeeds when hooks are bound after manager creation");
 assert.equal(hookManager.size, 1, "failed reconciliation does not discard the healthy replacement channel");
-assert.deepEqual(hookErrors, [{ message: "snapshot fetch failed", key: "questions" }], "reconciliation failures are reported with their channel key");
+assert.deepEqual(hookErrors, [{ message: "snapshot fetch failed", key: "questions" }], "late-bound reconciliation failures are reported with their channel key");
 await hookManager.clear();
 
 assert.throws(() => createRealtimeManager({ supabase, onRecovered: true }), /onRecovered must be a function/, "invalid recovery hooks fail fast");
 assert.throws(() => createRealtimeManager({ supabase, onRecoveryError: true }), /onRecoveryError must be a function/, "invalid recovery error hooks fail fast");
+assert.throws(() => manager.setRecoveryHooks({ onRecovered: true }), /onRecovered must be a function/, "invalid late-bound recovery hooks fail fast");
+assert.throws(() => manager.setRecoveryHooks({ onRecoveryError: true }), /onRecoveryError must be a function/, "invalid late-bound recovery error hooks fail fast");
 
 console.log("realtime-manager tests passed");
