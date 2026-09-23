@@ -69,6 +69,14 @@ test("fails closed when the RPC returns no inserted question", async () => {
   );
 });
 
+test("fails closed when the RPC returns more than one row", async () => {
+  const supabase = { rpc: async () => ({ data: [sentRow, { ...sentRow, id: "sq-3" }], error: null }) };
+  await assert.rejects(
+    () => sendLiveQuestion({ supabase, sessionId: "session-1", questionId: "question-2" }),
+    /ambiguous result/,
+  );
+});
+
 test("rejects a response that does not match the requested classroom state", async () => {
   for (const badRow of [
     { ...sentRow, session_id: "other-session" },

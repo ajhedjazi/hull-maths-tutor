@@ -1,5 +1,11 @@
 function normaliseRpcRow(data) {
-  return Array.isArray(data) ? data[0] ?? null : data ?? null;
+  if (Array.isArray(data)) {
+    if (data.length !== 1) {
+      throw new Error("Question send returned an ambiguous result. Please refresh the room before sending again.");
+    }
+    return data[0] ?? null;
+  }
+  return data ?? null;
 }
 
 function validateSentQuestion(row, { sessionId, questionId }) {
