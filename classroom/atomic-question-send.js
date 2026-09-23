@@ -2,6 +2,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 import { sendLiveQuestion } from "./send-live-question.js";
 import { createQuestionSendFlight } from "./question-send-flight.js";
 import { resolveActiveSessionId } from "./resolve-active-session.js";
+import { assertTutorSendAuthorised } from "./tutor-send-authorisation.js";
 
 // Keep question transitions atomic without exposing privileged credentials.
 // This module intercepts the tutor Send action and delegates the complete
@@ -74,6 +75,13 @@ async function sendAtomically(event) {
   showMessage("Sending question…");
 
   try {
+    // The database RLS/RPC policy remains the security boundary. This check
+    // fails early for anonymous/student sessions so the UI cannot attempt a
+    // tutor-only transition from a manipulated or stale classroom view.
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (userError) throw userError;
+    assertTutorSendAuthorised(user);
+
     const sessionId = await resolveActiveSessionId({
       supabase,
       roomCode: roomCodeBadge?.textContent,
