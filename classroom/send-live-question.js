@@ -13,6 +13,9 @@ function validateSentQuestion(row, { sessionId, questionId }) {
   if (row.session_id !== sessionId || row.question_id !== questionId || row.status !== "live") {
     throw new Error("Question send returned unexpected classroom state. Please refresh the room before sending again.");
   }
+  if (!Number.isInteger(row.position) || row.position < 1 || !String(row.question_text_snapshot || "").trim()) {
+    throw new Error("Question send returned an incomplete live question. Please refresh the room before continuing.");
+  }
   return row;
 }
 
