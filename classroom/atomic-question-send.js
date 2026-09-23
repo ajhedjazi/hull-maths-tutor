@@ -85,6 +85,7 @@ async function sendAtomically(event) {
     const sessionId = await resolveActiveSessionId({
       supabase,
       roomCode: roomCodeBadge?.textContent,
+      tutorId: user.id,
     });
     await sendLiveQuestion({ supabase, sessionId, questionId });
     showMessage("Question sent live.");
