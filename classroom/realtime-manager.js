@@ -6,8 +6,17 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
   if (onRecovered !== undefined && typeof onRecovered !== "function") throw new TypeError("onRecovered must be a function");
   if (onRecoveryError !== undefined && typeof onRecoveryError !== "function") throw new TypeError("onRecoveryError must be a function");
 
+  let recoveredHook = onRecovered;
+  let recoveryErrorHook = onRecoveryError;
   const factories = new Map();
   const registry = createRealtimeChannelRegistry((channel) => supabase.removeChannel(channel));
+
+  function setRecoveryHooks({ onRecovered: nextRecovered, onRecoveryError: nextError } = {}) {
+    if (nextRecovered !== undefined && typeof nextRecovered !== "function") throw new TypeError("onRecovered must be a function");
+    if (nextError !== undefined && typeof nextError !== "function") throw new TypeError("onRecoveryError must be a function");
+    recoveredHook = nextRecovered;
+    recoveryErrorHook = nextError;
+  }
 
   async function replace(key) {
     const factory = factories.get(key);
@@ -24,11 +33,11 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
   const recovery = createRealtimeRecovery({
     replaceChannel: async (key) => {
       const channel = await replace(key);
-      if (channel && onRecovered) {
+      if (channel && recoveredHook) {
         try {
-          await onRecovered(key);
+          await recoveredHook(key);
         } catch (error) {
-          if (onRecoveryError) onRecoveryError(error, key);
+          if (recoveryErrorHook) recoveryErrorHook(error, key);
         }
       }
       return channel;
@@ -61,6 +70,7 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
     replace,
     remove,
     clear,
+    setRecoveryHooks,
     has: (key) => registry.has(key),
     get size() { return registry.size; },
     get pendingRecoveryCount() { return recovery.pendingCount; },
