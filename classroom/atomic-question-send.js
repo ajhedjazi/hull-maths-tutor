@@ -1,5 +1,6 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 import { sendLiveQuestion } from "./send-live-question.js";
+import { createQuestionSendFlight } from "./question-send-flight.js";
 
 // Keep question transitions atomic without exposing privileged credentials.
 // This module intercepts the tutor Send action and delegates the complete
@@ -36,6 +37,7 @@ function hasBrowserSafeConfig() {
 // Do not even construct this module's Supabase client when configuration is
 // unsafe. backend-gate.js owns the user-facing remediation message.
 const supabase = hasBrowserSafeConfig() ? createClient(config.url, config.anonKey) : null;
+const sendFlight = createQuestionSendFlight();
 
 const sendButton = document.querySelector("#send-question");
 const questionPicker = document.querySelector("#question-picker");
@@ -85,6 +87,11 @@ async function sendAtomically(event) {
     return;
   }
 
+  // Disabled buttons normally prevent a second click, but the explicit
+  // single-flight guard also protects against rapid/programmatic duplicate
+  // events while the atomic RPC is still unresolved.
+  if (!sendFlight.tryStart()) return;
+
   sendButton.disabled = true;
   showMessage("Sending question…");
 
@@ -95,6 +102,7 @@ async function sendAtomically(event) {
   } catch (error) {
     showMessage(error?.message || "Could not send the question. Nothing was changed.", true);
   } finally {
+    sendFlight.finish();
     sendButton.disabled = false;
   }
 }
