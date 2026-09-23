@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import { sendLiveQuestion } from "./send-live-question.js";
 
 // Keep question transitions atomic without exposing privileged credentials.
 // This module intercepts the tutor Send action and delegates the complete
@@ -89,12 +90,7 @@ async function sendAtomically(event) {
 
   try {
     const sessionId = await resolveActiveSessionId();
-    const { error } = await supabase.rpc("send_live_question", {
-      p_session_id: sessionId,
-      p_question_id: questionId,
-    });
-    if (error) throw error;
-
+    await sendLiveQuestion({ supabase, sessionId, questionId });
     showMessage("Question sent live.");
   } catch (error) {
     showMessage(error?.message || "Could not send the question. Nothing was changed.", true);
