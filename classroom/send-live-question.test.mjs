@@ -2,12 +2,19 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { sendLiveQuestion } from "./send-live-question.js";
 
+const sentRow = {
+  id: "sq-2",
+  session_id: "session-1",
+  question_id: "question-2",
+  status: "live",
+};
+
 test("delegates the complete question transition to send_live_question RPC", async () => {
   const calls = [];
   const supabase = {
     rpc: async (name, args) => {
       calls.push([name, args]);
-      return { data: { id: "sq-2", status: "live" }, error: null };
+      return { data: sentRow, error: null };
     },
   };
 
@@ -17,7 +24,7 @@ test("delegates the complete question transition to send_live_question RPC", asy
     p_session_id: "session-1",
     p_question_id: "question-2",
   }]]);
-  assert.deepEqual(result, { id: "sq-2", status: "live" });
+  assert.deepEqual(result, sentRow);
 });
 
 test("does not call Supabase when required state is missing", async () => {
@@ -47,9 +54,31 @@ test("surfaces RPC failure without attempting a client-side fallback", async () 
 });
 
 test("normalises single-row RPC array responses", async () => {
-  const supabase = { rpc: async () => ({ data: [{ id: "sq-3" }], error: null }) };
+  const supabase = { rpc: async () => ({ data: [sentRow], error: null }) };
   assert.deepEqual(
-    await sendLiveQuestion({ supabase, sessionId: "s", questionId: "q" }),
-    { id: "sq-3" },
+    await sendLiveQuestion({ supabase, sessionId: "session-1", questionId: "question-2" }),
+    sentRow,
   );
+});
+
+test("fails closed when the RPC returns no inserted question", async () => {
+  const supabase = { rpc: async () => ({ data: null, error: null }) };
+  await assert.rejects(
+    () => sendLiveQuestion({ supabase, sessionId: "session-1", questionId: "question-2" }),
+    /returned no live question/,
+  );
+});
+
+test("rejects a response that does not match the requested classroom state", async () => {
+  for (const badRow of [
+    { ...sentRow, session_id: "other-session" },
+    { ...sentRow, question_id: "other-question" },
+    { ...sentRow, status: "completed" },
+  ]) {
+    const supabase = { rpc: async () => ({ data: badRow, error: null }) };
+    await assert.rejects(
+      () => sendLiveQuestion({ supabase, sessionId: "session-1", questionId: "question-2" }),
+      /unexpected classroom state/,
+    );
+  }
 });
