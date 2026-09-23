@@ -47,6 +47,22 @@ test("returns null when the active student has not answered yet", async () => {
   assert.equal(await fetchCurrentStudentAnswer({ supabase: client, sessionQuestionId: "sq-1", studentId: "student-1" }), null);
 });
 
+test("rejects a recovered answer for a different question", async () => {
+  const { client } = makeSupabase({ data: { id: "answer-1", session_question_id: "sq-old", student_id: "student-1" } });
+  await assert.rejects(
+    fetchCurrentStudentAnswer({ supabase: client, sessionQuestionId: "sq-1", studentId: "student-1" }),
+    /outside the active question or student/i
+  );
+});
+
+test("rejects a recovered answer for a different student", async () => {
+  const { client } = makeSupabase({ data: { id: "answer-1", session_question_id: "sq-1", student_id: "student-other" } });
+  await assert.rejects(
+    fetchCurrentStudentAnswer({ supabase: client, sessionQuestionId: "sq-1", studentId: "student-1" }),
+    /outside the active question or student/i
+  );
+});
+
 test("surfaces database failures with current-answer context", async () => {
   const { client } = makeSupabase({ error: { message: "network unavailable" } });
   await assert.rejects(
