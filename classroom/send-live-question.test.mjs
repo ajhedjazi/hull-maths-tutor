@@ -6,6 +6,8 @@ const sentRow = {
   id: "sq-2",
   session_id: "session-1",
   question_id: "question-2",
+  question_text_snapshot: "Work out 3/4 of 20.",
+  position: 2,
   status: "live",
 };
 
@@ -87,6 +89,21 @@ test("rejects a response that does not match the requested classroom state", asy
     await assert.rejects(
       () => sendLiveQuestion({ supabase, sessionId: "session-1", questionId: "question-2" }),
       /unexpected classroom state/,
+    );
+  }
+});
+
+test("rejects live question rows that cannot be rendered safely", async () => {
+  for (const badRow of [
+    { ...sentRow, position: 0 },
+    { ...sentRow, position: 2.5 },
+    { ...sentRow, question_text_snapshot: "   " },
+    { ...sentRow, question_text_snapshot: null },
+  ]) {
+    const supabase = { rpc: async () => ({ data: badRow, error: null }) };
+    await assert.rejects(
+      () => sendLiveQuestion({ supabase, sessionId: "session-1", questionId: "question-2" }),
+      /incomplete live question/,
     );
   }
 });
