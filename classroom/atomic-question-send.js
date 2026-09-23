@@ -5,8 +5,8 @@ import { resolveActiveSessionId } from "./resolve-active-session.js";
 import { assertTutorSendAuthorised } from "./tutor-send-authorisation.js";
 
 // Keep question transitions atomic without exposing privileged credentials.
-// This module intercepts the tutor Send action and delegates the complete
-// previous-question -> next-question transition to send_live_question().
+// This is the tutor Send action's sole question-transition path and delegates
+// the complete previous-question -> next-question transition to send_live_question().
 const config = window.HMT_SUPABASE_CONFIG || {};
 
 function decodeJwtPayload(token) {
@@ -52,13 +52,8 @@ function showMessage(message, isError = false) {
   classroomMessage.classList.toggle("is-error", isError);
 }
 
-async function sendAtomically(event) {
+async function sendAtomically() {
   if (!supabase || !sendButton || !questionPicker) return;
-
-  // Capture phase prevents classroom.js's legacy two-write handler from
-  // running. Realtime remains responsible for rendering the inserted row.
-  event.preventDefault();
-  event.stopImmediatePropagation();
 
   const questionId = questionPicker.value;
   if (!questionId) {
@@ -98,5 +93,5 @@ async function sendAtomically(event) {
 }
 
 if (sendButton && supabase) {
-  sendButton.addEventListener("click", sendAtomically, { capture: true });
+  sendButton.addEventListener("click", sendAtomically);
 }
