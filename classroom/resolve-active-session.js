@@ -1,8 +1,8 @@
 export async function resolveActiveSessionId({ supabase, roomCode, tutorId }) {
-  const code = String(roomCode || "").trim();
+  const code = String(roomCode || "").trim().toUpperCase();
   if (!supabase) throw new Error("Classroom backend is unavailable.");
   if (!tutorId) throw new Error("Tutor identity is required before sending a question.");
-  if (!code || code === "------") throw new Error("Open a live room before sending a question.");
+  if (!/^[A-Z0-9]{6}$/.test(code)) throw new Error("Open a valid live room before sending a question.");
 
   const { data: room, error: roomError } = await supabase
     .from("rooms")

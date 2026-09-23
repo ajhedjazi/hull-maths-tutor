@@ -27,6 +27,10 @@ test("resolves the active session for the signed-in tutor and displayed room", a
   assert.equal(await resolveActiveSessionId({ supabase: client(), roomCode: "ABC123", tutorId }), "session-1");
 });
 
+test("normalises a valid displayed room code before querying", async () => {
+  assert.equal(await resolveActiveSessionId({ supabase: client(), roomCode: " abc123 ", tutorId }), "session-1");
+});
+
 test("fails closed when tutor identity is missing", async () => {
   await assert.rejects(resolveActiveSessionId({ supabase: client(), roomCode: "ABC123" }), /tutor identity is required/i);
 });
@@ -67,5 +71,12 @@ test("rejects a session response owned by another tutor", async () => {
 });
 
 test("requires an open room before querying", async () => {
-  await assert.rejects(resolveActiveSessionId({ supabase: client(), roomCode: "------", tutorId }), /open a live room/i);
+  await assert.rejects(resolveActiveSessionId({ supabase: client(), roomCode: "------", tutorId }), /valid live room/i);
+});
+
+test("rejects malformed room codes before querying", async () => {
+  let queried = false;
+  const supabase = { from() { queried = true; throw new Error("should not query"); } };
+  await assert.rejects(resolveActiveSessionId({ supabase, roomCode: "ABC12!", tutorId }), /valid live room/i);
+  assert.equal(queried, false);
 });
