@@ -1,6 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 import { sendLiveQuestion } from "./send-live-question.js";
 import { createQuestionSendFlight } from "./question-send-flight.js";
+import { resolveActiveSessionId } from "./resolve-active-session.js";
 
 // Keep question transitions atomic without exposing privileged credentials.
 // This module intercepts the tutor Send action and delegates the complete
@@ -50,29 +51,6 @@ function showMessage(message, isError = false) {
   classroomMessage.classList.toggle("is-error", isError);
 }
 
-async function resolveActiveSessionId() {
-  const roomCode = roomCodeBadge?.textContent?.trim();
-  if (!roomCode || roomCode === "------") throw new Error("Open a live room before sending a question.");
-
-  const { data: room, error: roomError } = await supabase
-    .from("rooms")
-    .select("id")
-    .eq("room_code", roomCode)
-    .eq("status", "active")
-    .single();
-  if (roomError) throw roomError;
-
-  const { data: session, error: sessionError } = await supabase
-    .from("sessions")
-    .select("id")
-    .eq("room_id", room.id)
-    .eq("status", "active")
-    .single();
-  if (sessionError) throw sessionError;
-
-  return session.id;
-}
-
 async function sendAtomically(event) {
   if (!supabase || !sendButton || !questionPicker) return;
 
@@ -96,7 +74,10 @@ async function sendAtomically(event) {
   showMessage("Sending question…");
 
   try {
-    const sessionId = await resolveActiveSessionId();
+    const sessionId = await resolveActiveSessionId({
+      supabase,
+      roomCode: roomCodeBadge?.textContent,
+    });
     await sendLiveQuestion({ supabase, sessionId, questionId });
     showMessage("Question sent live.");
   } catch (error) {
