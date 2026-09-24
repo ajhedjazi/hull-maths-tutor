@@ -45,6 +45,26 @@ const a2 = { id: "a2", session_question_id: "q2", answer_text: "7" };
 }
 
 {
+  // Simulate disconnecting on q1, then missing both the tutor's q2 event and
+  // the student's q2 submission/mark events. One authoritative recovery must
+  // restore the latest question and its fully marked answer without merging
+  // stale q1 state back into the classroom.
+  const current = { room, session, currentQuestion: q1, currentAnswer: a1 };
+  const markedA2 = {
+    ...a2,
+    is_correct: false,
+    marked_at: "2026-09-24T13:00:00.000Z",
+  };
+  const result = applyRecoverySnapshot(current, { room, question: q2, answer: markedA2 });
+  assert.equal(result.ignored, false);
+  assert.equal(result.questionChanged, true);
+  assert.equal(result.currentQuestion, q2);
+  assert.deepEqual(result.currentAnswer, markedA2);
+  assert.equal(result.currentAnswer.is_correct, false);
+  assert.equal(result.currentAnswer.marked_at, markedA2.marked_at);
+}
+
+{
   const current = { room, session, currentQuestion: q1, currentAnswer: a1 };
   const result = applyRecoverySnapshot(current, { room: { id: "room-2" }, question: q2, answer: a2 });
   assert.equal(result.ignored, true);
