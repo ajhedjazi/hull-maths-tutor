@@ -60,6 +60,7 @@ assert.deepEqual(removed, ["answers-1", "answers-2"], "clear removes the active 
 const hookTimers = [];
 const hookErrors = [];
 let hookGeneration = 0;
+let reconciliationAttempts = 0;
 const hookStatuses = new Map();
 const hookManager = createRealtimeManager({
   supabase,
@@ -77,14 +78,23 @@ const hookFactory = () => {
 };
 await hookManager.subscribe("questions", hookFactory);
 hookManager.setRecoveryHooks({
-  async onRecovered() { throw new Error("snapshot fetch failed"); },
+  async onRecovered() {
+    reconciliationAttempts += 1;
+    if (reconciliationAttempts === 1) throw new Error("snapshot fetch failed");
+  },
   onRecoveryError(error, key) { hookErrors.push({ message: error.message, key }); },
 });
 hookStatuses.get("hook-1")("CHANNEL_ERROR");
 await hookTimers[0].callback();
 assert.equal(hookGeneration, 2, "channel recovery succeeds when hooks are bound after manager creation");
-assert.equal(hookManager.size, 1, "failed reconciliation does not discard the healthy replacement channel");
-assert.deepEqual(hookErrors, [{ message: "snapshot fetch failed", key: "questions" }], "late-bound reconciliation failures are reported with their channel key");
+assert.equal(hookManager.size, 1, "failed reconciliation keeps the healthy replacement channel");
+assert.deepEqual(hookErrors, [{ message: "snapshot fetch failed", key: "questions" }], "reconciliation failures are reported with their channel key");
+assert.equal(hookManager.pendingRecoveryCount, 1, "failed snapshot reconciliation schedules a retry");
+assert.equal(hookTimers.length, 2, "snapshot retry is scheduled independently of channel replacement");
+await hookTimers[1].callback();
+assert.equal(reconciliationAttempts, 2, "authoritative snapshot reconciliation is retried");
+assert.equal(hookGeneration, 2, "snapshot retry does not churn an already healthy realtime channel");
+assert.equal(hookManager.pendingRecoveryCount, 0, "successful snapshot retry clears degraded recovery state");
 await hookManager.clear();
 
 assert.throws(() => createRealtimeManager({ supabase, onRecovered: true }), /onRecovered must be a function/, "invalid recovery hooks fail fast");

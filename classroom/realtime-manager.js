@@ -1,7 +1,7 @@
 import { createRealtimeChannelRegistry } from "./realtime-channel-registry.js";
 import { createRealtimeRecovery } from "./realtime-recovery.js";
 
-export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTimer, clearTimer, onRecovered, onRecoveryError }) {
+export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTimer = setTimeout, clearTimer = clearTimeout, onRecovered, onRecoveryError }) {
   if (!supabase?.removeChannel) throw new TypeError("A Supabase client with removeChannel is required");
   if (onRecovered !== undefined && typeof onRecovered !== "function") throw new TypeError("onRecovered must be a function");
   if (onRecoveryError !== undefined && typeof onRecoveryError !== "function") throw new TypeError("onRecoveryError must be a function");
@@ -9,6 +9,7 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
   let recoveredHook = onRecovered;
   let recoveryErrorHook = onRecoveryError;
   const factories = new Map();
+  const reconciliationTimers = new Map();
   const registry = createRealtimeChannelRegistry((channel) => supabase.removeChannel(channel));
 
   function setRecoveryHooks({ onRecovered: nextRecovered, onRecoveryError: nextError } = {}) {
@@ -16,6 +17,33 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
     if (nextError !== undefined && typeof nextError !== "function") throw new TypeError("onRecoveryError must be a function");
     recoveredHook = nextRecovered;
     recoveryErrorHook = nextError;
+  }
+
+  function cancelReconciliation(key) {
+    const timer = reconciliationTimers.get(key);
+    if (timer === undefined) return false;
+    reconciliationTimers.delete(key);
+    clearTimer(timer);
+    return true;
+  }
+
+  async function reconcile(key) {
+    if (!recoveredHook || !factories.has(key)) return true;
+    try {
+      await recoveredHook(key);
+      cancelReconciliation(key);
+      return true;
+    } catch (error) {
+      if (recoveryErrorHook) recoveryErrorHook(error, key);
+      if (!reconciliationTimers.has(key) && factories.has(key)) {
+        const timer = setTimer(async () => {
+          reconciliationTimers.delete(key);
+          await reconcile(key);
+        }, recoveryDelayMs);
+        reconciliationTimers.set(key, timer);
+      }
+      return false;
+    }
   }
 
   async function replace(key) {
@@ -33,18 +61,12 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
   const recovery = createRealtimeRecovery({
     replaceChannel: async (key) => {
       const channel = await replace(key);
-      if (channel && recoveredHook) {
-        try {
-          await recoveredHook(key);
-        } catch (error) {
-          if (recoveryErrorHook) recoveryErrorHook(error, key);
-        }
-      }
+      if (channel) await reconcile(key);
       return channel;
     },
     delayMs: recoveryDelayMs,
-    ...(setTimer ? { setTimer } : {}),
-    ...(clearTimer ? { clearTimer } : {}),
+    setTimer,
+    clearTimer,
   });
 
   async function subscribe(key, factory) {
@@ -55,12 +77,14 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
 
   async function remove(key) {
     recovery.cancel(key);
+    cancelReconciliation(key);
     factories.delete(key);
     return registry.remove(key);
   }
 
   async function clear() {
     recovery.clear();
+    [...reconciliationTimers.keys()].forEach(cancelReconciliation);
     factories.clear();
     await registry.clear();
   }
@@ -73,6 +97,6 @@ export function createRealtimeManager({ supabase, recoveryDelayMs = 750, setTime
     setRecoveryHooks,
     has: (key) => registry.has(key),
     get size() { return registry.size; },
-    get pendingRecoveryCount() { return recovery.pendingCount; },
+    get pendingRecoveryCount() { return recovery.pendingCount + reconciliationTimers.size; },
   };
 }
