@@ -25,6 +25,13 @@ export function createStudentAnswerSubmitController({ supabase, getCurrent, onSa
         answerText,
         workingText
       });
+
+      const latest = getCurrent?.() || {};
+      if (latest.currentQuestion?.id !== sessionQuestionId || latest.user?.id !== studentId) {
+        onStatus?.("A new question is now live. Your previous answer was saved.", false);
+        return saved;
+      }
+
       onSaved?.(saved);
       onStatus?.("Answer sent to your tutor.", false);
       return saved;
