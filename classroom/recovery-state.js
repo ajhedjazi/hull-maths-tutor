@@ -37,7 +37,10 @@ export function applyRecoverySnapshot(current, snapshot) {
     ...current,
     room: snapshot.room,
     currentQuestion: questionState.currentQuestion,
-    currentAnswer: snapshot.answer || questionState.currentAnswer,
+    // Recovery is an authoritative database reconciliation, not a realtime
+    // merge. A null answer means the database has no answer for this question
+    // and must clear any stale browser state left behind by a missed event.
+    currentAnswer: snapshot.answer ?? null,
     ignored: false,
     questionChanged: questionState.isNewQuestion,
   };
