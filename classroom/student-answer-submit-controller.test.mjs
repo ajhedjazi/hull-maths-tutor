@@ -72,3 +72,30 @@ test("fails before Supabase when there is no current student question", async ()
   assert.equal(rpcCalls, 0);
   assert.deepEqual(statuses.at(-1), ["Wait for a question before submitting.", true]);
 });
+
+test("does not publish a stale answer when the live question changes during submission", async () => {
+  const gate = deferred();
+  const statuses = [];
+  const published = [];
+  let currentQuestionId = questionId;
+  const submit = createStudentAnswerSubmitController({
+    supabase: {
+      rpc: async () => {
+        await gate.promise;
+        return { data: [savedRow], error: null };
+      }
+    },
+    getCurrent: () => ({ currentQuestion: { id: currentQuestionId }, user: { id: studentId } }),
+    onSaved: (row) => published.push(row),
+    onStatus: (message, isError) => statuses.push([message, isError])
+  });
+
+  const request = submit({ answerText: "12", workingText: "3 x 4" });
+  currentQuestionId = "question-2";
+  gate.resolve();
+
+  const result = await request;
+  assert.deepEqual(result, savedRow);
+  assert.deepEqual(published, []);
+  assert.deepEqual(statuses.at(-1), ["A new question is now live. Your previous answer was saved.", false]);
+});
