@@ -37,6 +37,15 @@ const a2 = { id: "a2", session_question_id: "q2", answer_text: "7" };
 
 {
   const current = { room, session, currentQuestion: q1, currentAnswer: a1 };
+  const result = applyRecoverySnapshot(current, { room, question: q1, answer: null });
+  assert.equal(result.ignored, false);
+  assert.equal(result.questionChanged, false);
+  assert.equal(result.currentQuestion, q1);
+  assert.equal(result.currentAnswer, null, "authoritative recovery must clear a stale local answer");
+}
+
+{
+  const current = { room, session, currentQuestion: q1, currentAnswer: a1 };
   const result = applyRecoverySnapshot(current, { room: { id: "room-2" }, question: q2, answer: a2 });
   assert.equal(result.ignored, true);
   assert.equal(result.reason, "room-changed");
