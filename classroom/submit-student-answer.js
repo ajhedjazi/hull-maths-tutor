@@ -3,11 +3,14 @@ function oneRow(data) {
   return data && typeof data === "object" ? data : null;
 }
 
-export function validateSubmittedAnswer(data, { sessionQuestionId, studentId }) {
+export function validateSubmittedAnswer(data, { sessionQuestionId, studentId, answerText, workingText }) {
   const answer = oneRow(data);
   if (!answer) throw new Error("Answer submission returned an unexpected result. Refresh the classroom and try again.");
   if (answer.session_question_id !== sessionQuestionId || answer.student_id !== studentId) {
     throw new Error("Answer submission did not match this student and question. Refresh the classroom and try again.");
+  }
+  if (answer.answer_text !== answerText || answer.working_text !== workingText) {
+    throw new Error("Answer submission returned stale content. Refresh the classroom before trying again.");
   }
   return answer;
 }
@@ -27,5 +30,10 @@ export async function submitStudentAnswerRpc({ supabase, sessionQuestionId, stud
   });
   if (error) throw error;
 
-  return validateSubmittedAnswer(data, { sessionQuestionId, studentId });
+  return validateSubmittedAnswer(data, {
+    sessionQuestionId,
+    studentId,
+    answerText: answer,
+    workingText: working
+  });
 }
