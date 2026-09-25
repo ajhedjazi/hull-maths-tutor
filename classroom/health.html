@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Classroom backend check · Hull Maths Tutor</title>
+  <style>
+    :root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#173a3b;background:#fffaf0}body{margin:0;padding:24px}.wrap{max-width:680px;margin:0 auto}.card{background:#fff;border:1px solid #d8dfdc;border-radius:18px;padding:24px;box-shadow:0 8px 30px rgba(23,58,59,.08)}h1{margin-top:0}.status{display:flex;gap:10px;align-items:flex-start;padding:12px 0;border-top:1px solid #e7ece9}.status:first-of-type{border-top:0}.dot{width:12px;height:12px;border-radius:50%;background:#9aa6a3;margin-top:5px;flex:0 0 auto}.ok .dot{background:#26835b}.bad .dot{background:#b23a3a}.warn .dot{background:#b87916}.label{font-weight:700}.detail{font-size:.92rem;color:#566563;margin-top:3px;overflow-wrap:anywhere}button{margin-top:18px;border:0;border-radius:10px;padding:11px 16px;background:#173a3b;color:#fff;font:inherit;font-weight:700;cursor:pointer}button:disabled{opacity:.55;cursor:wait}.note{font-size:.88rem;color:#667471;margin-top:18px}code{font-size:.88em}</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="card">
+      <p>Hull Maths Tutor · Live classroom</p>
+      <h1>Backend health check</h1>
+      <p>This checks the public classroom connection without signing in a tutor or student.</p>
+      <div id="project" class="status"><span class="dot"></span><div><div class="label">Supabase project</div><div class="detail">Waiting…</div></div></div>
+      <div id="rest" class="status"><span class="dot"></span><div><div class="label">Classroom data API</div><div class="detail">Waiting…</div></div></div>
+      <button id="retry" type="button">Run check again</button>
+      <p class="note">A green project check proves the configured URL and publishable key can reach Supabase. The data check also verifies that the classroom schema is reachable. No service-role key is used.</p>
+    </div>
+  </main>
+  <script>
+    const config={url:"https://qhcddmogsowmgvjviagr.supabase.co",anonKey:"sb_publishable__3iKwu1IOZ0YsvFlqC9ueQ_KPWZqWPJ"};
+    const retry=document.querySelector("#retry");
+    const set=(id,state,text)=>{const el=document.querySelector(`#${id}`);el.className=`status ${state}`;el.querySelector(".detail").textContent=text;};
+    async function check(){
+      retry.disabled=true;
+      set("project","","Checking project and publishable key…");
+      set("rest","","Waiting for project check…");
+      const headers={apikey:config.anonKey,Authorization:`Bearer ${config.anonKey}`};
+      try{
+        const auth=await fetch(`${config.url}/auth/v1/settings`,{headers:{apikey:config.anonKey},cache:"no-store"});
+        if(!auth.ok) throw new Error(`Auth API returned HTTP ${auth.status}`);
+        set("project","ok","Connected: project URL and publishable key are valid.");
+      }catch(error){
+        set("project","bad",`Could not reach Supabase: ${error.message}`);
+        set("rest","warn","Skipped because the project check failed.");
+        retry.disabled=false;
+        return;
+      }
+      try{
+        const data=await fetch(`${config.url}/rest/v1/questions?select=id&limit=1`,{headers,cache:"no-store"});
+        if(data.ok){
+          set("rest","ok","Connected: PostgREST can reach the questions table.");
+        }else if(data.status===401||data.status===403){
+          set("rest","warn",`Supabase is reachable, but anonymous table access is restricted (HTTP ${data.status}).`);
+        }else{
+          set("rest","bad",`Data API returned HTTP ${data.status}. Check the classroom schema/migrations.`);
+        }
+      }catch(error){
+        set("rest","bad",`Could not reach the data API: ${error.message}`);
+      }
+      retry.disabled=false;
+    }
+    retry.addEventListener("click",check);
+    check();
+  </script>
+</body>
+</html>
