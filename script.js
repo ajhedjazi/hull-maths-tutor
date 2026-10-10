@@ -434,15 +434,26 @@ if (enquiryForm) {
     }
 
     try {
-      const response = await fetch(enquiryForm.action, {
+      const isHomepageEnquiry = enquiryForm.getAttribute("name") === "enquiry";
+      const response = await fetch(isHomepageEnquiry ? "/" : enquiryForm.action, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
+        headers: isHomepageEnquiry
+          ? { "Content-Type": "application/x-www-form-urlencoded" }
+          : { Accept: "application/json" },
+        body: isHomepageEnquiry
+          ? new URLSearchParams(formData).toString()
+          : formData,
       });
-      const result = await response.json();
 
-      if (!response.ok || !result.success) {
+      if (!response.ok) {
         throw new Error("Form submission failed.");
+      }
+
+      // Netlify Forms returns a successful HTML response, not necessarily JSON.
+      // Keep the existing JSON contract for the separate Maths MOT booking flow.
+      if (!isHomepageEnquiry) {
+        const result = await response.json();
+        if (!result.success) throw new Error("Form submission failed.");
       }
 
       trackEvent("generate_lead", {
@@ -450,6 +461,11 @@ if (enquiryForm) {
         form_name: enquiryForm.getAttribute("name") || "enquiry",
         page_path: window.location.pathname,
       });
+
+      if (isHomepageEnquiry) {
+        window.location.assign("/thank-you/");
+        return;
+      }
 
       enquiryForm.reset();
       resetAppointmentPicker();
