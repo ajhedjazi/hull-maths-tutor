@@ -981,6 +981,13 @@ h3 {
   margin: 0 auto;
 }
 
+/* Functional Skills: the single-column teaching section shares the same
+   left content rail as its hero, problem, pricing and FAQ sections.
+   Other pages retain their intentionally centred about layout. */
+.functional-skills-about .about-layout-single .about-copy {
+  margin-inline: 0;
+}
+
 .about-layout-single .about-points {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 28px;
