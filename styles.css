@@ -1093,6 +1093,19 @@ h3 {
   background: var(--color-secondary-base);
 }
 
+/* Homepage: avoid two identical ivory panels running together.
+   A restrained warm-ivory to soft-sage wash provides section rhythm
+   without hard alternating colour bands or decorative overlays. */
+.homepage-subjects-section {
+  background: linear-gradient(
+    180deg,
+    var(--color-secondary-base) 0%,
+    #edf2ed 38%,
+    #eaf0e9 100%
+  );
+  border-top-color: transparent;
+}
+
 .weekly-tuition-layout {
   align-items: start;
 }
