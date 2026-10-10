@@ -2771,3 +2771,79 @@ h3 {
     padding: 68px 0 74px;
   }
 }
+
+
+/* Cohesive editorial colour rhythm: opt-in public tuition pages only.
+   Gradients have no image dependencies and keep content/contrast unchanged.
+   Inner section layouts, accessible focus states and existing forms are intact. */
+.site-flow {
+  --flow-ivory: #f5f1e8;
+  --flow-sage: #e9f0e9;
+  --flow-stone: #e9e3d8;
+  --flow-mist: #f1f2ea;
+}
+
+/* Adjacent light sections gently change tone rather than creating
+   repetitive, hard-edged cream/white stripes. */
+.site-flow main > .problem-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-mist));
+  border-top-color: transparent;
+}
+.site-flow main > .weekly-tuition-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-sage));
+  border-top-color: transparent;
+}
+.site-flow main > .about-section {
+  background: linear-gradient(180deg, var(--flow-sage), var(--flow-ivory));
+  border-top-color: transparent;
+}
+.site-flow main > .offers-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-stone));
+  border-top-color: transparent;
+}
+.site-flow main > .faq-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-ivory));
+  border-top-color: transparent;
+}
+.site-flow main > .enquiry-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-stone));
+  border-top-color: transparent;
+}
+.site-flow main > .enquiry-section::before {
+  display: none;
+}
+
+/* The homepage's first three reading sections form one visual passage.
+   Each gradient starts at the preceding section's ending colour. */
+.home-flow main > .problem-section:first-of-type {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-mist));
+}
+.home-flow main > .problem-section + .weekly-tuition-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-sage));
+}
+.home-flow main > .homepage-subjects-section {
+  background: linear-gradient(180deg, var(--flow-sage), var(--flow-ivory));
+}
+/* After the dark Maths MOT panel, restart the lighter reading rhythm. */
+.home-flow main > .diagnostic-approach-section + .problem-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-mist));
+}
+.home-flow main > .diagnostic-approach-section + .problem-section + .weekly-tuition-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-sage));
+}
+.home-flow main > .faq-section {
+  background: linear-gradient(180deg, var(--flow-sage), var(--flow-ivory));
+}
+
+/* Depth on featured dark panels, without decorative dividers or overlays
+   that could obstruct controls. */
+.site-flow main > .diagnostic-approach-section {
+  background: radial-gradient(ellipse at 85% 25%, #226161 0%, #0d4445 45%, #102a2a 100%);
+  border-top: 0;
+}
+
+/* The old detail-page 1px separators made the gradient passages look like
+   separate stacked blocks. Preserve semantic sections without visual rules. */
+.site-flow.detail-page main > .section {
+  border-top-color: transparent;
+}
