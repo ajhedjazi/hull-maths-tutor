@@ -48,9 +48,14 @@
   --radius-sm: 10px;
   --radius-md: 18px;
   --radius-lg: 28px;
-  --container-max: 1180px;
-  --container-pad: 56px;
-  --section-gap: clamp(64px, 8vw, 112px);
+  /* Shared horizontal rails: outer width = 1180px, gutters = 28px each on desktop.
+     Keep --container-pad as a backwards-compatible alias for existing breakpoints. */
+  --site-max-width: 1180px;
+  --site-gutter: 28px;
+  --site-section-spacing: clamp(64px, 8vw, 112px);
+  --container-max: var(--site-max-width);
+  --container-pad: calc(2 * var(--site-gutter));
+  --section-gap: var(--site-section-spacing);
 }
 
 * {
@@ -207,9 +212,12 @@ h3 {
   white-space: nowrap;
 }
 
-.container {
-  width: min(var(--container-max), calc(100% - var(--container-pad)));
-  margin: 0 auto;
+/* One outer rail for navigation, heroes, content sections and footer.
+   Local grids can still create intentional inner columns and centred headings. */
+.container,
+.site-container {
+  width: min(var(--site-max-width), calc(100% - var(--container-pad)));
+  margin-inline: auto;
 }
 
 .section-inner {
@@ -2060,7 +2068,7 @@ h3 {
 
 @media (max-width: 720px) {
   :root {
-    --container-pad: 36px;
+    --site-gutter: 18px;
     --section-gap: 34px;
   }
 
