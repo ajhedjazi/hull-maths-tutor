@@ -66,7 +66,30 @@ async function session() {
  $('filters').hidden=member.role!=='tutor';$('history-title').textContent=member.role==='tutor'?'Tutor inbox':'My questions and replies';$('membership-label').textContent=member.role==='tutor'?'Tutor dashboard':'Included with your tuition';await load();
 }
 $('login-form').onsubmit=e=>{e.preventDefault();action(e.currentTarget,async()=>{checked(await client.auth.signInWithOtp({email:e.target.elements.email.value.trim(),options:{shouldCreateUser:false,emailRedirectTo:new URL('./',location.href).href}}));message('Check your email for a secure sign-in link.');});};
-$('question-form').onsubmit=e=>{e.preventDefault();const form=e.currentTarget;action(form,async()=>{const f=form.elements;const text=f.question.value.trim(),note=f.note.value.trim(),help=f.help.value,file=f.image.files[0];validateQuestion(text,help,note,file);const image_path=await upload(file);checked(await client.from('coach_questions').insert({student_id:user.id,question_text:text,student_note:note,help_type:help,image_path}));form.reset();message('Your question has been sent to Amir. Check My questions and replies for your explanation.');await load();});};
+const questionImageInput=$('question-form').elements.image;
+const questionImagePreview=$('question-image-preview');
+const questionImageThumbnail=$('question-image-thumbnail');
+let questionImagePreviewUrl=null;
+function clearQuestionImagePreview() {
+ if(questionImagePreviewUrl) URL.revokeObjectURL(questionImagePreviewUrl);
+ questionImagePreviewUrl=null;
+ questionImageThumbnail.removeAttribute('src');
+ questionImagePreview.hidden=true;
+}
+questionImageInput.addEventListener('change',()=>{
+ clearQuestionImagePreview();
+ const file=questionImageInput.files[0];
+ if(!file)return;
+ try { validateImage(file); } catch(error) { questionImageInput.value=''; fail(error); return; }
+ questionImagePreviewUrl=URL.createObjectURL(file);
+ questionImageThumbnail.src=questionImagePreviewUrl;
+ questionImagePreview.hidden=false;
+});
+$('remove-question-image').addEventListener('click',()=>{
+ questionImageInput.value='';
+ clearQuestionImagePreview();
+});
+$('question-form').onsubmit=e=>{e.preventDefault();const form=e.currentTarget;action(form,async()=>{const f=form.elements;const text=f.question.value.trim(),note=f.note.value.trim(),help=f.help.value,file=f.image.files[0];validateQuestion(text,help,note,file);const image_path=await upload(file);checked(await client.from('coach_questions').insert({student_id:user.id,question_text:text,student_note:note,help_type:help,image_path}));form.reset();clearQuestionImagePreview();message('Your question has been sent to Amir. Check My questions and replies for your explanation.');await load();});};
 $('triage').onsubmit=e=>{e.preventDefault();const form=e.currentTarget;const id=selected.id;action(form,async()=>{checked(await client.from('coach_questions').update({topic:form.elements.topic.value.trim()||null,status:form.elements.status.value}).eq('id',id).select('id').single());await load();await open(id);message('Question details saved.');});};
 $('reply-form').onsubmit=e=>{e.preventDefault();const form=e.currentTarget;const id=selected.id;action(form,async()=>{if(!form.elements.approved.checked)throw new Error('Review and approve your explanation first.');const body=form.elements.body.value.trim();if(!body)throw new Error('Write your explanation before sending.');const attachment=await upload(form.elements.image.files[0]);checked(await client.rpc('coach_send_reply',{p_question_id:id,p_body:body,p_attachment_path:attachment}));form.reset();message('Your reviewed reply has been sent.');await load();await open(id);});};
 $('logout').onclick=()=>action(document.querySelector('header'),async()=>{checked(await client.auth.signOut());await session();message('You have signed out.');});
