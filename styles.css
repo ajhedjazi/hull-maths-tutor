@@ -48,9 +48,14 @@
   --radius-sm: 10px;
   --radius-md: 18px;
   --radius-lg: 28px;
-  --container-max: 1180px;
-  --container-pad: 56px;
-  --section-gap: clamp(64px, 8vw, 112px);
+  /* Shared horizontal rails: outer width = 1180px, gutters = 28px each on desktop.
+     Keep --container-pad as a backwards-compatible alias for existing breakpoints. */
+  --site-max-width: 1180px;
+  --site-gutter: 28px;
+  --site-section-spacing: clamp(64px, 8vw, 112px);
+  --container-max: var(--site-max-width);
+  --container-pad: calc(2 * var(--site-gutter));
+  --section-gap: var(--site-section-spacing);
 }
 
 * {
@@ -207,9 +212,12 @@ h3 {
   white-space: nowrap;
 }
 
-.container {
-  width: min(var(--container-max), calc(100% - var(--container-pad)));
-  margin: 0 auto;
+/* One outer rail for navigation, heroes, content sections and footer.
+   Local grids can still create intentional inner columns and centred headings. */
+.container,
+.site-container {
+  width: min(var(--site-max-width), calc(100% - var(--container-pad)));
+  margin-inline: auto;
 }
 
 .section-inner {
@@ -973,6 +981,13 @@ h3 {
   margin: 0 auto;
 }
 
+/* Functional Skills: the single-column teaching section shares the same
+   left content rail as its hero, problem, pricing and FAQ sections.
+   Other pages retain their intentionally centred about layout. */
+.functional-skills-about .about-layout-single .about-copy {
+  margin-inline: 0;
+}
+
 .about-layout-single .about-points {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 28px;
@@ -1076,6 +1091,19 @@ h3 {
   overflow: hidden;
   border-top: 1px solid var(--line);
   background: var(--color-secondary-base);
+}
+
+/* Homepage: avoid two identical ivory panels running together.
+   A restrained warm-ivory to soft-sage wash provides section rhythm
+   without hard alternating colour bands or decorative overlays. */
+.homepage-subjects-section {
+  background: linear-gradient(
+    180deg,
+    var(--color-secondary-base) 0%,
+    #edf2ed 38%,
+    #eaf0e9 100%
+  );
+  border-top-color: transparent;
 }
 
 .weekly-tuition-layout {
@@ -2060,7 +2088,7 @@ h3 {
 
 @media (max-width: 720px) {
   :root {
-    --container-pad: 36px;
+    --site-gutter: 18px;
     --section-gap: 34px;
   }
 
@@ -2742,4 +2770,80 @@ h3 {
   .guide-hero .guide-hero-grid {
     padding: 68px 0 74px;
   }
+}
+
+
+/* Cohesive editorial colour rhythm: opt-in public tuition pages only.
+   Gradients have no image dependencies and keep content/contrast unchanged.
+   Inner section layouts, accessible focus states and existing forms are intact. */
+.site-flow {
+  --flow-ivory: #f5f1e8;
+  --flow-sage: #e9f0e9;
+  --flow-stone: #e9e3d8;
+  --flow-mist: #f1f2ea;
+}
+
+/* Adjacent light sections gently change tone rather than creating
+   repetitive, hard-edged cream/white stripes. */
+.site-flow main > .problem-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-mist));
+  border-top-color: transparent;
+}
+.site-flow main > .weekly-tuition-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-sage));
+  border-top-color: transparent;
+}
+.site-flow main > .about-section {
+  background: linear-gradient(180deg, var(--flow-sage), var(--flow-ivory));
+  border-top-color: transparent;
+}
+.site-flow main > .offers-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-stone));
+  border-top-color: transparent;
+}
+.site-flow main > .faq-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-ivory));
+  border-top-color: transparent;
+}
+.site-flow main > .enquiry-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-stone));
+  border-top-color: transparent;
+}
+.site-flow main > .enquiry-section::before {
+  display: none;
+}
+
+/* The homepage's first three reading sections form one visual passage.
+   Each gradient starts at the preceding section's ending colour. */
+.home-flow main > .problem-section:first-of-type {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-mist));
+}
+.home-flow main > .problem-section + .weekly-tuition-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-sage));
+}
+.home-flow main > .homepage-subjects-section {
+  background: linear-gradient(180deg, var(--flow-sage), var(--flow-ivory));
+}
+/* After the dark Maths MOT panel, restart the lighter reading rhythm. */
+.home-flow main > .diagnostic-approach-section + .problem-section {
+  background: linear-gradient(180deg, var(--flow-ivory), var(--flow-mist));
+}
+.home-flow main > .diagnostic-approach-section + .problem-section + .weekly-tuition-section {
+  background: linear-gradient(180deg, var(--flow-mist), var(--flow-sage));
+}
+.home-flow main > .faq-section {
+  background: linear-gradient(180deg, var(--flow-sage), var(--flow-ivory));
+}
+
+/* Depth on featured dark panels, without decorative dividers or overlays
+   that could obstruct controls. */
+.site-flow main > .diagnostic-approach-section {
+  background: radial-gradient(ellipse at 85% 25%, #226161 0%, #0d4445 45%, #102a2a 100%);
+  border-top: 0;
+}
+
+/* The old detail-page 1px separators made the gradient passages look like
+   separate stacked blocks. Preserve semantic sections without visual rules. */
+.site-flow.detail-page main > .section {
+  border-top-color: transparent;
 }
