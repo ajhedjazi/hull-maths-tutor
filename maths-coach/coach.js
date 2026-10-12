@@ -23,6 +23,14 @@ async function photo(path,container,token) {
  if(token!==version)return;
  const img=document.createElement('img');img.src=data.signedUrl;img.alt='Uploaded maths question or annotated explanation';img.className='photo';container.append(img);
 }
+function updateSummary() {
+ const counts={new:0,in_progress:0,answered:0,discuss_in_lesson:0};
+ questions.forEach(q=>{if(Object.hasOwn(counts,q.status))counts[q.status]+=1;});
+ $('summary-new').textContent=counts.new;
+ $('summary-progress').textContent=counts.in_progress;
+ $('summary-answered').textContent=counts.answered;
+ $('summary-lesson').textContent=counts.discuss_in_lesson;
+}
 async function load() {
  const token=version;
  const data=checked(await client.from('coach_questions').select('*').order('created_at',{ascending:false}));
@@ -33,6 +41,7 @@ async function load() {
  select.value=previous;render();
 }
 function render() {
+ updateSummary();
  const list=$('questions');list.replaceChildren();
  const rows=questions.filter(q=>(!$('student-filter').value||q.student_id===$('student-filter').value)&&(!$('status-filter').value||q.status===$('status-filter').value)&&(! $('topic-filter').value||(q.topic||'').toLowerCase().includes($('topic-filter').value.toLowerCase()))&&(!$('date-filter').value||new Date(q.created_at).toLocaleDateString('en-CA')===$('date-filter').value));
  if(!rows.length)list.append(node('p','No questions here yet.'));
