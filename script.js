@@ -364,11 +364,16 @@ if (enquiryForm) {
     }
 
     formStatus.hidden = false;
+    formStatus.classList.remove("visually-hidden");
     formStatus.textContent = message;
     formStatus.classList.toggle("is-error", isError);
   };
 
+  let isSubmitting = false;
+
   const setSubmitState = (isSending) => {
+    isSubmitting = isSending;
+
     if (!submitButton) {
       return;
     }
@@ -393,6 +398,10 @@ if (enquiryForm) {
 
   enquiryForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
 
     if (appointmentPicker && !appointmentInput?.value) {
       appointmentFeedback?.classList.add("is-error");
@@ -429,9 +438,12 @@ if (enquiryForm) {
     setSubmitState(true);
 
     if (formStatus) {
-      formStatus.hidden = true;
+      formStatus.textContent = "";
+      formStatus.classList.add("visually-hidden");
       formStatus.classList.remove("is-error");
     }
+
+    let isRedirecting = false;
 
     try {
       const isHomepageEnquiry = enquiryForm.getAttribute("name") === "enquiry";
@@ -464,6 +476,7 @@ if (enquiryForm) {
 
       if (isHomepageEnquiry) {
         window.location.assign("/thank-you/");
+        isRedirecting = true;
         return;
       }
 
@@ -476,11 +489,13 @@ if (enquiryForm) {
       );
     } catch (error) {
       setFormStatus(
-        "Sorry, something went wrong. Please try again or contact me directly via WhatsApp.",
+        "Sorry, your message couldn't be sent. Please try again or contact me directly by email or phone.",
         true,
       );
     } finally {
-      setSubmitState(false);
+      if (!isRedirecting) {
+        setSubmitState(false);
+      }
     }
   });
 }
