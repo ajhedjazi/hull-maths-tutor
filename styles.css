@@ -1676,6 +1676,11 @@ h3 {
   top: 130px;
 }
 
+.home-flow .faq-heading {
+  position: static;
+  top: auto;
+}
+
 .faq-heading > p:last-child {
   margin-top: 20px;
   color: var(--muted);
