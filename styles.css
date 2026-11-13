@@ -557,7 +557,7 @@ h3 {
 .hero-trust li::before {
   content: "";
   position: absolute;
-  top: 0.75em;
+  top: calc(13px + 0.75em);
   left: 0;
   width: 5px;
   height: 5px;
@@ -1954,6 +1954,10 @@ h3 {
   .hero-trust li {
     border-top: 0;
     padding-top: 0;
+  }
+
+  .hero-trust li::before {
+    top: 0.75em;
   }
 
 }
