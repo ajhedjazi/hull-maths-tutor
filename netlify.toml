@@ -1,0 +1,4 @@
+# Package only public website files; never publish the repository root.
+[build]
+  command = "node scripts/prepare-public.mjs"
+  publish = "public"

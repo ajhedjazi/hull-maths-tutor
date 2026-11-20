@@ -1,21 +1,5 @@
-const GA_MEASUREMENT_ID = "G-FTB362ESXH";
-
-window.dataLayer = window.dataLayer || [];
-window.gtag = window.gtag || function gtag() {
-  window.dataLayer.push(arguments);
-};
-window.gtag("js", new Date());
-window.gtag("config", GA_MEASUREMENT_ID);
-
-const gaScript = document.createElement("script");
-gaScript.async = true;
-gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-document.head.appendChild(gaScript);
-
 const trackEvent = (eventName, params = {}) => {
-  if (typeof window.gtag === "function") {
-    window.gtag("event", eventName, params);
-  }
+  window.HMTPrivacy?.track(eventName, params);
 };
 
 const prefersReducedMotion = window.matchMedia(
@@ -27,7 +11,6 @@ const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
 const year = document.querySelector("#copyright-year");
 const mobileCta = document.querySelector("[data-mobile-cta]");
 const floatingActions = document.querySelector("[data-floating-actions]");
-const backToTopButton = document.querySelector("[data-back-to-top]");
 const enquirySection = document.querySelector("#enquire");
 
 internalLinks.forEach((link) => {
@@ -115,15 +98,6 @@ const toggleFloatingControls = () => {
 
 window.addEventListener("scroll", toggleFloatingControls, { passive: true });
 toggleFloatingControls();
-
-if (backToTopButton) {
-  backToTopButton.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: prefersReducedMotion ? "auto" : "smooth",
-    });
-  });
-}
 
 const navTargets = Array.from(navLinks)
   .map((link) => {
