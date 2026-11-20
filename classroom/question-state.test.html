@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HMT question state test</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 48rem; margin: 3rem auto; padding: 0 1rem; }
+    .pass { color: #176b3a; }
+    .fail { color: #a11; }
+    code { background: #f3f4f6; padding: .1rem .3rem; }
+  </style>
+</head>
+<body>
+  <h1>Live question state transition test</h1>
+  <p>This page tests the state rule used by the live classroom. It does not connect to Supabase or require credentials.</p>
+  <ol id="results" aria-live="polite"></ol>
+
+  <script type="module">
+    import { applyQuestionState } from "./question-state.js";
+
+    const results = document.querySelector("#results");
+    let failures = 0;
+
+    function check(label, condition) {
+      const item = document.createElement("li");
+      item.className = condition ? "pass" : "fail";
+      item.textContent = `${condition ? "PASS" : "FAIL"}: ${label}`;
+      results.append(item);
+      if (!condition) failures += 1;
+    }
+
+    const answer = { id: "answer-1", answer_text: "42" };
+    const firstQuestion = { id: "question-1", status: "live" };
+    const sameQuestionUpdate = { id: "question-1", status: "completed" };
+    const nextQuestion = { id: "question-2", status: "live" };
+
+    const same = applyQuestionState(firstQuestion, answer, sameQuestionUpdate);
+    check("same-question realtime update is not treated as a new question", same.isNewQuestion === false);
+    check("same-question realtime update preserves the current answer", same.currentAnswer === answer);
+    check("same-question realtime update keeps the updated question payload", same.currentQuestion === sameQuestionUpdate);
+
+    const next = applyQuestionState(firstQuestion, answer, nextQuestion);
+    check("a different question is treated as new", next.isNewQuestion === true);
+    check("a different question clears the previous answer", next.currentAnswer === null);
+    check("a different question becomes current", next.currentQuestion === nextQuestion);
+
+    const initial = applyQuestionState(null, answer, firstQuestion);
+    check("the first rendered question is treated as new", initial.isNewQuestion === true);
+    check("the first rendered question cannot inherit a stale answer", initial.currentAnswer === null);
+
+    const summary = document.createElement("p");
+    summary.className = failures ? "fail" : "pass";
+    summary.innerHTML = failures
+      ? `<strong>${failures} test(s) failed.</strong>`
+      : "<strong>All question-state tests passed.</strong>";
+    document.body.append(summary);
+
+    if (failures) throw new Error(`${failures} question-state test(s) failed`);
+  </script>
+</body>
+</html>
