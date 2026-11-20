@@ -8,39 +8,102 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hullmathstutor.co.uk/" />
   <link rel="icon" href="/assets/hmt-icon-64.png" sizes="64x64" type="image/png" />
+  <link rel="preload" href="/assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/playfair-display-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.classList.add("hmt-nav");</script>
+  <script src="/navigation.js" defer onerror="document.documentElement.classList.remove('hmt-nav')"></script>
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/privacy.css" />
 </head>
-<body class="site-flow home-flow">
+<body class="site-flow home-flow human-home human-site">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" aria-label="Site header">
     <div class="container nav-shell">
-      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a>
-      <nav class="nav-links" aria-label="Primary navigation"><a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/functional-skills-maths-tutor-hull/">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a><a class="nav-cta" href="#enquire">Enquire</a></nav>
+      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation" hidden>Menu <span aria-hidden="true">&#9776;</span></button>
+      <nav class="nav-links" id="home-navigation" aria-label="Primary navigation">
+        <a href="/" aria-current="page">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="#enquire" data-enquiry-service="A-Level Maths">A-Level</a><a href="/functional-skills-maths-tutor-hull/">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a><a class="nav-cta" href="#enquire">Enquire <span aria-hidden="true">&#8599;</span></a>
+      </nav>
     </div>
   </header>
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow eyebrow-light">Maths tutor in Hull</p><h1 id="hero-title">Maths help that makes sense.</h1><p class="hero-lede">One-to-one GCSE, A-Level and Functional Skills maths tuition in Hull and online.</p><div class="button-row"><a class="button button-primary" href="#enquire">Ask About Tuition</a><a class="button button-secondary" href="/maths-mot-hull/">Start With a Maths MOT</a></div><ul class="hero-trust"><li>Qualified maths teacher</li><li>16 years' teaching experience</li><li>7 years as Head of Maths</li><li>DBS checked</li></ul></div><figure class="diagnostic-card"><figcaption class="diagnostic-heading"><span class="diagnostic-kicker">Maths support</span><strong>GCSE, A-Level &amp; Functional Skills</strong></figcaption><dl class="diagnostic-list"><div><dt>GCSE</dt><dd>Foundation & Higher</dd></div><div><dt>Grades 3-5</dt><dd>Targeted support</dd></div><div><dt>Functional Skills</dt><dd>Level 1 & Level 2</dd></div><div><dt>A-Level</dt><dd>Pure, Statistics &amp; Mechanics</dd></div></dl><p class="diagnostic-note">Clear teaching. Calm practice. No guesswork.</p></figure></div></section>
-
-    <section class="section problem-section"><div class="container section-inner problem-layout"><div class="section-intro"><p class="eyebrow">When maths feels stuck</p><h2>Find out what needs work.</h2></div><div class="problem-copy"><p class="lead-copy">One small gap can make maths feel hard.</p><p>We find the gap and work through it together.</p></div></div></section>
-
-    
-
-    <section class="section weekly-tuition-section homepage-subjects-section"><div class="container section-inner weekly-tuition-layout"><div class="section-intro"><p class="eyebrow">What I teach</p><h2>GCSE, A-Level and Functional Skills maths.</h2></div><div class="weekly-tuition-copy"><div class="weekly-flow"><article><span>01</span><h3>GCSE Maths</h3><p>Foundation, Higher, resits and Grades 3 to 5 support.</p><p><a href="/gcse-maths-tutor-hull/">See GCSE maths tuition →</a></p></article><article><span>02</span><h3>A-Level Maths</h3><p>Clear, one-to-one support with Pure Maths, Statistics and Mechanics for Year 12, Year 13 and resit students.</p><p>£50 per hour in person.<br />£45 per hour online.</p><p><a href="#enquire">Ask about A-Level tuition →</a></p></article><article><span>03</span><h3>Functional Skills</h3><p>Level 1 and Level 2 support for adults and young people.</p><p><a href="/functional-skills-maths-tutor-hull/">See Functional Skills tuition →</a></p></article></div></div></div></section>
-
-    <section class="section offers-section"><div class="container section-inner offers-heading"><div class="section-intro"><p class="eyebrow">Prices</p><h2>Simple maths tuition prices.</h2><p><a href="/gcse-maths-tutor-prices/">See GCSE maths tutor prices and what is included →</a></p></div></div><div class="container progress-paths"><article class="trial-path"><div class="trial-copy"><p class="offer-label">Maths MOT</p><h3>£45</h3><p>A one-hour in-person check-up to find strengths, gaps and next steps.</p></div></article><aside class="main-offers"><div class="offer-path"><span>GCSE in person</span><p><strong>£40 per hour.</strong></p></div><div class="offer-path"><span>GCSE online</span><p><strong>£35 per hour.</strong></p></div><div class="offer-path"><span>Functional Skills</span><p><strong>From £45 online / £50 in person.</strong></p></div></aside></div></section>
-
-    <section class="section diagnostic-approach-section"><div class="container section-inner diagnostic-approach-layout"><div class="section-intro"><p class="eyebrow eyebrow-light">Start with a Maths MOT</p><h2>Know what to work on first.</h2></div><div class="diagnostic-approach-copy"><p class="lead-copy">The £45 Maths MOT is a one-hour in-person check-up.</p><p>It shows strengths, gaps and the best next steps.</p><ul class="diagnostic-points"><li>Low-pressure session</li><li>Clear feedback</li><li>Simple action plan</li></ul><p><a class="button button-secondary" href="/maths-mot-hull/">See How the Maths MOT Works</a></p></div></div></section>
-
-    <section class="section problem-section"><div class="container section-inner problem-layout"><div class="section-intro"><p class="eyebrow">Free help for parents</p><h2>Not sure how to help with Year 11 maths?</h2></div><div class="problem-copy"><p class="lead-copy">My free Year 11 parent guide explains what matters most and what to do next.</p><p><a href="/year-11-parent-guide/">Read the free Year 11 parent guide →</a></p></div></div></section>
-
-    <section class="section weekly-tuition-section"><div class="container section-inner weekly-tuition-layout"><div class="section-intro"><p class="eyebrow">About me</p><h2>Clear help from an experienced teacher.</h2></div><div class="weekly-tuition-copy"><p class="lead-copy">I am Amir, a qualified maths teacher with a degree in Mathematics and Statistics and a PGCE in Secondary Mathematics.</p><p>I have 16 years' teaching experience, including 7 years as Head of Maths. I keep lessons clear, calm and focused on the next useful step.</p><p><a href="/about-amir/">More about Amir →</a></p></div></div></section>
-
-    <section class="section faq-section"><div class="container section-inner faq-layout"><div class="faq-heading"><p class="eyebrow">Questions</p><h2>Maths tuition FAQs</h2></div><div class="faq-list"><details><summary>Where do you teach?</summary><p>I offer in-person tuition in Hull and surrounding areas, plus online lessons across the UK.</p></details><details><summary>What ages do you teach?</summary><p>I teach GCSE, A-Level and Functional Skills learners, including young people and adults.</p></details><details><summary>Do I have to book a Maths MOT first?</summary><p>No. It is a useful starting point, but you can ask about weekly tuition directly.</p></details><details><summary>How much does tuition cost?</summary><p>GCSE tuition is £40 per hour in person and £35 per hour online. A-Level tuition is £50 per hour in person and £45 per hour online. <a href="/gcse-maths-tutor-prices/">See the full GCSE maths tutor prices.</a></p></details></div></div></section>
-
-    <section class="section enquiry-section" id="enquire"><div class="container section-inner enquiry-layout"><div class="section-intro"><p class="eyebrow eyebrow-light">Get in touch</p><h2>Ask about maths tuition.</h2><p class="lead-copy">Send a short message. I will get back to you with the best next step.</p></div><form class="enquiry-form" name="enquiry" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="enquiry" /><p class="honeypot" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p><label>Your name<input type="text" name="name" required /></label><label>Email<input type="email" name="email" required /></label><label>Phone<input type="tel" name="phone" /></label><label>What do you need help with?<select name="service"><option>GCSE Maths</option><option>A-Level Maths</option><option>Functional Skills Maths</option><option>Maths MOT</option><option>Not sure yet</option></select></label><label>Message<textarea name="message" rows="5" required></textarea></label><button class="button button-primary" type="submit">Send Enquiry</button><p class="form-status visually-hidden" data-form-status role="status" aria-live="polite" aria-atomic="true"></p></form></div></section>
+  <main id="main" tabindex="-1">
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="home-hero-copy">
+        <p class="eyebrow">Hull based. Personally taught.</p>
+        <h1 id="hero-title"><span>Maths help</span> <em>that makes</em> <span>sense.</span></h1>
+        <p class="home-hero-description">One-to-one GCSE, A-Level and Functional Skills maths tuition in Hull and online. Clear explanations, at your pace, from a teacher who knows the subject.</p>
+        <div class="button-row"><a class="button button-primary" href="#enquire">Ask about tuition <span aria-hidden="true">&#8599;</span></a><a class="button button-secondary" href="#about">Meet your tutor</a></div>
+        <p class="home-hero-note">A real person. A clear plan. No guesswork.</p>
+      </div>
+      <div class="home-hero-art">
+        <figure class="home-portrait">
+          <!-- Commercial-use permission is owner-confirmed in the release-readiness report. Publication still requires separate authorisation. -->
+          <img src="/assets/amir-homepage-hero.webp" srcset="/assets/amir-homepage-hero-600.webp 600w, /assets/amir-homepage-hero.webp 1200w" sizes="(max-width: 820px) calc(100vw - 64px), (max-width: 1440px) 48vw, 720px" alt="Amir smiling in a classroom" width="1200" height="900" fetchpriority="high" decoding="async" />
+        </figure><span class="home-location" aria-hidden="true">Hull / UK</span>
+      </div>
+    </section>
+    <div class="home-trust"><ul class="container" aria-label="Qualifications and experience"><li>16 years' teaching experience</li><li>7 years as Head of Maths</li><li>Maths degree + PGCE</li><li>DBS checked</li></ul></div>
+    <section class="home-section home-services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="home-section-heading"><div><p class="eyebrow">Choose your support</p><h2 id="services-title">The right kind of help, <span>for your maths.</span></h2></div><p>Three routes into one-to-one tuition. Support built around what you need.</p></div>
+        <div class="home-service-list">
+          <article class="home-service"><span class="home-number" aria-hidden="true">01 /</span><h3>GCSE Maths</h3><p>Foundation, Higher, resits and support for learners working around Grades <span class="home-grade-range">3&ndash;5</span>.</p><div class="home-service-action"><p class="home-price"><span><strong>&pound;40</strong> in person</span> <span><strong>&pound;35</strong> online</span> <small>per hour</small></p><a class="home-link" href="/gcse-maths-tutor-hull/">Explore GCSE <span aria-hidden="true">&#8599;</span></a></div></article>
+          <article class="home-service"><span class="home-number" aria-hidden="true">02 /</span><h3>A-Level Maths</h3><p>Pure Maths, Statistics and Mechanics for Year 12, Year 13 and resit students.</p><div class="home-service-action"><p class="home-price"><span><strong>&pound;50</strong> in person</span> <span><strong>&pound;45</strong> online</span> <small>per hour</small></p><a class="home-link" href="#enquire" data-enquiry-service="A-Level Maths">Ask about A-Level <span aria-hidden="true">&#8599;</span></a></div></article>
+          <article class="home-service"><span class="home-number" aria-hidden="true">03 /</span><h3>Functional Skills</h3><p>Level 1 and Level 2 maths support for adults and young people.</p><div class="home-service-action"><p class="home-price"><span>From <strong>&pound;45</strong> online</span> <span><strong>&pound;50</strong> in person</span> <small>per hour</small></p><a class="home-link" href="/functional-skills-maths-tutor-hull/">Explore Functional Skills <span aria-hidden="true">&#8599;</span></a></div></article>
+        </div>
+        <div class="home-services-end"><p>Lessons are one-to-one and tailored to the learner.</p><a class="home-link" href="/gcse-maths-tutor-prices/">GCSE prices and what's included <span aria-hidden="true">&#8599;</span></a></div>
+      </div>
+    </section>
+    <section class="home-section home-approach" aria-labelledby="approach-title">
+      <div class="container home-split">
+        <div><p class="eyebrow">How lessons work</p><h2 id="approach-title">Good maths teaching starts by <span>listening.</span></h2><p class="home-intro">One small gap can make maths feel hard. We work out what's getting in the way, then make the next step clear.</p></div>
+        <ol class="home-steps"><li><h3>Tell me what feels difficult.</h3><p>We'll look at the topics or questions you're finding hard.</p></li><li><h3>Build understanding, step by step.</h3><p>I'll explain it in a way that makes sense to you.</p></li><li><h3>Practise with a clear purpose.</h3><p>We'll focus on the next useful step, then build up to exam-style questions.</p></li></ol>
+      </div>
+    </section>
+    <section class="home-section home-about" id="about" tabindex="-1" aria-labelledby="about-title">
+      <div class="container home-split">
+        <div>
+          <p class="eyebrow">Meet your maths tutor</p>
+          <h2 id="about-title">Hello, <em>I'm Amir.</em></h2>
+          <p class="home-intro home-about-intro">One wrong answer doesn't mean you're bad at maths. I look at your working to see where you got stuck, then we work on that step together.</p>
+          <a class="button button-lime" href="/about-amir/">More about Amir <span aria-hidden="true">&#8599;</span></a>
+        </div>
+        <div class="home-about-detail">
+          <h3>We can slow things down.</h3>
+          <p>We can go through a method again or try another explanation. I keep lessons clear, calm and focused on the next useful step.</p>
+          <div class="home-about-qualifications">
+            <p>I'm a qualified maths teacher with a degree in Mathematics and Statistics from Newcastle University, a PGCE in Secondary Mathematics and Qualified Teacher Status.</p>
+            <p>I have 16 years' secondary maths teaching experience, including 7 years as Head of Maths.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-section home-mot" id="maths-mot" aria-labelledby="mot-title">
+      <div class="container home-mot-layout"><div><p class="eyebrow">A place to start / GCSE</p><h2 id="mot-title">Meet the Maths MOT.</h2></div><div><p>A one-hour, in-person GCSE maths check-up. Find strengths, spot gaps and leave with clear feedback and a simple action plan.</p><p class="home-mot-note">An optional starting point. You can ask about weekly tuition directly.</p></div><div class="home-mot-booking"><p class="home-mot-price">&pound;45</p><a class="button button-primary" href="/maths-mot-hull/">Explore the Maths MOT <span aria-hidden="true">&#8599;</span></a></div></div>
+    </section>
+    <section class="home-section home-guide" aria-labelledby="guide-title">
+      <div class="container home-split"><div><p class="eyebrow">A little free help</p><h2 id="guide-title">Supporting a child in <span>Year 11?</span></h2><p class="home-intro">My free parent guide explains what matters most in GCSE maths and what you can do next.</p><a class="home-link" href="/year-11-parent-guide/">Get the free Year 11 parent guide <span aria-hidden="true">&#8599;</span></a></div><div class="home-guide-visual" aria-hidden="true"><div class="home-guide-cover"><p class="eyebrow">Hull Maths Tutor</p><p class="home-guide-cover-title">The Year 11 GCSE Maths Parent Guide</p><p>A practical guide to Foundation &amp; Higher Tier</p><span>Free parent resource</span></div></div></div>
+    </section>
+    <section class="home-section home-faq" id="questions" aria-labelledby="faq-title">
+      <div class="container home-split"><div><p class="eyebrow">Good to know</p><h2 id="faq-title">Questions, <span>answered.</span></h2></div><div class="home-faq-list">
+        <details><summary>Where do you teach?</summary><p>I offer in-person tuition in Hull and surrounding areas, plus online lessons across the UK.</p></details>
+        <details><summary>What ages do you teach?</summary><p>I teach GCSE, A-Level and Functional Skills learners, including young people and adults.</p></details>
+        <details><summary>Do you teach A-Level Maths?</summary><p>Yes. I offer Pure Maths, Statistics and Mechanics for Year 12, Year 13 and resit students.</p></details>
+        <details><summary>Do I have to book a Maths MOT first?</summary><p>No. It is a useful starting point, but you can ask about weekly tuition directly.</p></details>
+        <details><summary>How much does tuition cost?</summary><p>GCSE tuition is &pound;40 per hour in person and &pound;35 per hour online. A-Level tuition is &pound;50 per hour in person and &pound;45 per hour online. Functional Skills tuition is &pound;50 per hour in person and from &pound;45 per hour online. <a class="home-link" href="/gcse-maths-tutor-prices/">See the full GCSE maths tutor prices.</a></p></details>
+      </div></div>
+    </section>
+    <section class="home-section home-enquiry" id="enquire" tabindex="-1" aria-labelledby="enquiry-title">
+      <div class="container home-split"><div><p class="eyebrow">Let's talk maths</p><h2 id="enquiry-title">Tell me what <span>you need.</span></h2><p class="home-intro">Send a short message about the help you're looking for. I'll reply with a sensible next step.</p><div class="home-contact"><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a><a href="tel:+447828579277">+44&nbsp;7828&nbsp;579277</a></div></div>
+        <form class="enquiry-form" name="enquiry" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field" aria-labelledby="enquiry-form-title"><h3 id="enquiry-form-title">Your enquiry</h3><input type="hidden" name="form-name" value="enquiry" /><p class="honeypot" aria-hidden="true"><label>Leave this field empty: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p><div class="home-form-pair"><label>Your name<input type="text" name="name" autocomplete="name" required /></label><label>Email<input type="email" name="email" autocomplete="email" required /></label></div><label>Phone <span class="home-optional">(optional)</span><input type="tel" name="phone" autocomplete="tel" /></label><label>What do you need help with?<select name="service"><option>GCSE Maths</option><option>A-Level Maths</option><option>Functional Skills Maths</option><option>Maths MOT</option><option>Not sure yet</option></select></label><label>Message<textarea name="message" rows="5" required></textarea></label><p class="home-privacy-note">Your enquiry is processed by Netlify. <a href="/privacy/">How your information is used</a>. Analytics is optional.</p><button class="button button-primary" type="submit">Send Enquiry</button><p class="form-status visually-hidden" data-form-status role="status" aria-live="polite" aria-atomic="true"></p></form>
+      </div>
+    </section>
   </main>
-
-  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a></div><div class="footer-local"><p class="footer-label">Contact</p><strong>Hull and surrounding areas</strong><a href="tel:+447828579277">+44 7828 579277</a><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a></div><div class="footer-action"><p>Need maths support?</p><a class="button button-primary" href="#enquire">Enquire</a></div></div><div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor.</p><a href="/">Home</a></div></footer>
+  <footer class="site-footer">
+    <div class="container home-footer-main"><div><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a><p>Local experience. Personal support. Clear maths.</p></div><div class="home-footer-contact"><strong>Hull and surrounding areas</strong><a href="tel:+447828579277">+44&nbsp;7828&nbsp;579277</a><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a></div><a class="button button-lime" href="#enquire">Enquire <span aria-hidden="true">&#8599;</span></a></div>
+    <div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor.</p><nav aria-label="Footer navigation"><a href="/">Home</a><a href="/gcse-maths-tutor-prices/">GCSE prices</a><a href="/year-11-parent-guide/">Parent guide</a></nav></div>
+  <div class="container footer-privacy"><a href="/privacy/">Privacy &amp; cookies</a><a href="/legal-information/">Legal information</a><a href="/privacy/#privacy-analytics" data-privacy-settings>Privacy settings</a><span data-privacy-state aria-live="polite">Measurement: off</span></div></footer>
+  <script src="/privacy.js" data-analytics="true" defer></script>
   <script src="/script.js" defer></script>
 </body>
 </html>

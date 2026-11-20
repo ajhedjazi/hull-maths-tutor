@@ -8,7 +8,10 @@
   <meta name="robots" content="noindex, follow" />
   <meta name="theme-color" content="#0B4344" />
   <link rel="icon" href="/assets/hmt-icon-64.png" sizes="64x64" type="image/png" />
+  <link rel="preload" href="/assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/playfair-display-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/privacy.css" />
   <style>
     .download-main{min-height:68vh;display:grid;place-items:center;padding:clamp(3rem,8vw,7rem) 0;background:#f6f3e9}
     .download-card{width:min(720px,calc(100% - 2rem));background:#fff;border:1px solid rgba(11,67,68,.14);border-radius:20px;padding:clamp(1.5rem,5vw,3.2rem);text-align:center;box-shadow:0 20px 55px rgba(11,67,68,.09)}
@@ -17,9 +20,16 @@
     .download-card p{max-width:600px;margin-left:auto;margin-right:auto}
     .download-actions{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin:1.6rem 0}
     .download-next{margin-top:2.3rem;padding-top:1.6rem;border-top:1px solid rgba(11,67,68,.14)}
+    /* Keep the legacy header usable with enlarged text, without clipping links. */
+    .guide-download-page .nav-shell{grid-template-columns:minmax(0,1fr)}
+    .guide-download-page .brand{min-width:0;max-width:100%}
+    .guide-download-page .brand-mark{flex-shrink:0}
+    .guide-download-page .brand-copy{min-width:0;overflow-wrap:anywhere}
+    .guide-download-page .nav-links{min-width:0;max-width:100%;flex-wrap:wrap}
+    .guide-download-page .nav-links a{white-space:normal;overflow-wrap:anywhere}
   </style>
 </head>
-<body class="detail-page">
+<body class="detail-page guide-download-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" aria-label="Site header">
     <div class="container nav-shell">
@@ -49,6 +59,7 @@
 
   <footer class="site-footer">
     <div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor. All rights reserved.</p><a href="/">Back to Hull Maths Tutor</a></div>
-  </footer>
+  <div class="container footer-privacy"><a href="/privacy/">Privacy &amp; cookies</a><a href="/legal-information/">Legal information</a><a href="/privacy/#privacy-analytics" data-privacy-settings>Privacy settings</a><span data-privacy-state aria-live="polite">Measurement: off</span></div></footer>
+  <script src="/privacy.js" defer></script>
 </body>
 </html>

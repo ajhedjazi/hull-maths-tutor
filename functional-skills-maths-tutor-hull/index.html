@@ -8,7 +8,12 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hullmathstutor.co.uk/functional-skills-maths-tutor-hull/" />
   <link rel="icon" href="/assets/hmt-icon-64.png" sizes="64x64" type="image/png" />
+  <link rel="preload" href="/assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/playfair-display-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.classList.add("hmt-nav");</script>
+  <script src="/navigation.js" defer onerror="document.documentElement.classList.remove('hmt-nav')"></script>
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/privacy.css" />
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -21,7 +26,10 @@
         "provider":{"@id":"https://hullmathstutor.co.uk/#business"},
         "areaServed":{"@type":"City","name":"Kingston upon Hull"},
         "url":"https://hullmathstutor.co.uk/functional-skills-maths-tutor-hull/",
-        "offers":{"@type":"Offer","price":"50","priceCurrency":"GBP","name":"One-to-one Functional Skills maths tuition"}
+        "offers":[
+          {"@type":"Offer","price":"50","priceCurrency":"GBP","name":"In-person Functional Skills maths tuition","priceSpecification":{"@type":"UnitPriceSpecification","price":50,"priceCurrency":"GBP","unitText":"hour"}},
+          {"@type":"Offer","name":"Online Functional Skills maths tuition","description":"Online Functional Skills maths tuition from £45 per hour.","priceSpecification":{"@type":"UnitPriceSpecification","minPrice":45,"priceCurrency":"GBP","unitText":"hour"}}
+        ]
       },
       {
         "@type":"BreadcrumbList",
@@ -34,33 +42,37 @@
   }
   </script>
 </head>
-<body class="detail-page site-flow">
+<body class="detail-page site-flow human-site human-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" aria-label="Site header">
     <div class="container nav-shell">
-      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a>
-      <nav class="nav-links" aria-label="Primary navigation"><a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/functional-skills-maths-tutor-hull/">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a><a class="nav-cta" href="/#enquire">Enquire</a></nav>
+      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation" hidden>Menu <span aria-hidden="true">&#9776;</span></button>
+      <nav class="nav-links" id="home-navigation" aria-label="Primary navigation">
+        <a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/?service=a-level#enquire" data-enquiry-service="A-Level Maths">A-Level</a><a href="/functional-skills-maths-tutor-hull/" aria-current="page">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a><a class="nav-cta" href="/#enquire">Enquire <span aria-hidden="true">&#8599;</span></a>
+      </nav>
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><div class="container"><ol><li><a href="/">Home</a></li><li aria-current="page">Functional Skills Maths</li></ol></div></nav>
-<section class="hero" aria-labelledby="hero-title"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow eyebrow-light">Functional Skills maths tutor in Hull</p><h1 id="hero-title">Adult maths, made easier.</h1><p class="hero-lede">One-to-one Functional Skills maths tuition in Hull and online.</p><div class="button-row"><a class="button button-primary" href="/#enquire">Ask About Functional Skills</a><a class="button button-secondary" href="#how-it-works">How Lessons Work</a></div><ul class="hero-trust"><li>Qualified teacher</li><li>16 years' experience</li><li>One-to-one support</li><li>DBS checked</li></ul></div><figure class="diagnostic-card"><figcaption class="diagnostic-heading"><span class="diagnostic-kicker">Adult maths tuition</span><strong>Level 1 & Level 2 support</strong></figcaption><dl class="diagnostic-list"><div><dt>Lessons</dt><dd>One to one</dd></div><div><dt>Style</dt><dd>Clear and calm</dd></div><div><dt>Focus</dt><dd>Your gaps</dd></div><div><dt>Cost</dt><dd>£50 per hour</dd></div></dl><p class="diagnostic-note">Work at a pace that makes sense to you.</p></figure></div></section>
+<section class="hero hero--quiet" aria-labelledby="hero-title"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow eyebrow-light">Functional Skills maths tutor in Hull</p><h1 id="hero-title">Adult maths, made easier.</h1><p class="hero-lede">One-to-one Functional Skills maths tuition in Hull and online.</p><div class="button-row"><a class="button button-primary" href="/#enquire">Ask About Functional Skills</a><a class="button button-secondary" href="#how-it-works">How Lessons Work</a></div><ul class="hero-trust"><li>Qualified teacher</li><li>16 years' experience</li><li>One-to-one support</li><li>DBS checked</li></ul></div><figure class="diagnostic-card"><figcaption class="diagnostic-heading"><span class="diagnostic-kicker">Adult maths tuition</span><strong>Level 1 & Level 2 support</strong></figcaption><dl class="diagnostic-list"><div><dt>Lessons</dt><dd>One to one</dd></div><div><dt>Style</dt><dd>Clear and calm</dd></div><div><dt>Focus</dt><dd>Your gaps</dd></div><div><dt>Price per hour</dt><dd>£50 in person<br />from £45 online</dd></div></dl><p class="diagnostic-note">Work at a pace that makes sense to you.</p></figure></div></section>
 
     <section class="section problem-section"><div class="container section-inner problem-layout"><div class="section-intro"><p class="eyebrow">Getting back into maths</p><h2>Start where you are.</h2></div><div class="problem-copy"><p class="lead-copy">Not studied maths for years? That's fine.</p><p>We start with what you know and take it one step at a time.</p><p>No rush. No judgement.</p></div></div></section>
 
-    <section class="section weekly-tuition-section" id="how-it-works"><div class="container section-inner weekly-tuition-layout"><div class="section-intro"><p class="eyebrow">How lessons work</p><h2>How your lessons work.</h2></div><div class="weekly-tuition-copy"><div class="weekly-flow"><article><span>01</span><h3>Check</h3><p>Find the skills that need work.</p></article><article><span>02</span><h3>Learn</h3><p>Go through one clear method at a time.</p></article><article><span>03</span><h3>Practise</h3><p>Use exam-style questions when you are ready.</p></article></div><p>Lessons can support Level 1 or Level 2 Functional Skills maths.</p></div></div></section>
+    <section class="section weekly-tuition-section" id="how-it-works" tabindex="-1"><div class="container section-inner weekly-tuition-layout"><div class="section-intro"><p class="eyebrow">How lessons work</p><h2>How your lessons work.</h2></div><div class="weekly-tuition-copy"><div class="weekly-flow"><article><span>01</span><h3>Check</h3><p>Find the skills that need work.</p></article><article><span>02</span><h3>Learn</h3><p>Go through one clear method at a time.</p></article><article><span>03</span><h3>Practise</h3><p>Use exam-style questions when you are ready.</p></article></div><p>Lessons can support Level 1 or Level 2 Functional Skills maths.</p></div></div></section>
 
     <section class="section about-section functional-skills-about"><div class="container section-inner section-inner-single about-layout about-layout-single"><div class="about-copy"><p class="eyebrow">Why work with Amir?</p><h2>Clear help from an experienced teacher.</h2><p class="lead-copy">I have taught maths for 16 years, including 7 years as Head of Maths.</p><p>I keep explanations short and clear. We can slow down, repeat a method and practise it as many times as needed.</p><ul class="about-points"><li>Qualified maths teacher</li><li>Maths degree</li><li>16 years' teaching experience</li><li>In Hull and online</li></ul><p><a class="button button-secondary" href="/about-amir/">More About Amir</a></p></div></div></section>
 
-    <section class="section offers-section"><div class="container section-inner offers-heading"><div class="section-intro"><p class="eyebrow">Price</p><h2>Functional Skills maths tuition — £50 per hour.</h2></div><p>One-to-one support built around your course and goals.</p></div><div class="container progress-paths"><article class="trial-path"><div class="trial-copy"><p class="offer-label">In-person tuition</p><h3>£50 per hour</h3><p>Travel within 6 miles is included. Longer-distance travel is £1 per extra mile.</p></div><div class="button-row"><a class="button button-primary" href="/#enquire">Ask About a Lesson</a></div></article><aside class="main-offers"><div class="offer-path"><span>Online support</span><p>Ask about online Functional Skills lessons if travel is not practical.</p></div><div class="offer-path"><span>GCSE instead?</span><p><a href="/gcse-maths-tutor-hull/">See GCSE maths tuition →</a></p></div></aside></div></section>
+    <section class="section offers-section"><div class="container section-inner offers-heading"><div class="section-intro"><p class="eyebrow">Price</p><h2>Functional Skills maths tuition prices.</h2></div><p>One-to-one support built around your course and goals.</p></div><div class="container progress-paths"><article class="trial-path"><div class="trial-copy"><p class="offer-label">In-person tuition</p><h3>£50 per hour</h3><p>Travel within 6 miles is included. Longer-distance travel is £1 per extra mile.</p></div><div class="button-row"><a class="button button-primary" href="/#enquire">Ask About a Lesson</a></div></article><aside class="main-offers"><div class="offer-path"><span>Online support</span><p><strong>From £45 per hour.</strong></p><p>Ask about online Functional Skills lessons if travel is not practical.</p></div><div class="offer-path"><span>GCSE instead?</span><p><a href="/gcse-maths-tutor-hull/">See GCSE maths tuition →</a></p></div></aside></div></section>
 
     
 
     <section class="section faq-section"><div class="container section-inner faq-layout"><div class="faq-heading"><p class="eyebrow">Questions</p><h2>Functional Skills FAQs</h2></div><div class="faq-list"><details><summary>Do you teach adult learners?</summary><p>Yes. Functional Skills tuition is designed for adult learners as well as younger post-16 learners.</p></details><details><summary>Can you help with Level 2 Functional Skills Maths?</summary><p>Yes. Lessons can focus on the skills and question types needed for Level 2.</p></details><details><summary>What if I have not done maths for years?</summary><p>That is fine. We start with the basics you need and build from there.</p></details><details><summary>Can lessons match my course?</summary><p>Yes. Bring your course work, practice papers or topic list and we can use them to guide lessons.</p></details></div></div></section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a></div><div class="footer-local"><p class="footer-label">Contact</p><strong>Hull and surrounding areas</strong><a href="tel:+447828579277">+44 7828 579277</a><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a></div><div class="footer-action"><p>Need Functional Skills maths support?</p><a class="button button-primary" href="/#enquire">Enquire</a></div></div><div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor.</p><a href="/">Home</a></div></footer>
+  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a></div><div class="footer-local"><p class="footer-label">Contact</p><strong>Hull and surrounding areas</strong><a href="tel:+447828579277">+44 7828 579277</a><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a></div><div class="footer-action"><p>Need Functional Skills maths support?</p><a class="button button-primary" href="/#enquire">Enquire</a></div></div><div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor.</p><a href="/">Home</a></div><div class="container footer-privacy"><a href="/privacy/">Privacy &amp; cookies</a><a href="/legal-information/">Legal information</a><a href="/privacy/#privacy-analytics" data-privacy-settings>Privacy settings</a><span data-privacy-state aria-live="polite">Measurement: off</span></div></footer>
+  <script src="/privacy.js" data-analytics="true" defer></script>
   <script src="/script.js" defer></script>
 </body>
 </html>

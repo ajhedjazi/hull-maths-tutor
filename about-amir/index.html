@@ -13,10 +13,19 @@
   <meta property="og:title" content="About Amir Hedjazi | Maths Tutor in Hull" />
   <meta property="og:description" content="Qualified maths teacher with 16 years' experience, offering GCSE, A-Level and Functional Skills tuition in Hull and online." />
   <meta property="og:url" content="https://hullmathstutor.co.uk/about-amir/" />
-  <meta property="og:image" content="https://hullmathstutor.co.uk/assets/hull-maths-tutor-hero.jpg" />
+  <meta property="og:image" content="https://hullmathstutor.co.uk/assets/hull-maths-tutor-social.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="Hull Maths Tutor. Amir pictured in a classroom." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/assets/hmt-icon-64.png" sizes="64x64" type="image/png" />
+  <link rel="preload" href="/assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/playfair-display-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.classList.add("hmt-nav");</script>
+  <script src="/navigation.js" defer onerror="document.documentElement.classList.remove('hmt-nav')"></script>
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/privacy.css" />
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -42,24 +51,35 @@
   }
   </script>
 </head>
-<body class="detail-page about-profile-page">
+<body class="detail-page about-profile-page human-site human-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" aria-label="Site header">
     <div class="container nav-shell">
-      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a>
-      <nav class="nav-links" aria-label="Primary navigation"><a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/functional-skills-maths-tutor-hull/">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a><a class="nav-cta" href="/#enquire">Enquire</a></nav>
+      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation" hidden>Menu <span aria-hidden="true">&#9776;</span></button>
+      <nav class="nav-links" id="home-navigation" aria-label="Primary navigation">
+        <a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/?service=a-level#enquire" data-enquiry-service="A-Level Maths">A-Level</a><a href="/functional-skills-maths-tutor-hull/">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/" aria-current="page">About Amir</a><a class="nav-cta" href="/#enquire">Enquire <span aria-hidden="true">&#8599;</span></a>
+      </nav>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
     <nav class="breadcrumbs" aria-label="Breadcrumb"><div class="container"><ol><li><a href="/">Home</a></li><li aria-current="page">About Amir</li></ol></div></nav>
-    <section class="hero" aria-labelledby="hero-title"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow eyebrow-light">Maths tutor in Hull</p><h1 id="hero-title">Meet Amir.</h1><p class="hero-lede">A qualified maths teacher with 16 years' secondary maths teaching experience.</p><div class="button-row"><a class="button button-primary" href="/#enquire">Ask About Tuition</a><a class="button button-secondary" href="/maths-mot-hull/">See the Maths MOT</a></div><ul class="hero-trust"><li>Maths degree</li><li>Qualified maths teacher</li><li>7 years as Head of Maths</li><li>DBS checked</li></ul></div><figure class="diagnostic-card"><figcaption class="diagnostic-heading"><span class="diagnostic-kicker">About Amir</span><strong>Clear, calm teaching</strong></figcaption><dl class="diagnostic-list"><div><dt>Experience</dt><dd>16 years</dd></div><div><dt>Departmental leadership</dt><dd>10 years</dd></div><div><dt>Support</dt><dd>GCSE, A-Level &amp; Functional Skills</dd></div><div><dt>Lessons</dt><dd>Hull and online</dd></div></dl><p class="diagnostic-note">Start with the gap. Build from there.</p></figure></div></section>
+    <section class="hero hero--profile has-portrait" aria-labelledby="hero-title"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow eyebrow-light">Maths tutor in Hull</p><h1 id="hero-title">Meet Amir.</h1><p class="hero-lede">A qualified maths teacher with 16 years' secondary maths teaching experience.</p><div class="button-row"><a class="button button-primary" href="/#enquire">Ask About Tuition</a><a class="button button-secondary" href="/maths-mot-hull/">See the Maths MOT</a></div><ul class="hero-trust"><li>Maths degree</li><li>Qualified maths teacher</li><li>7 years as Head of Maths</li><li>DBS checked</li></ul></div>
+      <figure class="profile-portrait">
+        <!-- Source: design-reference/human-hull/assets/amir-about-portrain.png.
+             Commercial-use permission is owner-confirmed in the release-readiness report.
+             Publication still requires separate authorisation; local preview only. -->
+        <img src="/assets/amir-about-portrait-480.webp" srcset="/assets/amir-about-portrait-320.webp 320w, /assets/amir-about-portrait-480.webp 480w" sizes="(max-width: 348px) calc(100vw - 28px), 320px" alt="Amir outdoors, wearing a dark overshirt, tan top and white trainers" width="480" height="1140" fetchpriority="high" decoding="async" />
+      </figure>
+      <figure class="diagnostic-card"><figcaption class="diagnostic-heading"><span class="diagnostic-kicker">About Amir</span><strong>Clear, calm teaching</strong></figcaption><dl class="diagnostic-list"><div><dt>Experience</dt><dd>16 years</dd></div><div><dt>Departmental leadership</dt><dd>10 years</dd></div><div><dt>Support</dt><dd>GCSE, A-Level &amp; Functional Skills</dd></div><div><dt>Lessons</dt><dd>Hull and online</dd></div></dl><p class="diagnostic-note">Start with the gap. Build from there.</p></figure></div></section>
     <section class="section problem-section"><div class="container section-inner problem-layout"><div class="section-intro"><p class="eyebrow">How I teach</p><h2>Maths explained one step at a time.</h2></div><div class="problem-copy"><p class="lead-copy">One wrong answer does not mean a learner is bad at maths.</p><p>I look at their working to see where they got stuck.</p><p>Then we work on that step together.</p><p>I have a degree in Mathematics and Statistics from Newcastle University, a PGCE in Secondary Mathematics and Qualified Teacher Status (QTS).</p></div></div></section>
     
     <section class="section about-section"><div class="container section-inner about-layout"><div class="about-copy"><p class="eyebrow">Who I help</p><h2>Who I teach.</h2><p class="lead-copy">Some learners need to rebuild key skills. Others know the method but struggle to use it in a question.</p><p>I can slow things down, explain it another way and build confidence one step at a time.</p></div><ul class="about-points mot-list-grid"><li>GCSE Foundation</li><li>GCSE Higher</li><li>GCSE resits</li><li>A-Level Maths</li><li>Functional Skills</li><li>Neurodivergent-aware support</li><li>Online tuition</li></ul></div></section>
     <section class="section weekly-tuition-section"><div class="container section-inner weekly-tuition-layout"><div class="section-intro"><p class="eyebrow">Choose your support</p><h2>Choose the right maths support.</h2></div><div class="weekly-tuition-copy"><div class="weekly-flow"><article><span>01</span><h3>GCSE Maths</h3><p>Foundation, Higher and resit support.</p><p><a href="/gcse-maths-tutor-hull/">See GCSE tuition →</a></p></article><article><span>02</span><h3>Functional Skills</h3><p>One-to-one support for adult learners.</p><p><a href="/functional-skills-maths-tutor-hull/">See Functional Skills tuition →</a></p></article><article><span>03</span><h3>Maths MOT</h3><p>Find strengths, gaps and the best place to start.</p><p><a href="/maths-mot-hull/">See the Maths MOT →</a></p></article></div></div></div></section>
     <section class="section editorial-quote-section"><div class="container section-inner-single editorial-quote-layout"><p class="eyebrow">Ready to talk?</p><blockquote><p>Start with the missing step, not more pressure.</p></blockquote><div class="button-row"><a class="button button-primary" href="/#enquire">Ask About Tuition</a></div></div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a></div><div class="footer-local"><p class="footer-label">Contact</p><strong>Hull and surrounding areas</strong><a href="tel:+447828579277">+44 7828 579277</a><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a></div><div class="footer-action"><p>Need maths support?</p><a class="button button-primary" href="/#enquire">Enquire</a></div></div><div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor.</p><a href="/">Home</a></div></footer>
+  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a></div><div class="footer-local"><p class="footer-label">Contact</p><strong>Hull and surrounding areas</strong><a href="tel:+447828579277">+44 7828 579277</a><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a></div><div class="footer-action"><p>Need maths support?</p><a class="button button-primary" href="/#enquire">Enquire</a></div></div><div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor.</p><a href="/">Home</a></div><div class="container footer-privacy"><a href="/privacy/">Privacy &amp; cookies</a><a href="/legal-information/">Legal information</a><a href="/privacy/#privacy-analytics" data-privacy-settings>Privacy settings</a><span data-privacy-state aria-live="polite">Measurement: off</span></div></footer>
+  <script src="/privacy.js" data-analytics="true" defer></script>
   <script src="/script.js" defer></script>
 </body>
 </html>
