@@ -11,7 +11,6 @@ const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
 const year = document.querySelector("#copyright-year");
 const mobileCta = document.querySelector("[data-mobile-cta]");
 const floatingActions = document.querySelector("[data-floating-actions]");
-const backToTopButton = document.querySelector("[data-back-to-top]");
 const enquirySection = document.querySelector("#enquire");
 
 internalLinks.forEach((link) => {
@@ -99,15 +98,6 @@ const toggleFloatingControls = () => {
 
 window.addEventListener("scroll", toggleFloatingControls, { passive: true });
 toggleFloatingControls();
-
-if (backToTopButton) {
-  backToTopButton.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: prefersReducedMotion ? "auto" : "smooth",
-    });
-  });
-}
 
 const navTargets = Array.from(navLinks)
   .map((link) => {

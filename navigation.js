@@ -2,7 +2,79 @@
 // Its script error handler (or JS being off) leaves the full navigation available.
 document.documentElement.classList.add("hmt-nav");
 
+const initialiseBackToTop = () => {
+  if (document.querySelector("[data-back-to-top]")) return;
+  const desktop = window.matchMedia("(min-width: 1024px)");
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "back-to-top";
+  button.dataset.backToTop = "";
+  button.setAttribute("aria-label", "Back to top");
+  button.hidden = true;
+  button.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="m6 12 6-6 6 6M12 6v12" /></svg>';
+  document.body.appendChild(button);
+
+  let reachedHalfway = false;
+  let frame = 0;
+  const focusTop = () => {
+    const target = document.querySelector(".site-header .brand, main");
+    if (!target) return;
+    if (!target.hasAttribute("tabindex") && target.tagName !== "A") {
+      target.setAttribute("tabindex", "-1");
+      target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
+    }
+    target.focus({ preventScroll: true });
+  };
+  const hide = () => {
+    if (document.activeElement === button) focusTop();
+    button.hidden = true;
+  };
+  const update = () => {
+    frame = 0;
+    const distance = document.documentElement.scrollHeight - window.innerHeight;
+    const longPage = distance > Math.max(320, window.innerHeight / 2);
+    if (!desktop.matches || !longPage || window.scrollY <= 96) reachedHalfway = false;
+    else if (window.scrollY >= distance / 2) reachedHalfway = true;
+    if (!reachedHalfway) { hide(); return; }
+
+    button.hidden = false;
+    button.style.bottom = "24px";
+    const bounds = button.getBoundingClientRect();
+    const controls = [...document.querySelectorAll("a[href], button, input:not([type='hidden']), select, textarea, summary")]
+      .filter((element) => element !== button && element.getClientRects().length && getComputedStyle(element).visibility !== "hidden")
+      .map((element) => element.getBoundingClientRect())
+      .filter((rect) => rect.width && rect.height && rect.left < bounds.right + 8 && rect.right > bounds.left - 8);
+    const headerBottom = document.querySelector(".site-header")?.getBoundingClientRect().bottom || 0;
+    let top = window.innerHeight - 24 - bounds.height;
+    // Keep the normal corner position unless an actual link or field occupies it.
+    // Move above that control rather than covering it on narrower desktop layouts.
+    let collision;
+    while ((collision = controls.find((rect) => rect.top < top + bounds.height + 8 && rect.bottom > top - 8))) {
+      top = collision.top - bounds.height - 8;
+    }
+    if (top < Math.max(24, headerBottom + 12)) { hide(); return; }
+    button.style.bottom = `${window.innerHeight - top - bounds.height}px`;
+  };
+  const scheduleUpdate = () => {
+    if (!frame) frame = window.requestAnimationFrame(update);
+  };
+  button.addEventListener("click", () => {
+    focusTop();
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  });
+  window.addEventListener("scroll", scheduleUpdate, { passive: true });
+  window.addEventListener("resize", scheduleUpdate, { passive: true });
+  window.addEventListener("pageshow", scheduleUpdate);
+  desktop.addEventListener("change", scheduleUpdate);
+  if ("ResizeObserver" in window) new ResizeObserver(scheduleUpdate).observe(document.body);
+  scheduleUpdate();
+};
+
 const initialiseNavigation = () => {
+  initialiseBackToTop();
   const enquiryForm = document.querySelector(".enquiry-form");
   const serviceSelect = enquiryForm?.querySelector('[name="service"]');
   // A functional navigation instruction, not an identifier or tracking record.
