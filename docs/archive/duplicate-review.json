@@ -1,0 +1,338 @@
+[
+  {
+    "sha256": "514927238ecf332c9558513c2d53bde0cf32d6ceca5dacd835cda186171982fc",
+    "files": [
+      {
+        "old": "docs/visual-review/about-portrait/after-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/about-portrait/after-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/about-portrait-treatment/before-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/about-portrait-treatment/before-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "797a1460dbe370c0da210896a4901e93976c418d78d282be4d2c77fecc99b830",
+    "files": [
+      {
+        "old": "docs/visual-review/about-portrait/after-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/about-portrait/after-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/about-portrait-treatment/before-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/about-portrait-treatment/before-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "66f566bf7330504f6f3580f5dcedb722bc2aa0002eec2fb53776dde66d5deb0c",
+    "files": [
+      {
+        "old": "docs/visual-review/about-portrait/before-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/about-portrait/before-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/phase-2/about-amir/after-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/about-amir/after-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "768b8b74941bfb8fbd447dc944bc47b41d61399c284d8d4a802b49d30cc47d71",
+    "files": [
+      {
+        "old": "docs/visual-review/about-portrait/before-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/about-portrait/before-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/phase-2/about-amir/after-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/about-amir/after-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "1431817a69bd690f2907122417e42c07beceeac18b5a1bd0953cd55e4eac5096",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/functional-skills-maths-tutor-hull/after-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/functional-skills-maths-tutor-hull/after-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/functional-skills-maths-tutor-hull/before-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/functional-skills-maths-tutor-hull/before-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "09e56b6d06c34eeb5f9d8860ad3feee75176fc9c5942980838ae408960f05a32",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/functional-skills-maths-tutor-hull/after-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/functional-skills-maths-tutor-hull/after-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/functional-skills-maths-tutor-hull/before-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/functional-skills-maths-tutor-hull/before-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "d02ba38d3ebe4abe3c9aeee0f3afad248079e417dc48af77d83f251829821042",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "3e1a3b0c4c2100b807e24be4213fb5cb1b9e214516021e33e1d26334bca8a47a",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "e771717fe5f28e1d02161aaab553bdd4863c6e9644e82098a198788a5c8d692f",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/gcse-maths-tutor-hull/after-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-hull/after-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/gcse-maths-tutor-hull/before-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-hull/before-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "961de988dfd5dd735e808be5f53729a5cd0e6c288c7dfe9b5e51ece165d760d4",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/gcse-maths-tutor-hull/after-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-hull/after-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/gcse-maths-tutor-hull/before-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-hull/before-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "71c9745fc77faeb071a7d06a9337c5e98d7e47d227378549586dfe75d04f4939",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/gcse-maths-tutor-prices/after-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-prices/after-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/gcse-maths-tutor-prices/before-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-prices/before-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "9d202b6c6782a9d3769ed9e18f9699636d6d1a9f316714fd785909697d45ed0c",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/gcse-maths-tutor-prices/after-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-prices/after-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/gcse-maths-tutor-prices/before-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-prices/before-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "798d2c07f12c0d3968ad161e443136e6105b2fe843abfb3b950f1c640473f0cb",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/maths-mot-hull/after-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/maths-mot-hull/after-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/maths-mot-hull/before-1440.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/maths-mot-hull/before-1440.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  },
+  {
+    "sha256": "e8ecaebb4bcca976347542e9bc1cd78fe460ed235b7ee16054fdb3830739e940",
+    "files": [
+      {
+        "old": "docs/visual-review/phase-2/maths-mot-hull/after-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/phase-2/maths-mot-hull/after-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      },
+      {
+        "old": "docs/visual-review/final-five/maths-mot-hull/before-390.png",
+        "new": "docs/archive/human-hull/2026-11/visual-review/final-five/maths-mot-hull/before-390.png",
+        "referenced_by": [
+          "docs/human-hull-about-portrait-review.md",
+          "docs/human-hull-final-five-review.md",
+          "docs/human-hull-phase-2-review.md"
+        ]
+      }
+    ],
+    "decision": "Retain every named copy; references/evidence identity take precedence over deduplication."
+  }
+]

@@ -1,0 +1,6 @@
+Authoritative logo integration - 27 November 2026
+Original: design-reference/brand-source/Hull_Maths_Tutor_Logo_HighRes.png, byte-identical to supplied Downloads source. Previous site icons archived in design-reference/brand-source/previous-website-icons/. All remain excluded from production packaging.
+Generative candidate rejected because it altered proportions. Final assets use original pixels with a centered antialiased circular alpha mask to remove perimeter flecks; no bridge, axes, lettering or colour redraw. Square crop retains the interior artwork without stretching.
+Assets: PNG RGBA at 64/128/180/256/512 pixels. Header/footer image srcset provides 1x/2x/3x variants; existing displayed dimensions and mobile styles retained. Favicon uses updated 64px artwork. Cache version added to logo references.
+Production output: 39 files including new 128px density variant. No private/source/review/dev files or retired learner image included. Supplied original unchanged. Local review: http://127.0.0.1:8766/ .
+No commit, push, deployment, billing change or production environment change.

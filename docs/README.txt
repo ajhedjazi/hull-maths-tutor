@@ -1,0 +1,4 @@
+Human / Hull documentation
+Start with release/current-checklist.txt for current state. Maintenance: maintenance/retention-procedure.md. Immutable release evidence: release/2026-11-27-2b0cb5e/. Historical snapshots: archive/human-hull/2026-11/ and archive/site-alignment/. Historical status statements are superseded by the current checklist, not deleted.
+Archive inventories: archive/housekeeping-moves.json (original paths and hashes), archive/housekeeping-preimage-text.json (exact original documentation text before reference rewrites), archive/duplicate-review.json (all 14 duplicate screenshot groups and references; all copies retained).
+Production paths, build script and brand-source locations are unchanged. docs and design-reference never enter the public output. Generated public/, .local-preview/, .netlify/ and local test output remain ignored.

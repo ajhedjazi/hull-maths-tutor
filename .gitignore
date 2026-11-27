@@ -1,3 +1,6 @@
 /public/
 /.local-preview/
 /.netlify/
+/.local-test-results/
+/playwright-report/
+/test-results/
