@@ -14,62 +14,21 @@
   <meta property="og:url" content="https://hullmathstutor.co.uk/year-11-parent-guide/" />
   <meta property="og:title" content="Free Year 11 GCSE Maths Parent Guide" />
   <meta property="og:description" content="A practical, plain-English guide for parents of students studying Foundation or Higher Tier GCSE Maths." />
-  <meta property="og:image" content="https://hullmathstutor.co.uk/assets/hull-maths-tutor-hero.jpg" />
+  <meta property="og:image" content="https://hullmathstutor.co.uk/assets/hull-maths-tutor-social.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="Hull Maths Tutor. Amir pictured in a classroom." />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="/assets/hmt-icon-64.png" sizes="64x64" type="image/png" />
+  <link rel="icon" href="/assets/hmt-icon-64.png?v=20261127" sizes="64x64" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/hmt-icon-180.png" />
+  <link rel="preload" href="/assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/playfair-display-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <script>document.documentElement.classList.add("hmt-nav");</script>
+  <script src="/navigation.js" defer onerror="document.documentElement.classList.remove('hmt-nav')"></script>
   <link rel="stylesheet" href="/styles.css" />
-  <style>
-    .guide-hero{color:#fff}
-    .guide-hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.7fr);gap:clamp(2rem,6vw,5rem);align-items:center}
-    .guide-hero h1{max-width:760px;margin:.35rem 0 1rem}
-    .guide-hero .hero-lede{max-width:680px}
-    .guide-hero .button-secondary{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.06);color:#fff}
-    .guide-hero .button-secondary:hover{border-color:#cfb579;background:rgba(207,181,121,.12);color:#fff}
-    .guide-hero .hero-trust{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .guide-hero .button-row{margin-top:32px}
-    .guide-preview{margin:0;justify-self:center;width:min(100%,390px)}
-    .guide-cover-card{aspect-ratio:210/297;background:#fbfbf8;color:#153f42;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.26);padding:clamp(1.2rem,3vw,2rem);display:flex;flex-direction:column;border:1px solid rgba(207,181,121,.45)}
-    .guide-cover-brand{font-family:Georgia,serif;line-height:.92;margin-bottom:1.8rem}
-    .guide-cover-brand strong{display:block;color:#c79f42;font-size:1.45rem;letter-spacing:.02em}
-    .guide-cover-brand span{display:block;color:#0b4344;font-size:1.15rem;font-weight:700}
-    .guide-cover-rule{width:45%;height:2px;background:#cfb579;margin:.7rem 0 1rem}
-    .guide-cover-kicker{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#b18f49;font-weight:800;margin-top:1rem}
-    .guide-cover-card h2{font-family:Georgia,serif;font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.02;margin:.5rem 0 1rem;color:#0b4344}
-    .guide-cover-card p{font-size:.92rem;line-height:1.5;color:#2f3b3b}
-    .guide-cover-audience{margin-top:auto;background:#eef4f4;border:1px solid rgba(11,67,68,.14);border-radius:8px;padding:.75rem;font-size:.75rem;font-weight:800;text-align:center;color:#0b4344}
-    .guide-preview figcaption{margin-top:.8rem;color:rgba(255,255,255,.78);font-size:.9rem;text-align:center}
-    .guide-form-section{background:#f6f3e9}
-    .guide-form-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1fr);gap:clamp(2rem,6vw,5rem);align-items:start}
-    .guide-form{background:#fff;border:1px solid rgba(11,67,68,.14);border-radius:18px;padding:clamp(1.35rem,3vw,2rem);box-shadow:0 18px 45px rgba(11,67,68,.08)}
-    .guide-form .form-row{margin-bottom:1rem}
-    .guide-form label{display:block;font-weight:700;margin-bottom:.4rem;color:#123f41}
-    .guide-form input[type="text"],.guide-form input[type="email"],.guide-form select{width:100%;min-height:48px;border:1px solid rgba(11,67,68,.25);border-radius:9px;padding:.75rem .85rem;background:#fff;color:#1f2a2a;font:inherit}
-    .guide-form input:focus,.guide-form select:focus{outline:3px solid rgba(207,181,121,.34);outline-offset:2px;border-color:#0b4344}
-    .guide-form-note{font-size:.92rem;color:#586363;line-height:1.55;margin:.85rem 0 0}
-    .guide-consent{display:flex;gap:.7rem;align-items:flex-start;margin:1rem 0 1.25rem}
-    .guide-consent input{margin-top:.3rem}
-    .guide-consent label{font-weight:400;margin:0;color:#394646}
-    .guide-points{display:grid;gap:1rem;margin-top:1.5rem}
-    .guide-point{padding:1.1rem 0;border-top:1px solid rgba(11,67,68,.16)}
-    .guide-point strong{display:block;color:#0b4344;margin-bottom:.25rem}
-    .guide-contents{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
-    .guide-contents article{background:#f6f8f7;border:1px solid rgba(11,67,68,.12);border-radius:14px;padding:1.2rem}
-    .guide-contents span{display:inline-block;color:#c79f42;font-weight:800;font-size:.85rem;margin-bottom:.75rem}
-    .guide-contents h3{margin:.1rem 0 .45rem;color:#0b4344}
-    .guide-mot{background:#0b4344;color:#fff}
-    .guide-mot .section-intro h2,.guide-mot .eyebrow,.guide-mot p{color:#fff}
-    .guide-mot .button-secondary{border-color:rgba(255,255,255,.42);color:#fff}
-    @media (max-width:800px){
-      .guide-hero-grid,.guide-form-layout{grid-template-columns:1fr}
-      .guide-hero .hero-trust{grid-template-columns:1fr 1fr}
-      .guide-preview{width:min(82vw,360px)}
-      .guide-contents{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width:520px){.guide-contents{grid-template-columns:1fr}.guide-hero .hero-trust{grid-template-columns:1fr}}
-  </style>
-  <script type="application/ld+json">
+  <link rel="stylesheet" href="/privacy.css" />
+<script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@graph":[
@@ -101,26 +60,29 @@
   }
   </script>
 </head>
-<body class="detail-page">
+<body class="detail-page human-site human-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" aria-label="Site header">
     <div class="container nav-shell">
-      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a>
-      <nav class="nav-links" aria-label="Primary navigation"><a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/functional-skills-maths-tutor-hull/">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a><a class="nav-cta" href="/#enquire">Enquire</a></nav>
+      <a class="brand" href="/" aria-label="Hull Maths Tutor home"><span class="brand-mark"><img src="/assets/hmt-icon-64.png?v=20261127" srcset="/assets/hmt-icon-64.png?v=20261127 1x, /assets/hmt-icon-128.png?v=20261127 2x, /assets/hmt-icon-180.png?v=20261127 3x" alt="" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation" hidden>Menu <span aria-hidden="true">&#9776;</span></button>
+      <nav class="nav-links" id="home-navigation" aria-label="Primary navigation">
+        <a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/?service=a-level#enquire" data-enquiry-service="A-Level Maths">A-Level</a><a href="/functional-skills-maths-tutor-hull/">Functional Skills</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a><a class="nav-cta" href="/#enquire">Enquire <span aria-hidden="true">&#8599;</span></a>
+      </nav>
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <nav class="breadcrumbs" aria-label="Breadcrumb"><div class="container"><ol><li><a href="/">Home</a></li><li aria-current="page">Year 11 Parent Guide</li></ol></div></nav>
 
-    <section class="hero guide-hero" aria-labelledby="guide-title">
+    <section class="hero hero--resource guide-hero" aria-labelledby="guide-title">
       <div class="container guide-hero-grid">
         <div>
           <p class="eyebrow eyebrow-light">Free Year 11 resource</p>
           <h1 id="guide-title">The Year 11 GCSE Maths Parent Guide</h1>
           <p class="hero-lede">A practical, plain-English guide to Foundation and Higher Tier, Grades 4 and 5, mock exams, revision and supporting your child through Year 11.</p>
           <div class="button-row">
-            <a class="button button-primary" href="#get-guide">Get the free PDF</a>
+            <a class="button button-primary" href="/assets/guides/year-11-gcse-maths-parent-guide.pdf" download>Download Free Guide</a>
             <a class="button button-secondary" href="#inside">See what's inside</a>
           </div>
           <ul class="hero-trust">
@@ -143,60 +105,33 @@
       </div>
     </section>
 
-    <section class="section guide-form-section" id="get-guide" aria-labelledby="get-guide-title">
+    <section class="section guide-form-section" id="get-guide" tabindex="-1" aria-labelledby="get-guide-title">
       <div class="container section-inner guide-form-layout">
         <div class="section-intro">
           <p class="eyebrow">Get your copy</p>
           <h2 id="get-guide-title">A clearer picture of Year 11 Maths.</h2>
-          <p class="lead-copy">Enter your details and you will go straight to the download page.</p>
+          <p class="lead-copy">Download the free PDF straight away. No sign-up or contact details needed.</p>
           <div class="guide-points">
-            <div class="guide-point"><strong>No phone number needed.</strong><span>Just your first name, email and the tier that best fits your child.</span></div>
-            <div class="guide-point"><strong>Not sure about the tier?</strong><span>Choose “Not sure”. The guide explains Foundation and Higher in plain English.</span></div>
+            <div class="guide-point"><strong>No sign-up needed.</strong><span>Download your copy without sharing your name or email.</span></div>
+            <div class="guide-point"><strong>Foundation or Higher Tier.</strong><span>One guide covers both tiers, including help if you are not sure.</span></div>
             <div class="guide-point"><strong>No tutoring commitment.</strong><span>The booklet is a free resource. You can use it whether or not you ever book tuition.</span></div>
           </div>
         </div>
 
-        <form class="guide-form" name="year-11-parent-guide" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="e98d162b-3b9c-48ae-8c09-eb7a23e28a65" />
-          <input type="hidden" name="subject" value="Year 11 Parent Guide download" />
-          <input type="hidden" name="from_name" value="Hull Maths Tutor - Parent Guide" />
-          <input type="hidden" name="redirect" value="https://hullmathstutor.co.uk/year-11-parent-guide/download/" />
-          <input type="hidden" name="Resource" value="The Year 11 GCSE Maths Parent Guide" />
-          <input type="hidden" name="UTM Source" data-utm="utm_source" value="" />
-          <input type="hidden" name="UTM Medium" data-utm="utm_medium" value="" />
-          <input type="hidden" name="UTM Campaign" data-utm="utm_campaign" value="" />
-          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <div class="form-row">
-            <label for="guide-name">First name</label>
-            <input id="guide-name" name="First Name" type="text" autocomplete="given-name" required />
+        <div class="guide-download-panel">
+          <p class="eyebrow">Free PDF</p>
+          <h3>Your guide, ready to download.</h3>
+          <p class="guide-form-note" id="guide-file-details">PDF &middot; 10 pages &middot; 1.2 MB. Save a copy to read whenever you need it.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="/assets/guides/year-11-gcse-maths-parent-guide.pdf" download aria-describedby="guide-file-details">Download Free Guide</a>
           </div>
-          <div class="form-row">
-            <label for="guide-email">Email</label>
-            <input id="guide-email" name="Email" type="email" autocomplete="email" required />
-          </div>
-          <div class="form-row">
-            <label for="guide-tier">Which best describes your child?</label>
-            <select id="guide-tier" name="Current Tier" required>
-              <option value="">Choose one</option>
-              <option>Foundation Tier</option>
-              <option>Higher Tier</option>
-              <option>Not sure</option>
-            </select>
-          </div>
-
-          <div class="guide-consent">
-            <input id="guide-marketing" name="Marketing Consent" type="checkbox" value="Yes - GCSE Maths tips and resources" />
-            <label for="guide-marketing">Yes, send me occasional GCSE Maths tips, useful resources and Hull Maths Tutor updates by email. Optional.</label>
-          </div>
-
-          <button class="button button-primary form-button" type="submit">Get the free guide</button>
-          <p class="guide-form-note">Your details will be sent to Hull Maths Tutor so I can record guide requests. You will only be opted into future marketing emails if you tick the optional box above.</p>
-        </form>
+          <p class="guide-form-note">Prefer to read online? <a href="/assets/guides/year-11-gcse-maths-parent-guide.pdf">Open the PDF in your browser</a>.</p>
+          <p class="guide-form-note">No form details are collected and no mailing-list subscription is created. <a href="/privacy/">Privacy information</a>.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="inside" aria-labelledby="inside-title">
+    <section class="section" id="inside" tabindex="-1" aria-labelledby="inside-title">
       <div class="container section-inner">
         <div class="section-intro">
           <p class="eyebrow">Inside the guide</p>
@@ -222,7 +157,7 @@
         <ul class="about-points">
           <li>Qualified maths teacher</li>
           <li>16 years' teaching experience</li>
-          <li>7 years as Head of Maths</li>
+          <li>7 years in departmental leadership</li>
           <li>GCSE Maths specialist support</li>
         </ul>
       </div>
@@ -247,17 +182,12 @@
 
   <footer class="site-footer">
     <div class="container footer-main">
-      <div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE & Functional Skills</small></span></a><p>Clear maths support in Hull and online.</p></div>
+      <div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark"><img src="/assets/hmt-icon-64.png?v=20261127" srcset="/assets/hmt-icon-64.png?v=20261127 1x, /assets/hmt-icon-128.png?v=20261127 2x, /assets/hmt-icon-180.png?v=20261127 3x" alt="Hull Maths Tutor logo" width="64" height="64" /></span><span class="brand-copy"><strong>Hull Maths Tutor</strong><small>GCSE, A-Level &amp; Functional Skills</small></span></a><p>Clear maths support in Hull and online.</p></div>
       <div class="footer-local"><p class="footer-label">Contact</p><strong>Hull and surrounding areas</strong><a href="tel:+447828579277">+44 7828 579277</a><a href="mailto:mathstutoringhull@gmail.com">mathstutoringhull@gmail.com</a><nav class="footer-links" aria-label="Footer navigation"><a href="/">Home</a><a href="/gcse-maths-tutor-hull/">GCSE Maths</a><a href="/maths-mot-hull/">Maths MOT</a><a href="/about-amir/">About Amir</a></nav></div>
-      <div class="footer-action"><p>Need maths support?</p><a class="button button-primary" href="/#enquire">Enquire</a></div>
+      <nav class="footer-social" aria-label="Social media"><!-- Bootstrap Icons v1.13.1 (MIT): /assets/licenses/bootstrap-icons-LICENSE.txt --><a href="https://wa.me/447828579277" target="_blank" rel="noopener noreferrer" aria-label="Chat with Hull Maths Tutor on WhatsApp (opens in a new tab)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg></a><a href="https://www.facebook.com/hullmathstutor/" target="_blank" rel="noopener noreferrer" aria-label="Hull Maths Tutor on Facebook (opens in a new tab)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a><a href="https://www.instagram.com/hullmathstutor/" target="_blank" rel="noopener noreferrer" aria-label="Hull Maths Tutor on Instagram (opens in a new tab)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></a></nav>
     </div>
     <div class="container footer-bottom"><p>&copy; 2026 Hull Maths Tutor. All rights reserved.</p><a href="#main">Back to top ↑</a></div>
-  </footer>
-<script>
-    const params = new URLSearchParams(window.location.search);
-    document.querySelectorAll("[data-utm]").forEach((field) => {
-      field.value = params.get(field.dataset.utm) || "";
-    });
-  </script>
+  <div class="container footer-privacy"><a href="/privacy/">Privacy &amp; cookies</a><a href="/legal-information/">Legal information</a><a href="/privacy/#privacy-analytics" data-privacy-settings>Privacy settings</a><span data-privacy-state aria-live="polite">Measurement: off</span></div></footer>
+  <script src="/privacy.js" defer></script>
 </body>
 </html>

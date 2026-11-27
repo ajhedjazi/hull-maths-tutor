@@ -1,0 +1,6 @@
+Approved preview release - 27 November 2026
+Owner approved current visuals. Includes navigation text enlargement/focus fix, authoritative logo and density variants, credential corrections, supplied cancellation wording and single-system first-visit consent banner.
+Consent preference now persists for 180 days; accept/reject both verified through full Chromium shutdown/restart using persistent profiles. All collection intercepted. Privacy notice/dialog updated consistently. GA identifier cookies remain session-only. Existing default-off, withdrawal and version protections retained.
+Production configuration remains node scripts/prepare-public.mjs publishing public; both independent photo guards retained. No production environment changes authorised or made. Source material/design references excluded from 39-file public build. See committed SHA256 manifest.
+Existing untracked historical docs/screenshots preserved outside commit. Original high-resolution logo preserved under design-reference/brand-source and excluded from publication.
+Remaining production gates: authenticated hosted artifact and physical-device review; separately approved real enquiry and consented GA ingestion; retention housekeeping; explicit production flags/merge/release approval. No merge/production deployment authorised.

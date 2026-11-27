@@ -1,0 +1,89 @@
+/* Privacy information and controls only; approved page layouts stay unchanged. */
+.privacy-banner { background: #f5f1e8; color: #102a2a; border-bottom: 2px solid #0b4344; padding-block: 24px; }
+.privacy-banner[hidden] { display: none; }
+.privacy-banner h2 { font: 600 1.6rem/1.3 "Playfair Display", Georgia, serif; }
+.privacy-banner p { margin-top: 12px; }
+.privacy-banner .privacy-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 760px; }
+.privacy-banner a { text-decoration: underline; text-underline-offset: 4px; }
+.privacy-banner :focus-visible { outline: 3px solid #0b4344; outline-offset: 4px; }
+@media (max-width: 600px) { .privacy-banner .privacy-actions { grid-template-columns: 1fr; } }
+.footer-privacy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+  padding-block: 16px;
+  border-top: 1px solid #ffffff33;
+  color: #c6d8d0;
+  font: 400 0.85rem/1.6 "Inter", "HMT Inter Fallback", Arial, sans-serif;
+}
+.footer-privacy a,
+.footer-privacy button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-privacy button { padding: 0; border: 0; background: transparent; cursor: pointer; }
+.footer-privacy button[hidden] { display: none; }
+.footer-privacy [data-privacy-state] { min-inline-size: 100px; }
+.footer-privacy :focus-visible { outline: 3px solid #b7d438; outline-offset: 4px; }
+.privacy-utility { background: #102a2a; }
+.privacy-dialog {
+  width: min(38rem, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: clamp(22px, 4vw, 36px);
+  border: 1px solid #0b4344;
+  border-top-width: 5px;
+  border-radius: 0;
+  background: #f5f1e8;
+  color: #102a2a;
+  overflow-wrap: anywhere;
+  font: 400 1rem/1.65 "Inter", "HMT Inter Fallback", Arial, sans-serif;
+}
+.privacy-dialog::backdrop { background: #102a2a99; }
+.privacy-dialog h2 { font: 600 2rem/1.15 "Playfair Display", "HMT Playfair Fallback", Georgia, serif; letter-spacing: -0.035em; }
+.privacy-dialog p { margin-top: 18px; }
+.privacy-purposes { display: grid; gap: 18px; margin-top: 22px; }
+.privacy-purposes label { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+.privacy-purposes label > span { min-width: 0; }
+.privacy-purposes input { width: 22px; height: 22px; margin: 4px 0 0; flex-shrink: 0; accent-color: #0b4344; }
+.privacy-purposes strong,
+.privacy-purposes label span span { display: block; }
+.privacy-purposes label span span { margin-top: 4px; font-size: 0.94rem; }
+.privacy-dialog a,
+.privacy-close { text-decoration: underline; text-underline-offset: 4px; }
+.privacy-dialog :focus-visible,
+.privacy-document :focus-visible { outline: 3px solid #0b4344; outline-offset: 4px; }
+.privacy-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.privacy-actions button {
+  min-height: 48px;
+  padding: 12px;
+  border: 1px solid #0b4344;
+  border-radius: 0;
+  background: #0b4344;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.privacy-actions button:hover { background: #0f5d5e; }
+.privacy-close { min-height: 44px; margin-top: 16px; padding: 4px 0; border: 0; background: transparent; color: #0b4344; cursor: pointer; }
+.privacy-feedback:empty { display: none; }
+.home-privacy-note { font-size: 0.85rem; line-height: 1.65; }
+.home-privacy-note a { text-decoration: underline; text-underline-offset: 4px; }
+.privacy-document { max-width: 850px; padding-block: 64px 80px; overflow-wrap: anywhere; }
+.privacy-document h1 { margin-bottom: 24px; }
+.privacy-document h2 { margin: 36px 0 16px; font-size: 2rem; }
+.privacy-document p + p,
+.privacy-document ul { margin-top: 16px; }
+.privacy-document li + li { margin-top: 10px; }
+.privacy-document a { text-decoration: underline; text-underline-offset: 4px; }
+.privacy-document a.button { text-decoration: none; }
+.privacy-document .privacy-draft { border-block: 1px solid #b7c9bf; padding-block: 20px; }
+@media (max-width: 430px) {
+  .privacy-actions { grid-template-columns: 1fr; }
+  .privacy-document { padding-block: 44px 60px; }
+}

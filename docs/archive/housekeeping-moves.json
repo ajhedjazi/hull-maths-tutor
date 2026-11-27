@@ -1,0 +1,478 @@
+{
+  "docs/human-hull-27-nov-release-review.txt": {
+    "sha256": "f0e77846c30fa247b7fa94d7c1f6f7aaa47a06952edbd0c5f33c29cbd2816f7e",
+    "to": "docs/archive/human-hull/2026-11/human-hull-27-nov-release-review.txt"
+  },
+  "docs/human-hull-about-portrait-review.md": {
+    "sha256": "ce3fc8b88ba440273e7fece40e1c60273eccd2ffa4e433961e1a1d83056a5056",
+    "to": "docs/archive/human-hull/2026-11/human-hull-about-portrait-review.md"
+  },
+  "docs/human-hull-approved-preview-release.txt": {
+    "sha256": "1c7113802119e5bd393e09b8dd148cd64947c501f6c9841d9e22ee5e01fb94dc",
+    "to": "docs/release/2026-11-27-2b0cb5e/human-hull-approved-preview-release.txt"
+  },
+  "docs/human-hull-approved-release-manifest.json": {
+    "sha256": "eee771aada1ed6231ca20bd957930d97ddf4df14a3a9c2ffec9f5c6489e58df9",
+    "to": "docs/release/2026-11-27-2b0cb5e/human-hull-approved-release-manifest.json"
+  },
+  "docs/human-hull-attribution-proposal.md": {
+    "sha256": "8172993ee31cd47950dfe83f65ffc8435cd6dee64126d58dce095d1b95e70eb3",
+    "to": "docs/archive/human-hull/2026-11/human-hull-attribution-proposal.md"
+  },
+  "docs/human-hull-final-audit.md": {
+    "sha256": "61cdbfea2d096a5f2d025a8bbbcbbcf2e9d43a7b3819909854b205ab7f4d6ee6",
+    "to": "docs/archive/human-hull/2026-11/human-hull-final-audit.md"
+  },
+  "docs/human-hull-final-five-review.md": {
+    "sha256": "d16b0b12f1abda193799a971921ca8c82b3eb4c37751ce1a2294873d7e483258",
+    "to": "docs/archive/human-hull/2026-11/human-hull-final-five-review.md"
+  },
+  "docs/human-hull-final-refinements-review.txt": {
+    "sha256": "a203f3778828ea98ce6e5f6616db1cd7ae0e2a0f4e0e5e8a6657037178912f1c",
+    "to": "docs/archive/human-hull/2026-11/human-hull-final-refinements-review.txt"
+  },
+  "docs/human-hull-final-release-checklist.md": {
+    "sha256": "9bd8d2af298e993a7d7a1830a5330b5c1dc650f106348fa673beda6210be968d",
+    "to": "docs/archive/human-hull/2026-11/human-hull-final-release-checklist.md"
+  },
+  "docs/human-hull-housekeeping-proposal.txt": {
+    "sha256": "77dc359ee6007b70ff8ec5db367deb0d8f00fdd30c9df9477c48f3956058bdcd",
+    "to": "docs/archive/human-hull/2026-11/human-hull-housekeeping-proposal.txt"
+  },
+  "docs/human-hull-launch-control.md": {
+    "sha256": "9156463a478562e842b26c9383795af2d43a902b7f5cda59cf21d76014483fca",
+    "to": "docs/archive/human-hull/2026-11/human-hull-launch-control.md"
+  },
+  "docs/human-hull-logo-release-review.txt": {
+    "sha256": "04a8f902f6b0501acc2252299b4018d93f6ab45411e1a70a99159dfcc14271ae",
+    "to": "docs/archive/human-hull/2026-11/human-hull-logo-release-review.txt"
+  },
+  "docs/human-hull-netlify-ga4-audit.md": {
+    "sha256": "b1e2c20341220fe6766eb1353193f788ff33fcc38ec745bef25526b51f1d4d05",
+    "to": "docs/archive/human-hull/2026-11/human-hull-netlify-ga4-audit.md"
+  },
+  "docs/human-hull-phase-1.md": {
+    "sha256": "2a42ac7a02efb42ddaf0b9ed0c0c88d6250679707807b5a68e8cd9cee459d990",
+    "to": "docs/archive/human-hull/2026-11/human-hull-phase-1.md"
+  },
+  "docs/human-hull-phase-2-review.md": {
+    "sha256": "9904f2f0051191427bd45a004168b3a8b5618a98bc8ffd96d1eacae5a409ffc3",
+    "to": "docs/archive/human-hull/2026-11/human-hull-phase-2-review.md"
+  },
+  "docs/human-hull-privacy-owner-review.md": {
+    "sha256": "d7bb0c451b0f5a9a8a21d00b514c5c090f1b2d72b852977d300ee3dde2e8cb08",
+    "to": "docs/archive/human-hull/2026-11/human-hull-privacy-owner-review.md"
+  },
+  "docs/human-hull-refinement-review.md": {
+    "sha256": "8c4abe57fbdc18085064ab908ac9d73f496f35add9af10be3378ddaa906f4d93",
+    "to": "docs/archive/human-hull/2026-11/human-hull-refinement-review.md"
+  },
+  "docs/human-hull-release-blocker-remediation.md": {
+    "sha256": "60822b19ae8af9962df53c76e81a787212f3d9ded34e1fe59e0770a68214fc59",
+    "to": "docs/archive/human-hull/2026-11/human-hull-release-blocker-remediation.md"
+  },
+  "docs/human-hull-release-readiness.md": {
+    "sha256": "180b28c6cd36195209262a4a447add35f69f1ec57993bba63e9c951443855701",
+    "to": "docs/archive/human-hull/2026-11/human-hull-release-readiness.md"
+  },
+  "docs/human-hull-retention-procedure.md": {
+    "sha256": "1614b55c1875867409c60857708efe022ca1b6e76609187ecbb484b206f9d755",
+    "to": "docs/maintenance/retention-procedure.md"
+  },
+  "docs/site-alignment-qa.md": {
+    "sha256": "843a303a60796d8edbd582942656bd84e58edae368ce31ed88f8458b1bd5f5f7",
+    "to": "docs/archive/site-alignment/site-alignment-qa.md"
+  },
+  "docs/visual-review/human-hull-refined-1440.png": {
+    "sha256": "f1aae77e7fb9f18f4b22f3aa6132d1a66af416e3f5df6b8faf557a072adc3a19",
+    "to": "docs/archive/human-hull/2026-11/visual-review/human-hull-refined-1440.png"
+  },
+  "docs/visual-review/human-hull-refined-390.png": {
+    "sha256": "9289e1a6a50ef532d1a8f474adafb7e8b0a116cdc09c54555921b8e35b87eef5",
+    "to": "docs/archive/human-hull/2026-11/visual-review/human-hull-refined-390.png"
+  },
+  "docs/visual-review/about-portrait/after-1440.png": {
+    "sha256": "514927238ecf332c9558513c2d53bde0cf32d6ceca5dacd835cda186171982fc",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait/after-1440.png"
+  },
+  "docs/visual-review/about-portrait/after-390.png": {
+    "sha256": "797a1460dbe370c0da210896a4901e93976c418d78d282be4d2c77fecc99b830",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait/after-390.png"
+  },
+  "docs/visual-review/about-portrait/before-1440.png": {
+    "sha256": "66f566bf7330504f6f3580f5dcedb722bc2aa0002eec2fb53776dde66d5deb0c",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait/before-1440.png"
+  },
+  "docs/visual-review/about-portrait/before-390.png": {
+    "sha256": "768b8b74941bfb8fbd447dc944bc47b41d61399c284d8d4a802b49d30cc47d71",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait/before-390.png"
+  },
+  "docs/visual-review/about-portrait-treatment/after-1440.png": {
+    "sha256": "6453fbea42a01768a0286efcb86891784138d47746130b0aca963e755987295b",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait-treatment/after-1440.png"
+  },
+  "docs/visual-review/about-portrait-treatment/after-390.png": {
+    "sha256": "2f1a6de275a2c386c5fe105ca8b0014189f8e99e154040ff209b8f2478a6de5f",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait-treatment/after-390.png"
+  },
+  "docs/visual-review/about-portrait-treatment/before-1440.png": {
+    "sha256": "514927238ecf332c9558513c2d53bde0cf32d6ceca5dacd835cda186171982fc",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait-treatment/before-1440.png"
+  },
+  "docs/visual-review/about-portrait-treatment/before-390.png": {
+    "sha256": "797a1460dbe370c0da210896a4901e93976c418d78d282be4d2c77fecc99b830",
+    "to": "docs/archive/human-hull/2026-11/visual-review/about-portrait-treatment/before-390.png"
+  },
+  "docs/visual-review/analytics-only/guide-form-1440.png": {
+    "sha256": "57a549787f2f66053a2bcb4227b327264367c0fce5d26bcf30a1cb0655186664",
+    "to": "docs/archive/human-hull/2026-11/visual-review/analytics-only/guide-form-1440.png"
+  },
+  "docs/visual-review/analytics-only/guide-form-390.png": {
+    "sha256": "f14a7d70c29e965ab3e1bc36334a6aad039a37a6c30b8eff68bef1d7c3198ba8",
+    "to": "docs/archive/human-hull/2026-11/visual-review/analytics-only/guide-form-390.png"
+  },
+  "docs/visual-review/analytics-only/privacy-1440.png": {
+    "sha256": "e105401e33c648d744af1f9c6966a2d82dfe302f722b76bdc091994a2c900730",
+    "to": "docs/archive/human-hull/2026-11/visual-review/analytics-only/privacy-1440.png"
+  },
+  "docs/visual-review/analytics-only/privacy-390.png": {
+    "sha256": "2933bc07b3308eea3b174d49360613246da9526b0a354fe91079a2cb8e5b25f1",
+    "to": "docs/archive/human-hull/2026-11/visual-review/analytics-only/privacy-390.png"
+  },
+  "docs/visual-review/analytics-only/settings-1440.png": {
+    "sha256": "3abb7d666d9d6b89d48f423570486920d2a3b8e2b8fdaea53954be3944c7ff5b",
+    "to": "docs/archive/human-hull/2026-11/visual-review/analytics-only/settings-1440.png"
+  },
+  "docs/visual-review/analytics-only/settings-390.png": {
+    "sha256": "313590b5c6d6f4f3e87abe234dbb0edc79afa8000b992caf855ec3be233b3876",
+    "to": "docs/archive/human-hull/2026-11/visual-review/analytics-only/settings-390.png"
+  },
+  "docs/visual-review/direct-guide/guide-download-1440.png": {
+    "sha256": "4c1462428b3afe4b4cb857246bfdc45ba8996a06e6ea752f0cc76bb0dba83967",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/guide-download-1440.png"
+  },
+  "docs/visual-review/direct-guide/guide-download-390.png": {
+    "sha256": "71c79ca23d5ad8e1a27964457d650f89dda6300ce7f8869c952e43e07f9564d2",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/guide-download-390.png"
+  },
+  "docs/visual-review/direct-guide/guide-page-1440.png": {
+    "sha256": "e84df6b4dd700bc47b58298660875920527e54da46c85f55c0d83d890be55e82",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/guide-page-1440.png"
+  },
+  "docs/visual-review/direct-guide/guide-page-390.png": {
+    "sha256": "15a107bbeee6477bbbc4ba10aef9d25b9c4d943d1e5889fdf3996e8a36ffa423",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/guide-page-390.png"
+  },
+  "docs/visual-review/direct-guide/privacy-1440.png": {
+    "sha256": "a097fca5f8843c341cb90a48153ccb592eff9f9fba0eea6770447d1fe8bb91ef",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/privacy-1440.png"
+  },
+  "docs/visual-review/direct-guide/privacy-390.png": {
+    "sha256": "c65e619a229c945b2afa1da575681a787b94da42b11c495481c274295e0bd18e",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/privacy-390.png"
+  },
+  "docs/visual-review/direct-guide/settings-1440.png": {
+    "sha256": "ceacc64fc9bc9ecb723c0324b2e957969d353c6dc1f8bf278911af1d248e4c41",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/settings-1440.png"
+  },
+  "docs/visual-review/direct-guide/settings-390.png": {
+    "sha256": "4558d395420669dd787433cff73687b5b85ed1030206446fd730453bbc9e86d9",
+    "to": "docs/archive/human-hull/2026-11/visual-review/direct-guide/settings-390.png"
+  },
+  "docs/visual-review/final-privacy/guide-form-1440.png": {
+    "sha256": "c97245aecedd6371910b42f18d4c7900ed4548acd2bd8bcdc1af6ff850832135",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-privacy/guide-form-1440.png"
+  },
+  "docs/visual-review/final-privacy/guide-form-390.png": {
+    "sha256": "e83dbeff4aa6cfe8eca288d9a51cac0f3c55991d0d10900062bbffa7f7a93283",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-privacy/guide-form-390.png"
+  },
+  "docs/visual-review/final-privacy/privacy-1440.png": {
+    "sha256": "d33ff7055f7880242c110b47540895a303c8d52463a7e6bc06dbf297fb9d97a7",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-privacy/privacy-1440.png"
+  },
+  "docs/visual-review/final-privacy/privacy-390.png": {
+    "sha256": "708f573479228e57d8ee3124feab4372bfb6d2a46d865de93b3d7f1236938e72",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-privacy/privacy-390.png"
+  },
+  "docs/visual-review/final-privacy/settings-1440.png": {
+    "sha256": "c22f0a8ccff20cce81a667f04b3b038fdf2281cc98b72896bbb19ab31a3f4eca",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-privacy/settings-1440.png"
+  },
+  "docs/visual-review/final-privacy/settings-390.png": {
+    "sha256": "9a970792cfb96b709fafcde7c5ce25a76e80af7f5baa052edba7d3ec97741884",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-privacy/settings-390.png"
+  },
+  "docs/visual-review/focused-release/download-text-200-after.png": {
+    "sha256": "dc928e5bd109e495a02caa95679c88a528747943ea979e6d85ae46dcbb32782b",
+    "to": "docs/archive/human-hull/2026-11/visual-review/focused-release/download-text-200-after.png"
+  },
+  "docs/visual-review/focused-release/download-text-200-before.png": {
+    "sha256": "1d8d24ed2092ca8f78648d5984c054600d2e3cd3cb025f2cd97ec085bfcdcca6",
+    "to": "docs/archive/human-hull/2026-11/visual-review/focused-release/download-text-200-before.png"
+  },
+  "docs/visual-review/focused-release/privacy-1440.png": {
+    "sha256": "ca5a973b0db6dccf45b14972e3d07522370c4796dfec647ff61d44a6ad357c8b",
+    "to": "docs/archive/human-hull/2026-11/visual-review/focused-release/privacy-1440.png"
+  },
+  "docs/visual-review/focused-release/privacy-390.png": {
+    "sha256": "40884be8de970d365fad189062b2aef2ce9000bd48d48d899981ead11c2cb091",
+    "to": "docs/archive/human-hull/2026-11/visual-review/focused-release/privacy-390.png"
+  },
+  "docs/visual-review/legal-information/legal-1440.png": {
+    "sha256": "44be72b39490cfc5285a76c14f5680da79e83fdbd4a251f8ba2c6939815a8537",
+    "to": "docs/archive/human-hull/2026-11/visual-review/legal-information/legal-1440.png"
+  },
+  "docs/visual-review/legal-information/legal-390.png": {
+    "sha256": "6028d2071470cf16b97596e01410f6bce76c01757aff72b1421f4380ba2adf82",
+    "to": "docs/archive/human-hull/2026-11/visual-review/legal-information/legal-390.png"
+  },
+  "docs/visual-review/privacy-verification/arrival-1440.png": {
+    "sha256": "c9768e8421a5d26306bf93004fbc4b0120a30b5ec4f32fd121fa0265014b3a58",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/arrival-1440.png"
+  },
+  "docs/visual-review/privacy-verification/arrival-390.png": {
+    "sha256": "431083be22cad6a89c2c74ab0973bebc79cab387685ad93bb1a96b3a3f323586",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/arrival-390.png"
+  },
+  "docs/visual-review/privacy-verification/arrival-full-1440.png": {
+    "sha256": "984172ffb6ed6ae45785a2a39f44732237e45d2a3f3f5656b5d061c7f81c520e",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/arrival-full-1440.png"
+  },
+  "docs/visual-review/privacy-verification/arrival-full-390.png": {
+    "sha256": "3f60564bfe670e596ca761cd7b8b1a7af30da96913a9ea04e86bf0d33e888250",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/arrival-full-390.png"
+  },
+  "docs/visual-review/privacy-verification/choices-1440.png": {
+    "sha256": "25c30167b629bba6981540c6e2f6845a01c2d160cced801d5126094ac08c12ab",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/choices-1440.png"
+  },
+  "docs/visual-review/privacy-verification/choices-390.png": {
+    "sha256": "3df506fdade32d99e38734134b6507e0c8e123b5eedd08b476a9f32293693638",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/choices-390.png"
+  },
+  "docs/visual-review/privacy-verification/footer-1440.png": {
+    "sha256": "2597fe1dc41ffb7a319fcc81af26256173b4c1640ff01f875859e82b15913760",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/footer-1440.png"
+  },
+  "docs/visual-review/privacy-verification/footer-390.png": {
+    "sha256": "e7cc6baa6a0e314e676029633b916f2229d6f0d64152d8581d5ab4ed7d4ff7ad",
+    "to": "docs/archive/human-hull/2026-11/visual-review/privacy-verification/footer-390.png"
+  },
+  "docs/visual-review/release-blockers/privacy-settings-1440.png": {
+    "sha256": "0003d3b716eedfb56541cbac6586c6237ddb0b944175b2aa8b8baeaf8ef401da",
+    "to": "docs/archive/human-hull/2026-11/visual-review/release-blockers/privacy-settings-1440.png"
+  },
+  "docs/visual-review/release-blockers/privacy-settings-390.png": {
+    "sha256": "41e1b06120e69461de6c8401862323b1b401bdbdfecd2b9bf2376241aa74fefc",
+    "to": "docs/archive/human-hull/2026-11/visual-review/release-blockers/privacy-settings-390.png"
+  },
+  "docs/visual-review/phase-2/about-amir/after-1440.png": {
+    "sha256": "66f566bf7330504f6f3580f5dcedb722bc2aa0002eec2fb53776dde66d5deb0c",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/about-amir/after-1440.png"
+  },
+  "docs/visual-review/phase-2/about-amir/after-390.png": {
+    "sha256": "768b8b74941bfb8fbd447dc944bc47b41d61399c284d8d4a802b49d30cc47d71",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/about-amir/after-390.png"
+  },
+  "docs/visual-review/phase-2/about-amir/before-1440.png": {
+    "sha256": "b7faecf4658e92c38653a70b1e3bcd2d1c2943a4b36cea967eb5aa90bd19fb96",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/about-amir/before-1440.png"
+  },
+  "docs/visual-review/phase-2/about-amir/before-390.png": {
+    "sha256": "56ea9ee06a544497727751728544383000c921beec84c01528ee614bf21789cf",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/about-amir/before-390.png"
+  },
+  "docs/visual-review/phase-2/functional-skills-maths-tutor-hull/after-1440.png": {
+    "sha256": "1431817a69bd690f2907122417e42c07beceeac18b5a1bd0953cd55e4eac5096",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/functional-skills-maths-tutor-hull/after-1440.png"
+  },
+  "docs/visual-review/phase-2/functional-skills-maths-tutor-hull/after-390.png": {
+    "sha256": "09e56b6d06c34eeb5f9d8860ad3feee75176fc9c5942980838ae408960f05a32",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/functional-skills-maths-tutor-hull/after-390.png"
+  },
+  "docs/visual-review/phase-2/functional-skills-maths-tutor-hull/before-1440.png": {
+    "sha256": "f00c45aecc58dc156bd043122b92770c08ede5dbcaf56bf1a2c7f64b767595d4",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/functional-skills-maths-tutor-hull/before-1440.png"
+  },
+  "docs/visual-review/phase-2/functional-skills-maths-tutor-hull/before-390.png": {
+    "sha256": "f1c28a64708637d968c6f3018d64e4ad0fa19758d9180b1f6208cdeb22b6d0ad",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/functional-skills-maths-tutor-hull/before-390.png"
+  },
+  "docs/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-1440.png": {
+    "sha256": "d02ba38d3ebe4abe3c9aeee0f3afad248079e417dc48af77d83f251829821042",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-1440.png"
+  },
+  "docs/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-390.png": {
+    "sha256": "3e1a3b0c4c2100b807e24be4213fb5cb1b9e214516021e33e1d26334bca8a47a",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/after-390.png"
+  },
+  "docs/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/before-1440.png": {
+    "sha256": "5bd681a1519fc63072cbba7d8fe84f852f044f979082823a6d91dcb8f34fdf78",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/before-1440.png"
+  },
+  "docs/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/before-390.png": {
+    "sha256": "08996b6ceda5a738fea5fe715400a4050f1eddaeab3ccbc42df3fde867289221",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-grade-4-5-maths-support-hull/before-390.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-hull/after-1440.png": {
+    "sha256": "e771717fe5f28e1d02161aaab553bdd4863c6e9644e82098a198788a5c8d692f",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-hull/after-1440.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-hull/after-390.png": {
+    "sha256": "961de988dfd5dd735e808be5f53729a5cd0e6c288c7dfe9b5e51ece165d760d4",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-hull/after-390.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-hull/before-1440.png": {
+    "sha256": "b3114975db189d7d8fdb1d0204960711f856681ac8ef8aafc53cf65f59a782ce",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-hull/before-1440.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-hull/before-390.png": {
+    "sha256": "fd49bd1f39219edf6496c923eba692fccd7b5d34a6b368cfe5d9ed575abee928",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-hull/before-390.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-prices/after-1440.png": {
+    "sha256": "71c9745fc77faeb071a7d06a9337c5e98d7e47d227378549586dfe75d04f4939",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-prices/after-1440.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-prices/after-390.png": {
+    "sha256": "9d202b6c6782a9d3769ed9e18f9699636d6d1a9f316714fd785909697d45ed0c",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-prices/after-390.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-prices/before-1440.png": {
+    "sha256": "6c0eca579d046a0bd1885cced57daecc6f83cc72a2534c0d953f1705e2cca6f3",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-prices/before-1440.png"
+  },
+  "docs/visual-review/phase-2/gcse-maths-tutor-prices/before-390.png": {
+    "sha256": "f95775191a181d6b45c29eedb7a9cb3268ac58c7c4835926faca37042af0b00f",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/gcse-maths-tutor-prices/before-390.png"
+  },
+  "docs/visual-review/phase-2/maths-mot-hull/after-1440.png": {
+    "sha256": "798d2c07f12c0d3968ad161e443136e6105b2fe843abfb3b950f1c640473f0cb",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/maths-mot-hull/after-1440.png"
+  },
+  "docs/visual-review/phase-2/maths-mot-hull/after-390.png": {
+    "sha256": "e8ecaebb4bcca976347542e9bc1cd78fe460ed235b7ee16054fdb3830739e940",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/maths-mot-hull/after-390.png"
+  },
+  "docs/visual-review/phase-2/maths-mot-hull/before-1440.png": {
+    "sha256": "9e47edf914a056e31485a0eaa05b1fc1a96e03ac32e86b5f463269744360b992",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/maths-mot-hull/before-1440.png"
+  },
+  "docs/visual-review/phase-2/maths-mot-hull/before-390.png": {
+    "sha256": "8115f8b65a531e2bc486ce1d6055eedddd5f1755a66fa006b3b33c4941822865",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/maths-mot-hull/before-390.png"
+  },
+  "docs/visual-review/phase-2/year-11-parent-guide/after-1440.png": {
+    "sha256": "b8409a04392a9ed8c26f8da36e4fbfc6825cd39c1d8f8890c5b33ddbb9990488",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/year-11-parent-guide/after-1440.png"
+  },
+  "docs/visual-review/phase-2/year-11-parent-guide/after-390.png": {
+    "sha256": "80533399cb478dbfce1c715274f98507ab1b4e826d8384f0686b52e2cec78875",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/year-11-parent-guide/after-390.png"
+  },
+  "docs/visual-review/phase-2/year-11-parent-guide/before-1440.png": {
+    "sha256": "c1499ed9102ada63a0d324250d8e25d86f87f2819ee11a3a67d2c85461c3df51",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/year-11-parent-guide/before-1440.png"
+  },
+  "docs/visual-review/phase-2/year-11-parent-guide/before-390.png": {
+    "sha256": "43883eae080a93d1eedfea0b11548b76cfc96f715038287e31498e7b088d9772",
+    "to": "docs/archive/human-hull/2026-11/visual-review/phase-2/year-11-parent-guide/before-390.png"
+  },
+  "docs/visual-review/final-five/functional-skills-maths-tutor-hull/after-1440.png": {
+    "sha256": "460e36c85ea43db4411f4ec7c23922d0f9206912bd1ee5187af5c8b50d94a280",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/functional-skills-maths-tutor-hull/after-1440.png"
+  },
+  "docs/visual-review/final-five/functional-skills-maths-tutor-hull/after-390.png": {
+    "sha256": "157720b2b836e89831235594a46d15210412244d8faf016004f0708bc92e28a7",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/functional-skills-maths-tutor-hull/after-390.png"
+  },
+  "docs/visual-review/final-five/functional-skills-maths-tutor-hull/before-1440.png": {
+    "sha256": "1431817a69bd690f2907122417e42c07beceeac18b5a1bd0953cd55e4eac5096",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/functional-skills-maths-tutor-hull/before-1440.png"
+  },
+  "docs/visual-review/final-five/functional-skills-maths-tutor-hull/before-390.png": {
+    "sha256": "09e56b6d06c34eeb5f9d8860ad3feee75176fc9c5942980838ae408960f05a32",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/functional-skills-maths-tutor-hull/before-390.png"
+  },
+  "docs/visual-review/final-five/gcse-grade-4-5-maths-support-hull/after-1440.png": {
+    "sha256": "455791d8ede021901c3f7e136e2bcdcdb3725dc4e38b2ce0e6269603f1d05a9a",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-grade-4-5-maths-support-hull/after-1440.png"
+  },
+  "docs/visual-review/final-five/gcse-grade-4-5-maths-support-hull/after-390.png": {
+    "sha256": "feaa234bb6736983e8ceab6e521ab6d7827dc89974bd61dc697119fdcc02dbf1",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-grade-4-5-maths-support-hull/after-390.png"
+  },
+  "docs/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-1440.png": {
+    "sha256": "d02ba38d3ebe4abe3c9aeee0f3afad248079e417dc48af77d83f251829821042",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-1440.png"
+  },
+  "docs/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-390.png": {
+    "sha256": "3e1a3b0c4c2100b807e24be4213fb5cb1b9e214516021e33e1d26334bca8a47a",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-grade-4-5-maths-support-hull/before-390.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-hull/after-1440.png": {
+    "sha256": "c19fb33447a35035bf8925fe6eb99571baa2056c2f10db03f572b60a7a608d16",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-hull/after-1440.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-hull/after-390.png": {
+    "sha256": "a1a03fdd14145cceb510b838748415e3592a640920e5847ce07ff07568ab6d15",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-hull/after-390.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-hull/before-1440.png": {
+    "sha256": "e771717fe5f28e1d02161aaab553bdd4863c6e9644e82098a198788a5c8d692f",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-hull/before-1440.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-hull/before-390.png": {
+    "sha256": "961de988dfd5dd735e808be5f53729a5cd0e6c288c7dfe9b5e51ece165d760d4",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-hull/before-390.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-prices/after-1440.png": {
+    "sha256": "8d34ceed1d0563bd5ae0e1471eda50ad69de56abc74881e7e1ff76206693541b",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-prices/after-1440.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-prices/after-390.png": {
+    "sha256": "b21d64a7939313600f5f2a25a4cc80cd037103d483b0b0760c176ca7e007d742",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-prices/after-390.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-prices/before-1440.png": {
+    "sha256": "71c9745fc77faeb071a7d06a9337c5e98d7e47d227378549586dfe75d04f4939",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-prices/before-1440.png"
+  },
+  "docs/visual-review/final-five/gcse-maths-tutor-prices/before-390.png": {
+    "sha256": "9d202b6c6782a9d3769ed9e18f9699636d6d1a9f316714fd785909697d45ed0c",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/gcse-maths-tutor-prices/before-390.png"
+  },
+  "docs/visual-review/final-five/homepage-faq/after-1440.png": {
+    "sha256": "fb9c588da625de6bc264193a7389f26b6f7b07945b781e3ac784edbfa4f9a5e9",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/homepage-faq/after-1440.png"
+  },
+  "docs/visual-review/final-five/homepage-faq/after-390.png": {
+    "sha256": "9ec233f06578067439d4ea29b0ea60c1f98eba63b0306e54729f636a8e3b09b9",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/homepage-faq/after-390.png"
+  },
+  "docs/visual-review/final-five/homepage-faq/before-1440.png": {
+    "sha256": "18256fd2720ab524bf74141202a4e7d7fc340390315c6277216b1d90050a6b1b",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/homepage-faq/before-1440.png"
+  },
+  "docs/visual-review/final-five/homepage-faq/before-390.png": {
+    "sha256": "d0dd917012804e4bc464da98731c58481a67f92fe1aef9edf8a2c8dddef4ab91",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/homepage-faq/before-390.png"
+  },
+  "docs/visual-review/final-five/maths-mot-hull/after-1440.png": {
+    "sha256": "255c48fe74fbffe779f1a82d02d4e211c1ec4039e4c20fb1da6d54b4d18393f7",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/maths-mot-hull/after-1440.png"
+  },
+  "docs/visual-review/final-five/maths-mot-hull/after-390.png": {
+    "sha256": "1e9a8fffcbaa1240ce06b5a5f46eecec0f3bf3ea8346333c515819c9cfd157d1",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/maths-mot-hull/after-390.png"
+  },
+  "docs/visual-review/final-five/maths-mot-hull/before-1440.png": {
+    "sha256": "798d2c07f12c0d3968ad161e443136e6105b2fe843abfb3b950f1c640473f0cb",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/maths-mot-hull/before-1440.png"
+  },
+  "docs/visual-review/final-five/maths-mot-hull/before-390.png": {
+    "sha256": "e8ecaebb4bcca976347542e9bc1cd78fe460ed235b7ee16054fdb3830739e940",
+    "to": "docs/archive/human-hull/2026-11/visual-review/final-five/maths-mot-hull/before-390.png"
+  }
+}

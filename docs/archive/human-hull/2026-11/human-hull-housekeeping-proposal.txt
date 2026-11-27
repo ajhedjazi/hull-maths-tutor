@@ -1,0 +1,38 @@
+Human / Hull repository housekeeping proposal - 27 November 2026
+PROPOSAL ONLY. No moves, deletions, Git ignore changes or historical evidence removal performed.
+Audit basis: read all 20 current top-level docs (including extracted Markdown references), design-reference draft descriptions, public source references, git tracked/untracked status and packager allowlist/exclusions. SHA256 grouping of 98 visual-review screenshots (38,880,282 bytes) found 14 groups with duplicate image bytes. Duplicate filenames may remain meaningful evidence references; no deletion proposed without reviewing links.
+
+1 Essential production files - retain locations
+12 route index.html files, verification HTML, styles.css, script.js, navigation.js, privacy.js/privacy.css, robots.txt/sitemap.xml, runtime images/icons/fonts/PDF/licence in assets, netlify.toml, scripts/prepare-public.mjs and .gitignore. render.yaml is alternative-host deployment configuration: retain for now; document whether Render is still used before retiring it. assets/guides/README.md is maintenance documentation excluded by packaging. Retired assets/hull-maths-tutor-hero.jpg is NOT a production dependency: excluded by explicit packaging rule; preserve as restricted historical material pending rights/deletion decision, never re-enable it.
+
+2 Active development/maintenance documentation
+Use docs/README.md (proposed new entry point), docs/release/current-checklist.md and docs/maintenance/ for operational procedures. Current approved-preview-release.txt plus the final refinements/logo reviews are inputs for a consolidated current status; do not treat each older status as a live checklist. Keep scripts/prepare-public.mjs at its current runtime location. New candidate changes mean the committed approved-release-manifest.json describes commit 2b0cb5e, not this uncommitted candidate: preserve it as immutable release evidence, generate a separately named manifest for the next approved candidate rather than silently overwrite history.
+
+3 Essential release/privacy/compliance evidence
+Retain human-hull-retention-procedure.md as active procedure under docs/maintenance/. Retain human-hull-launch-control.md, human-hull-privacy-owner-review.md, human-hull-netlify-ga4-audit.md, human-hull-attribution-proposal.md and release-blocker-remediation.md as dated evidence, even though configuration/status parts are superseded. Preserve approved-preview-release.txt and its SHA256 manifest together as the 2b0cb5e release record. Preserve original high-res brand source (tracked), cleaned master and previous icons under design-reference/brand-source/; they are excluded from public export. Privacy notice in privacy/index.html is runtime, not archival documentation. Operational customer records or deletion logs belong outside Git; none were found or accessed by this audit.
+
+4 Superseded historical documentation - propose archive, not deletion
+Move phase-1, phase-2-review, refinement-review, about-portrait-review, final-five-review, final-audit, release-blocker-remediation, release-readiness, old final-release-checklist, 27-nov-release-review, final-refinements-review and logo-release-review into docs/archive/human-hull/2026-11/ with clear dates and superseded-by links. Move older site-alignment-qa.md to docs/archive/site-alignment/. Store historical account/privacy/attribution records in that dated archive as essential evidence, visibly labelled as snapshots. Keep each original unchanged where practical and add an archive index explaining precedence.
+Move docs/visual-review/ as one intact subtree under that archive, preserving relative structure. Update all Markdown references in the same approved operation; validate the reference graph afterwards. Reports containing visual-review/ links and ../ runtime paths require link rewrites after moving; do not simply drag the folders. Preserve paths in an archive manifest.
+Keep design-reference/human-hull/ concept HTML, previews, original portrait source and draft rule/system/proposal files as design provenance. These drafts explicitly say they are not active instructions; do not promote them into AGENTS.md or current documentation. Optionally place the whole subtree under design-reference/archive/human-hull/ only after references (including the About source comment) are updated.
+
+5 Temporary / genuinely redundant candidates
+public/, .local-preview/ and .netlify/ are generated/local state and already ignored. They may be regenerated; no removal needed now. The 14 exact screenshot duplicate groups could be deduplicated later only with owner approval, filename-to-hash manifest and reference rewrites; identical bytes alone do not prove redundant evidence. No other documentation is certified safe to delete. Original brand source and previous icons are not classified as disposable.
+
+Proposed structure
+(runtime routes/assets/scripts/config unchanged)
+docs/README.md
+docs/release/current-checklist.md
+docs/release/2026-11-27-2b0cb5e/{release-notes.txt,public-manifest.json}
+docs/maintenance/retention-procedure.md
+docs/archive/human-hull/2026-11/{historical reports,visual-review/...}
+docs/archive/site-alignment/...
+design-reference/brand-source/...
+design-reference/human-hull/... (or separately approved intact archive move)
+
+Proposed ignore rules for approval
+Keep current /public/, /.local-preview/, /.netlify/.
+If adopted, add narrowly scoped /.local-test-results/, /playwright-report/, /test-results/ and *.log only within a designated local-results directory. There is no need to create these directories now. Do not ignore docs/, design-reference/, all PNGs, all PDFs or the source logo. Ignoring untracked evidence would hide work rather than preserve it. Tracked files are not untracked by adding ignore patterns; never use git rm --cached as an implicit cleanup.
+
+Approval requested for future housekeeping execution
+Approve the concrete mapping/index/consolidation and link-rewrite plan before any movement. Approve duplicate deduplication separately after inspecting a per-file manifest. No permanent deletion is required for this proposal. Archive remains outside packager allowlist, so public packaging must remain unchanged.
