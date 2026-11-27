@@ -18,6 +18,7 @@
   let gtag;
   let lastFocus;
   let channel;
+  let banner;
 
   const clearAnalyticsCookies = () => {
     const domains = ["", `; Domain=${location.hostname}`];
@@ -77,6 +78,7 @@
   const settingsButtons = document.querySelectorAll("[data-privacy-settings]");
   const statuses = document.querySelectorAll("[data-privacy-state]");
   const updateStatus = () => {
+    if (banner) banner.hidden = ["allow", "reject"].includes(readChoice()) && !storageFailed;
     statuses.forEach((status) => {
       status.textContent = permitted() ? "Measurement: on" : "Measurement: off";
     });
@@ -92,7 +94,7 @@
     <div class="privacy-purposes">
       <label><input type="checkbox" data-privacy-purpose="analytics" /><span><strong>Website analytics</strong><span>Google Analytics measures visits and clicks using browser identifiers and cookies.</span></span></label>
     </div>
-    <p>A first-party session cookie remembers your choice. Change it here any time.</p>
+    <p>A first-party cookie remembers your choice for up to six months. Change it here any time.</p>
     <p><a href="/privacy/">Read the privacy and cookies notice</a></p>
     <div class="privacy-actions">
       <button type="button" data-privacy-choice="reject">Reject analytics</button>
@@ -129,8 +131,8 @@
     button.addEventListener("click", () => {
       const analytics = dialog.querySelector('[data-privacy-purpose="analytics"]').checked;
       const next = button.dataset.privacyChoice === "save" && analytics ? "allow" : "reject";
-      // A session cookie has no invented business-record retention period or ID.
-      try { document.cookie = `${preferenceCookie}=${next}; Path=/; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`; }
+      // Remember the explicit choice for 180 days without adding a visitor ID.
+      try { document.cookie = `${preferenceCookie}=${next}; Max-Age=15552000; Path=/; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`; }
       catch { /* Keep analytics off when the preference cannot be recorded. */ }
       choice = readChoice();
       storageFailed = choice !== next;
@@ -172,6 +174,20 @@
       gtag("event", name, { ...safeParams, page_location: safePage(), page_referrer: safeReferrer() });
     },
   };
+  // One consent system: banner actions use the existing preference dialog logic.
+  banner = document.createElement("section");
+  banner.className = "privacy-banner";
+  banner.setAttribute("aria-labelledby", "privacy-banner-title");
+  banner.innerHTML = `<div class="container"><h2 id="privacy-banner-title">Your privacy choices</h2><p>Optional analytics helps measure website visits. It stays off until you accept. Forms and downloads work either way.</p><div class="privacy-actions"><button type="button" data-banner="accept">Accept all</button><button type="button" data-banner="reject">Reject optional</button><button type="button" data-banner="manage">Manage preferences</button></div><p><a href="/privacy/">Privacy and cookies</a></p></div>`;
+  const header = document.querySelector(".site-header");
+  if (header) header.after(banner); else document.body.prepend(banner);
+  banner.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
+    openSettings(button);
+    if (button.dataset.banner === "manage") return;
+    dialog.querySelector('[data-privacy-purpose="analytics"]').checked = button.dataset.banner === "accept";
+    dialog.querySelector(`[data-privacy-choice="${button.dataset.banner === "accept" ? "save" : "reject"}"]`).click();
+    if (banner.hidden) settingsButtons[0]?.focus({ preventScroll: true });
+  }));
   updateStatus();
   startAnalytics();
 })();

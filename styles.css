@@ -3036,6 +3036,14 @@ body:has(.site-header.is-menu-open, dialog[open]) .back-to-top { visibility: hid
 .human-site .brand-copy strong { font-family: "Inter", "HMT Inter Fallback", Arial, sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: -0.04em; }
 .human-site .brand-copy small { color: var(--color-text-muted); font-size: 0.6rem; letter-spacing: 0.05em; }
 .human-site .nav-links { gap: 18px; font-size: 0.76rem; color: var(--color-primary-base); }
+/* Keep enlarged text within the desktop header without changing its normal row. */
+@media (min-width: 1101px) {
+  .human-site .nav-shell { flex-wrap: wrap; }
+  .human-site .nav-links { flex-wrap: wrap; min-width: 0; }
+}
+.human-site main [id] { scroll-margin-top: var(--hmt-header-clearance, 108px); }
+.lesson-terms .section-inner { max-width: 850px; }
+.lesson-terms p { margin-top: 20px; }
 .human-site .nav-links a:hover { color: var(--color-interactive); }
 .human-site .nav-links a:not(.nav-cta).is-active { color: var(--color-interactive); }
 .human-site .nav-links a:not(.nav-cta)::after { background: var(--color-interactive); }

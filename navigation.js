@@ -29,6 +29,10 @@ const initialiseBackToTop = () => {
     if (document.activeElement === button) focusTop();
     button.hidden = true;
   };
+  // CSS can blur the control before the media-query change callback runs.
+  button.addEventListener("blur", () => {
+    if (!desktop.matches) focusTop();
+  });
   const update = () => {
     frame = 0;
     const distance = document.documentElement.scrollHeight - window.innerHeight;
@@ -74,6 +78,16 @@ const initialiseBackToTop = () => {
 };
 
 const initialiseNavigation = () => {
+  const header = document.querySelector(".human-site .site-header");
+  if (header && "ResizeObserver" in window) {
+    const updateClearance = () => {
+      if (!header.classList.contains("is-menu-open")) {
+        document.documentElement.style.setProperty("--hmt-header-clearance", `${Math.max(108, header.getBoundingClientRect().height + 24)}px`);
+      }
+    };
+    new ResizeObserver(updateClearance).observe(header);
+    updateClearance();
+  }
   initialiseBackToTop();
   const enquiryForm = document.querySelector(".enquiry-form");
   const serviceSelect = enquiryForm?.querySelector('[name="service"]');
