@@ -89,6 +89,9 @@
   --container-max: var(--site-max-width);
   --container-pad: calc(2 * var(--site-gutter));
   --section-gap: var(--site-section-spacing);
+  /* Action spacing: keep related controls together and give copy breathing room. */
+  --space-action: 24px;
+  --space-controls: 13px;
 }
 
 * {
@@ -264,6 +267,16 @@ h3 {
   display: block;
 }
 
+/* Let editorial columns shrink and wrap when text is enlarged. */
+.section-inner > *,
+.human-site .home-split > *,
+.human-page .diagnostic-list > div,
+.human-page .hero-trust li,
+.human-page .editorial-quote-layout blockquote {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .section {
   position: relative;
   padding: 112px 0;
@@ -305,7 +318,7 @@ h3 {
 .button-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 13px;
+  gap: var(--space-controls);
 }
 
 .button {
@@ -3128,7 +3141,7 @@ body:has(.site-header.is-menu-open, dialog[open]) .back-to-top { visibility: hid
 .human-site .home-mot .eyebrow { color: var(--color-primary-base); }
 .human-site .home-mot .eyebrow::before { background: var(--color-primary-base); }
 .human-site .home-mot-note { font-size: 0.94rem; margin-top: 16px; }
-.human-site .home-mot-booking { border-left: 1px solid #0b43444d; padding-left: 28px; display: grid; gap: 22px; justify-items: start; }
+.human-site .home-mot-booking { border-left: 1px solid #0b43444d; padding-left: 28px; display: grid; gap: var(--space-action); justify-items: start; }
 .human-site .home-mot-price { font: 600 4.2rem/1 "Playfair Display", "HMT Playfair Fallback", Georgia, serif; }
 .human-site .home-mot .button { justify-self: start; padding-inline: 14px; }
 .human-site .home-guide .home-split { align-items: center; }
@@ -3262,7 +3275,7 @@ body:has(.site-header.is-menu-open, dialog[open]) .back-to-top { visibility: hid
   .human-site .home-about-detail h3 { font-size: 1.6rem; }
   .human-site .home-about-qualifications { font-size: 0.94rem; margin-top: 22px; padding-top: 20px; }
   .human-site .home-mot-layout { grid-template-columns: 1fr; }
-  .human-site .home-mot-booking { grid-column: 1; grid-row: auto; border-left: 0; border-top: 1px solid #0b43444d; padding: 22px 0 0; justify-items: stretch; gap: 20px; }
+  .human-site .home-mot-booking { grid-column: 1; grid-row: auto; border-left: 0; border-top: 1px solid #0b43444d; padding: 22px 0 0; justify-items: stretch; }
   .human-site .home-mot-price { font-size: 3.6rem; }
   .human-site .home-mot .button { width: 100%; }
   .human-site .home-mot h2 { font-size: clamp(2.3rem, 9.5vw, 2.65rem); }
@@ -3502,7 +3515,7 @@ body:has(.site-header.is-menu-open, dialog[open]) .back-to-top { visibility: hid
 .human-page .guide-form-layout { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
 .human-page .guide-form,
 .human-page .guide-download-panel { background: var(--home-paper); border: 1px solid var(--home-line); border-top: 6px solid var(--color-primary-base); padding: 32px; min-width: 0; }
-.human-page .guide-download-panel .button-row { margin-top: 24px; }
+.human-page .guide-download-panel .button-row { margin-top: var(--space-action); }
 .human-page .guide-download-panel .button { width: 100%; min-height: 56px; }
 .human-page .guide-download-panel a:not(.button) { text-decoration: underline; text-underline-offset: 4px; }
 .human-page .guide-form .form-row { gap: 8px; margin-bottom: 22px; }
@@ -3527,6 +3540,7 @@ body:has(.site-header.is-menu-open, dialog[open]) .back-to-top { visibility: hid
 .human-page .guide-contents h3 { margin: 10px 0; font-size: 1.6rem; }
 .human-page .guide-contents p { color: var(--color-text-muted); font-size: 1rem; }
 .human-page .guide-mot { background: var(--color-primary-base); color: #fff; }
+.human-page .guide-mot .problem-copy { gap: var(--space-action); }
 
 @media (min-width: 1101px) {
   .human-page .nav-links a[aria-current="page"]::after { transform: scaleX(1); }

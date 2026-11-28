@@ -18,7 +18,9 @@
     .download-card .eyebrow{margin-bottom:.6rem}
     .download-card h1{color:#0b4344;margin:.2rem 0 1rem}
     .download-card p{max-width:600px;margin-left:auto;margin-right:auto}
-    .download-actions{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin:1.6rem 0}
+    .download-actions{display:flex;justify-content:center;gap:var(--space-controls);flex-wrap:wrap;margin:var(--space-action) 0}
+    .download-next h2 + p{margin-top:16px}
+    .download-next p:has(> .button){margin-top:var(--space-action)}
     .download-next{margin-top:2.3rem;padding-top:1.6rem;border-top:1px solid rgba(11,67,68,.14)}
     /* Keep the legacy header usable with enlarged text, without clipping links. */
     .guide-download-page .nav-shell{grid-template-columns:minmax(0,1fr)}

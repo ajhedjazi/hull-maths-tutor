@@ -58,7 +58,7 @@
 .privacy-close { text-decoration: underline; text-underline-offset: 4px; }
 .privacy-dialog :focus-visible,
 .privacy-document :focus-visible { outline: 3px solid #0b4344; outline-offset: 4px; }
-.privacy-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.privacy-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-controls); margin-top: var(--space-action); }
 .privacy-actions button {
   min-height: 48px;
   padding: 12px;
@@ -79,6 +79,8 @@
 .privacy-document h2 { margin: 36px 0 16px; font-size: 2rem; }
 .privacy-document p + p,
 .privacy-document ul { margin-top: 16px; }
+.privacy-document ul { padding-inline-start: 24px; }
+.privacy-document .button { margin-top: var(--space-action); }
 .privacy-document li + li { margin-top: 10px; }
 .privacy-document a { text-decoration: underline; text-underline-offset: 4px; }
 .privacy-document a.button { text-decoration: none; }
