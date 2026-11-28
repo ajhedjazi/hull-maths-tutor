@@ -3141,7 +3141,8 @@ body:has(.site-header.is-menu-open, dialog[open]) .back-to-top { visibility: hid
 .human-site .home-mot .eyebrow { color: var(--color-primary-base); }
 .human-site .home-mot .eyebrow::before { background: var(--color-primary-base); }
 .human-site .home-mot-note { font-size: 0.94rem; margin-top: 16px; }
-.human-site .home-mot-booking { border-left: 1px solid #0b43444d; padding-left: 28px; display: grid; gap: var(--space-action); justify-items: start; }
+/* Price glyphs extend below their line box; 40px gives ~36px of visible separation. */
+.human-site .home-mot-booking { border-left: 1px solid #0b43444d; padding-left: 28px; display: grid; gap: 40px; justify-items: start; }
 .human-site .home-mot-price { font: 600 4.2rem/1 "Playfair Display", "HMT Playfair Fallback", Georgia, serif; }
 .human-site .home-mot .button { justify-self: start; padding-inline: 14px; }
 .human-site .home-guide .home-split { align-items: center; }
